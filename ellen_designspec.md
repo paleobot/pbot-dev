@@ -41,3 +41,6 @@ PBOT users will need enter these three types of data:
 PBOT must be able to pull images and specimen meta-data from iDigBio
 PBOT must be able to add, edit, or delete records in the PBDB (see text in final proposal)
   * Note, I (Ellen) am not entirely clear where and how things like locality data are entered. Are we relying on this already being in iDigBio, or would you enter this in PBOT and then have it pushed to PBDB. My understanding is that we would not need to enter anything into PBDB but would go in there to do fun analyses.
+
+## Ellen learned enough about GitHub to be able to add an image to her design document!
+![image](https://github.com/azgs/pbot_client/blob/main/PBOT-logo-full.png)
