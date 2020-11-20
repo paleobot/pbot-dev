@@ -60,24 +60,25 @@ I envision this working as follows:
    - Option to tell the computer how broadly to search. For example, it would be useful to first constrain to specimens/morphotypes entered by that user (you are studying one flora and trying to figure out how many morphotypes you have), then broaden out to specimens/morphotypes from the same region, time period, or user, and finally consider everything in PBOT.
    - Output file / browser screen of shared vs. different characters (include what character state was assigned for each)
       - Need to handle incomplete preservation vs. different character states assigned.
+  - When the user finds a good match for their specimen, they have the option to assign that morphotype name to the specimen, which then means they do not fill in any additional descriptive information. But, something to think about is how we account for intraspecific variation in morphology. For example, say your specimen has a different tooth shape than described for the exemplar. How do we both annotate your specimen and also update the overall morphotype description to account for multiple character states?
 6. The person entering the data has priority on saying their specimen is the same morphotype as something already in the database.
     - As a control, we may want a flag if the number of conflicting character states exceeds a given threshold.
+7. Need a method of designating an exemplar for each morphotype.
     
 ### Search the database
 This section addresses the objective: **Maintain a community forum for expert commentary on PBOT contents, enabling and tracking discussion for resolving taxonomic issues**
 
 ### For those interested in doing synthetic work
 The objective here is for paleobotanists to be able to compare specimens/morphotypes and propose synonymies, taxonomic names, and whole-plant reconstructions. In other words, users propose linking specimens that are the same morphotype (even if researchers called them different things) and also linking plant organs into whole-plant reconstructions. Users can also propose a Linnean taxonomic assignment. We should include a link to PBDB with the note that any other sort of synthetic analyses (e.g. download all occurrences of a given morphotype, make maps of occurrences, etc) are done in PBDB!
+
 1. Query page to be able to search for:
   1. all morphotypes with a given suite of features
   2. by name (both formal and informal)
-2. Need to be able to compare specimens on the same screen
-Proposed linkages among iDigBio specimens: This would include both linking specimens that are the same morphotype (even if researchers called them different things) and also linking plant organs into whole-plant reconstructions.
-
-2. Having the information above, users can then make better comments on morphotypes, synonymies, taxonomies, specimens, users, user-commentary, and other metadata information
+2. Results page has the list of iDigBio specimens in one column, and then workbench space capable of showing 2 (or more?) records at the same time. Users would want to see photograph, basic locality information (age, region, collector), and descriptive annoations.
+3. Users propose linkages among iDigBio specimens: This would include both linking specimens that are the same morphotype (even if researchers called them different things) and also linking plant organs into whole-plant reconstructions.
    - Easy option of saying you agree with someone else's comments
    - *Question*: How is the final decision made on taxonomies, synonymies, identifications, etc?
-3. Even after linkages are made (e.g. synonymizing morphotypes), there is still a "paper trail" in case mistakes were made.
+4. Even after linkages are made (e.g. synonymizing morphotypes), there is still a "paper trail" in case mistakes were made.
 
 ## Link with existing databases to apply taxonomies to specimens
 1. PBOT must be able to pull images and specimen meta-data from iDigBio
