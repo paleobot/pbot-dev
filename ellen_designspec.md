@@ -7,13 +7,13 @@ The Paleobotany Database and Web Client (PBOT) promised to EarthCube and to the 
   3. Maintain a community forum for expert commentary on PBOT contents, enabling and tracking discussion for resolving taxonomic issues (e.g., synonymies, connecting different organs, and relationships)
   4. Link with existing databases to apply these taxonomies to specimens currently only identified within Linnean schemas at higher taxonomic levels that are not useful for most meta-analyses.
 
-In this attempt at a design document, I first go through some over-arching broad-stroke requirements required to achieve more than one of the above objectives. Then, I go through these four functions one by one with additional notes.
+In this attempt at a design document, I first go through some over-arching broad-stroke requirements required to achieve more than one of the above objectives. Then, I go my vision for how PBOT will work to fulfill these requirements.
 
 ## Broad-Strokes Requirements
 ### Critical
 1. Creation of a new database to hold information specific to PBOT, including information about users, vocabularies, user-commentary, and other standard meta-data.
 2. Creation of digital infrastructure for community-wide discussions that includes archiving comments
-3. Ability to collect and query user input in order to track the relationships of different schemas, traits, morphotypes, synonymies, taxonomies, specimens, users, user-commentary, and other metadata information
+3. Ability to collect, track, and query user input 
 4. Clean, easy-to-use design with well-made, easily findable tutorials, definitions, and library of images of each character and character state
 5. Method for documenting uncertainty at every stage of data entry and community commenting (imperfect preservation leads to uncertainty in assigning character states, variation in character states within a species or even specimen, uncertainty in assigning taxonomic affinities, uncertainty due to user expertise, etc.)
 6. Users have a private workbench and reasonable control over when data become public
@@ -25,22 +25,69 @@ In this attempt at a design document, I first go through some over-arching broad
 3. Best practices documentation for photography and upload of specimen meta-data into iDigBio.
 
 ## A single, coordinated interface for data entry and storage
-PBOT users will need enter these three types of data:
-  1. Proposed Vocabularies
-  2. Community opinions about the validity of a proposed vocabulary
-  3. Annotation of a specific iDigBio specimen with proposed vocabularies
-- Question: Is it possible to pull specimen data from museum repositories
+This figure from the proposal shows the data that will be entered in PBOT and relationships with iDigBio and PBDB:
+![image](https://github.com/azgs/pbot_client/blob/main/Relationships%20figure.png)
 
+On entering PBOT, users are first asked whether they would like to:
+1. Work on vocabularies
+2. Annotate individual specimens
+3. Search the database
 
+### Work on vocabularies
+This section describes **a platform for community-inclusive, evolvable, and sustainable descriptive character schemas**
+1. Users enter proposed traits, characters, character states, definitions of each of these.
+   * Required entry is the name of the character/trait/state, a definition, an illustration, and keywords.
+   * Each trait/character is assigned a set of keywords that makes it findable by users. For example, secondary vein course would be assigned to leaf, venation, and compression.
+   * After entering a character, user needs to associate character states with that character.
+2. Users create schemas using characters/traits already entered into PBOT.
+   * Create a new schema by selecting characters and traits from a list.
+      * Generate possible lists using the assigned keywords.
+   * Choose a schema already in the database and add or subtract characters
+3. Users provide opinions about the validity of a proposed vocabulary
+    * For each character state, character, trait, and schema in PBOT, there needs to be a way for users to suggest edits or provide commentary on utility. This is what will be key for informal working groups to coalesce and build standardized schemas for organs that do not yet have these.
+  
+### Annotation of a specific iDigBio specimen with proposed vocabularies
+- *Question*: Is it possible to pull specimen data from museum repositories
 
-## A platform for community-inclusive, evolvable, and sustainable descriptive character schemas
+I envision this working as follows:
+1. First screen where users enter the mode of preservation, plant organ, and major plant group (unknown always needs to be an option)
+2. Based on their selections, users are given options of proposed schemas already in the database.
+    - If unknown is selected for any, then the user is presented with all possible schemas that would not be eliminated by another selection (e.g., if mark leaf for plant organ then no flower characters are given).
+    - It would be helpful for the user to easily see data for each schema: who wrote it, how much usage is it receiving
+3. Users enter Uncertainty metric: see Critical Broad-Strokes #5.
+4. After the user has completed describing a specimen using all characters in selected schema, they can choose to add additional characters. I think it would be useful to have a text field for searching characters by name or by keyword.
+5. At any point, the user can select a "show me similar morphotypes" button, allowing PBOT to suggest linkages with similar specimens
+   - Option to tell the computer how broadly to search. For example, it would be useful to first constrain to specimens/morphotypes entered by that user (you are studying one flora and trying to figure out how many morphotypes you have), then broaden out to specimens/morphotypes from the same region, time period, or user, and finally consider everything in PBOT.
+   - Output file / browser screen of shared vs. different characters (include what character state was assigned for each)
+      - Need to handle incomplete preservation vs. different character states assigned.
+6. The person entering the data has priority on saying their specimen is the same morphotype as something already in the database.
+    - As a control, we may want a flag if the number of conflicting character states exceeds a given threshold.
+    
+### Search the database
+This section addresses the objective: **Maintain a community forum for expert commentary on PBOT contents, enabling and tracking discussion for resolving taxonomic issues**
 
-## Maintain a community forum for expert commentary on PBOT contents, enabling and tracking discussion for resolving taxonomic issues
+### For those interested in doing synthetic work
+The objective here is for paleobotanists to be able to compare specimens/morphotypes and propose synonymies, taxonomic names, and whole-plant reconstructions. In other words, users propose linking specimens that are the same morphotype (even if researchers called them different things) and also linking plant organs into whole-plant reconstructions. Users can also propose a Linnean taxonomic assignment. We should include a link to PBDB with the note that any other sort of synthetic analyses (e.g. download all occurrences of a given morphotype, make maps of occurrences, etc) are done in PBDB!
+1. Query page to be able to search for:
+  1. all morphotypes with a given suite of features
+  2. by name (both formal and informal)
+2. Need to be able to compare specimens on the same screen
+Proposed linkages among iDigBio specimens: This would include both linking specimens that are the same morphotype (even if researchers called them different things) and also linking plant organs into whole-plant reconstructions.
+
+2. Having the information above, users can then make better comments on morphotypes, synonymies, taxonomies, specimens, users, user-commentary, and other metadata information
+   - Easy option of saying you agree with someone else's comments
+   - *Question*: How is the final decision made on taxonomies, synonymies, identifications, etc?
+3. Even after linkages are made (e.g. synonymizing morphotypes), there is still a "paper trail" in case mistakes were made.
 
 ## Link with existing databases to apply taxonomies to specimens
-PBOT must be able to pull images and specimen meta-data from iDigBio
-PBOT must be able to add, edit, or delete records in the PBDB (see text in final proposal)
-  * Note, I (Ellen) am not entirely clear where and how things like locality data are entered. Are we relying on this already being in iDigBio, or would you enter this in PBOT and then have it pushed to PBDB. My understanding is that we would not need to enter anything into PBDB but would go in there to do fun analyses.
+1. PBOT must be able to pull images and specimen meta-data from iDigBio
+2. PBOT must be able to add, edit, or delete records in the PBDB (see text in final proposal)
+   * Note, Ellen is not entirely clear where and how PBDB occurrence data is being entered. Are we relying on this already being in iDigBio, or would you enter this in PBOT and then have it pushed to PBDB. My understanding is that we would not directly enter anything into PBDB but would go in there to do fun analyses.
+   
+# Types of data output
+1. Morphotype sheet with image
+2. Co-occurrence data
+3. 
 
-## Ellen learned enough about GitHub to be able to add an image to her design document!
+## Ellen learned enough about GitHub to be able to gratuitously include the PBOT logo at the end of her design document!
 ![image](https://github.com/azgs/pbot_client/blob/main/PBOT-logo-full.png)
