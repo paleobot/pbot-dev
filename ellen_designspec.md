@@ -19,8 +19,8 @@ In this attempt at a design document, I first go through some over-arching broad
 6. Users have a private workbench and reasonable control over when data become public
    * Option to share one's private workbench with selected colleagues, allowing all with access to enter data and provide comments.
 7. Ability to **Link with existing databases to apply taxonomies to specimens**
-  1. PBOT must be able to pull images and specimen meta-data from iDigBio
-  2. PBOT must be able to add, edit, or delete records in the PBDB (see text in final proposal)
+    1. PBOT must be able to pull images and specimen meta-data from iDigBio
+    2. PBOT must be able to add, edit, or delete records in the PBDB (see text in final proposal)
 
 
 ### Optional
@@ -85,8 +85,8 @@ This section addresses the objective: **Maintain a community forum for expert co
 The objective here is for paleobotanists to be able to compare specimens/morphotypes and propose synonymies, taxonomic names, and whole-plant reconstructions. In other words, users propose linking specimens that are the same morphotype (even if researchers called them different things) and also linking plant organs into whole-plant reconstructions. Users can also propose a Linnean taxonomic assignment. We should include a link to PBDB with the note that any other sort of synthetic analyses (e.g. download all occurrences of a given morphotype, make maps of occurrences, etc) are done in PBDB!
 
 1. Query page to be able to search for:
-  1. all morphotypes with a given suite of features
-  2. by name (both formal and informal)
+    1. all morphotypes with a given suite of features
+    2. by name (both formal and informal)
 2. Results page has the list of iDigBio specimens in one column, and then workbench space capable of showing 2 (or more?) records at the same time. Users would want to see photograph, basic locality information (age, region, collector), and descriptive annoations.
 3. Users propose linkages among iDigBio specimens: This would include both linking specimens that are the same morphotype (even if researchers called them different things) and also linking plant organs into whole-plant reconstructions.
    - The results page described above has an "I think these are the same" button. Maybe also an option to type in your level of certainty.
