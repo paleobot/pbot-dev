@@ -27,15 +27,15 @@ II. Data Entry Portal ("The Workbench")
     3. Customize entry options - choose your schemas. 
       -preservation type
       -broad group/clade
-      -(should the above result in a suggestion of applicable schemas? or just show all possibilities)
-      -select (like checking boxes) character schema(s) to apply (can hover, or "view schema" to have a look during the selection process)     
+      -(have the above result in a suggestion of applicable schemas? or just show all possibilities?)
+      -select (like checking boxes) character schema(s) to apply (can hover, or "view schema" during the selection process), includes trait data selections      
     4. Data entry (enter states for the characters of selected schema) - this may be just one html entry page that you scroll till finished or multiple pages (one per schema?) that you enter data into - not sure what is easier developement-wise
     5. Diagnosis (how to structure?). Characteristics differentiating from similar taxa. 
     6. Notes on taxon
     7. Some assessment of 
     
     The taxon page: An entered taxon page would include:
-      "static info" reflecting what was entered: informal/formal name. Author info. Specimen data (museum record, geographic and temporal info, preservation). Images (possible as a viewer, or just link to images - the first option significantly better). Character+state (only the entered data, nothing that was left blank). The diagnosis and characters differentiating from similar taxa. Systematic info as far as is known (mirror DarwinCore fields)
+      "static info" reflecting what was entered: informal/formal name. Author info. Specimen data (museum record, geographic and temporal info, preservation). Images (possible as a viewer, or just link to images - the first option significantly better). Character+state (only the entered data, nothing that was left blank); trait data (linked data files if applicable, such .csv files stored in any repository -could have measurements, or census data, etc). The diagnosis and characters differentiating from similar taxa. Systematic info as far as is known (mirror DarwinCore fields)
        
        Button/fields for further functions for the taxon:  Add comment to the forum (at bottom of page), Add new occurrences, Add new characters/states, Propose affinity, Propose synonomy 
  
