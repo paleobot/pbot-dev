@@ -35,7 +35,9 @@ II. Data Entry Portal ("The Workbench")
     7. Some assessment of 
     
     The taxon page: An entered taxon page would include:
-      informal/formal name. Author info. Specimen data (museum record, geographic and temporal info, preservation
+      "static info" reflecting what was entered: informal/formal name. Author info. Specimen data (museum record, geographic and temporal info, preservation). Images (possible as a viewer, or just link to images - the first option significantly better). Character+state (only the entered data, nothing that was left blank). The diagnosis and characters differentiating from similar taxa. Systematic info as far as is known (mirror DarwinCore fields)
+       
+       Button/fields for further functions for the taxon:  Add comment to the forum (at bottom of page), Add new occurrences, Add new characters/states, Propose affinity, Propose synonomy 
  
  
  II.B Comment on records (discussion forum) 
