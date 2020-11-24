@@ -19,7 +19,14 @@ o	A single morphotype entry with the number of specimens noted, images for each,
 o	Individual entries for each specimen of the mophotype with the entries linked in some way?
 •	Searching and linking to existing morphotype descriptions – Ellen, love it! I think the method for searching existing entries you outline in step 5 could also help with consistency among character descriptions; such that, users could search for specific traits to view examples of margin type, etc.
 
+Will there be an option to upload data from a csv or excel directly to the schemas? Would it be useful to create a downloadable template for users that will easily upload back to the PBOT schemas?
+
 Searching and Synthetic work:
 •	Is it practical to include a search portal targeting more paleoecological questions? 
 •	Is it possible to incorporate a means of visualizing search data? Not a tool to create and export data visuals but something that could summarize search results. It might encourage people to explore the database a bit more (and hopefully become involved inputting!)
+
+Questions:
+-Metadata on how and when users are querying; merge with targeted feedback approaches?
+-Is there a method for an ER diagram being/to be made?
+-What are the data validation methods planned?
 
