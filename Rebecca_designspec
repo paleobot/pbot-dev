@@ -1,1 +1,25 @@
+I tried to envision the database from the ‘searchers’ perspective so as if I were trying to identify morphotype x or answer ecology or biodiversity question y. Apologies if some of the ideas/questions here have been covered in previous meetings.
+
+Workbench:
+•	Is it possible to make portions of the workbench private? This might encourage people to use the workbench as a working platform before data is published, rather than adding everything in after a project/paper wraps up (which I know I never have time to return back and do…). 
+o	Could there be some data visible on the private portions? Such that while inputting and analyzing a site the unpublished plant descriptions aren’t available but maybe the geology or region are? There could potentially be an option to “contact user” where users could connect and enquire with others working on a formation of interest.
+
+Data Entry:
+•	I like the idea of beginning the data entry with selecting if the specimen is known/published and a new occurrence or an exemplary specimen or if it is a new/as of yet unknown morphotype. It may help target the “unknown plant group” situation and provide a future search filter within the database
+o	It might be good to collect some of the general data that we would want from all entries on this page as well – locality, geology, repository, depositional environment, publication information, etc. Many of these items feel like they will need to be the user written answers (rather than checking a box or selecting from a drop menu) so it might be nice to keep them all together. 
+
+•	I agree that it feels best to begin with the broad categories for the specimen that then trigger the relevant portals to further input descriptions. Preservation, plant organ, and major plant groups feel like the big ones. 
+o	Will there potentially need to be schemas created for each of these combinations (yikes!)? Could we house preservation and organ within each plant group schema and just have skip logic open up the relevant input options?
+
+•	When entering data into the schemas I feel like as much as possible should be selecting from options provided. It would be great if there could be a hover over or pop-up with a definition/description and example image of each option.
+o	If there is an atypical character for a morphotype within a specific plant group schema, would it be possible to also have a ‘master list’ of options that users could select from and add to their descriptions? 
+
+•	For sites with several of the same morphotypes (specifically those with variability of morphology), is it better to include them as:
+o	A single morphotype entry with the number of specimens noted, images for each, and the descriptions given to include the ranges for characters (e.g. crenate-entire margins)
+o	Individual entries for each specimen of the mophotype with the entries linked in some way?
+•	Searching and linking to existing morphotype descriptions – Ellen, love it! I think the method for searching existing entries you outline in step 5 could also help with consistency among character descriptions; such that, users could search for specific traits to view examples of margin type, etc.
+
+Searching and Synthetic work:
+•	Is it practical to include a search portal targeting more paleoecological questions? 
+•	Is it possible to incorporate a means of visualizing search data? Not a tool to create and export data visuals but something that could summarize search results. It might encourage people to explore the database a bit more (and hopefully become involved inputting!)
 
