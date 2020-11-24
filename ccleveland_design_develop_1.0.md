@@ -1,7 +1,7 @@
 #Claire_Desig_Spec_1.0
 
 
-Each number is one webpage (total pages listed here _____)
+Each number is one webpage or function (total pages/function listed here 87)
 [links to PID #.#.#.#] A button that links to existing Page with ID assigned.
 Apply hover definitions
 
