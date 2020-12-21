@@ -24,13 +24,20 @@ WHERE a.name='Scott L. Wing' AND b.name='Manual of Leaf Architecture'
 CREATE (a)-[r:AUTHOR]->(b) // Note that -> means there is directionality in the relationship
 RETURN type(r)
 
-// Create multiple nodes at once
+// make multiple nodes at once
 CREATE (a:Term {name: 'apex',definition:'toward the midline of the lamina'}),(b:Term {name: 'admedial', definition: 'toward the midline of the lamina'})
 
-// Set Manual of Leaf Architecture as SOURCE for terms
+// Manual of Leaf Architecture to SOURCE for terms
 // Note this is a blanket statement that set manual of leaf architecture as source for all terms, obviously you would need more logic in a situation with
 // multiple sources/terms
 MATCH (a:Term), (b:Reference)
 WHERE b.name='Manual of Leaf Architecture'
 CREATE (b)-[r:SOURCE]->(a) // Note that -> means there is directionality in the relationship
 RETURN type(r)
+
+// Added enterer relation to self plus other persons
+MATCH (a:Person), (b:Person)
+WHERE a.name='Andrew A. Zaffos'
+CREATE (a)-[r:ENTERER {timestamp: datetime()}]->(b)
+RETURN type(r)
+                                                                              
