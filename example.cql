@@ -71,3 +71,9 @@ CREATE
 (f) -[r7:SCHEMA]-> (b),
 (f) -[r8:SCHEMA]-> (c),
 (f) -[r9:SCHEMA]-> (d) 
+
+// Query children of children that have the relation "schema"
+// There are definiteily more efficient ways to do this recursively, but I haven't figured it out yet
+MATCH (a:Reference {name:'Manual of Leaf Architecture'})-[r:SCHEMA]-(char), 
+      (char)-[q:SCHEMA]-(state) 
+      RETURN a,r,char,q,state               
