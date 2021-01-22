@@ -15,7 +15,8 @@ CREATE (a:Person
     userid: '9e40e3603e519ffcf2c4590f50cb1589'
     given: 'Scott',
     surname: 'Wing',
-    email: 'wing@si.edu'
+    email: 'wing@si.edu',
+    orcid: '0000-0002-2954-8905'
     })
         
 CREATE (a:Person
@@ -23,9 +24,31 @@ CREATE (a:Person
     userid: '75cb1ca0e6286d31133ce51b0ad4f44f',
     given: 'Andrew',
     surname: 'Zaffos',
-    email: 'azaffos@arizona.edu'
+    email: 'azaffos@arizona.edu',
+    orcid: '0000-0002-4731-6091'
+    })
+        
+CREATE (a:Person
+    {
+    userid: '8b876f81690b0284d81fb00764525346',
+    given: 'Amanda',
+    surname: 'Ash' // Rather than have the orcid and email fields blank, I just excluded them. Not sure what best practice is in Neo4Js world.
+    })
+        
+CREATE (a:Person
+    {
+    userid: '0c6f2272ac9bb55e39538e19265238f9',
+    given: 'Leo',
+    surname: 'Hickey' // Rather than have the orcid and email fields blank, I just excluded them. Not sure what best practice is in Neo4Js world.
     })
 
+CREATE (a:Person
+    {
+    userid: '8ffc79743f1c80631a81aefdbd9692ba',
+    given: 'Kirk',
+    surname: 'Johnson' // Rather than have the orcid and email fields blank, I just excluded them. Not sure what best practice is in Neo4Js world.
+    })
+        
 // Assign the person scott wing as relation AUTHOR to Reference Manual of Leaf Architecture
 MATCH (a:Person), (b:Reference)
 WHERE a.userid='9e40e3603e519ffcf2c4590f50cb1589' AND b.refid='431d5b07caa98bec0db700748de6e918'
@@ -52,10 +75,10 @@ RETURN type(r)
 MATCH (a:Person), (b:Term)
 WHERE a.userid='75cb1ca0e6286d31133ce51b0ad4f44fs'
 CREATE (a)-[r:ENTERER {timestamp: datetime()}]->(b)
-RETURN type(r)
-     
+RETURN type(r) 
                                                                               
-// Mega entry that does a lot at once...
+// Mega entry that does a lot at once
+// Establish me as the enterer of various states and characters and assign those states and characters to a reference
 MATCH (n:Person {userid: '75cb1ca0e6286d31133ce51b0ad4f44f'}), (m:Reference {userid: '431d5b07caa98bec0db700748de6e918'})
 CREATE 
 (n) -[r1:ENTERER {timestamp: datetime()}]->
