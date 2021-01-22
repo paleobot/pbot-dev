@@ -2,7 +2,7 @@
 // Note that you cannot (should not) have arrays or lists, even though it will accept it as part of the JSON
 CREATE (a:Reference 
       {
-      name: 'Manual of Leaf Architecture', // No need for both name and title, just convenient to have a shorter alias for title
+      refid: '431d5b07caa98bec0db700748de6e918'
       title: 'Manual of Leaf Architecture - Morphological description and categorization of dicotyledonous and net-veined monocotyledonous angiosperms',
       year: '1999', 
       publisher: 'Smithsonian Institution',
@@ -12,7 +12,7 @@ CREATE (a:Reference
 // Create a new Person node
 CREATE (a:Person
     {
-    name: 'Scott L. Wing',
+    userid: '9e40e3603e519ffcf2c4590f50cb1589'
     given: 'Scott',
     surname: 'Wing',
     email: 'wing@si.edu'
@@ -20,7 +20,7 @@ CREATE (a:Person
         
 CREATE (a:Person
     {
-    name: 'Andrew A. Zaffos',
+    userid: '75cb1ca0e6286d31133ce51b0ad4f44f',
     given: 'Andrew',
     surname: 'Zaffos',
     email: 'azaffos@arizona.edu'
@@ -28,45 +28,45 @@ CREATE (a:Person
 
 // Assign the person scott wing as relation AUTHOR to Reference Manual of Leaf Architecture
 MATCH (a:Person), (b:Reference)
-WHERE a.name='Scott L. Wing' AND b.name='Manual of Leaf Architecture'
+WHERE a.userid='9e40e3603e519ffcf2c4590f50cb1589' AND b.refid='431d5b07caa98bec0db700748de6e918'
 CREATE (a)-[r:AUTHOR]->(b) // Note that -> means there is directionality in the relationship
 RETURN type(r)
 
 // make multiple nodes at once
-CREATE (a:Term {name: 'apex',definition:'toward the midline of the lamina'}),(b:Term {name: 'admedial', definition: 'toward the midline of the lamina'})
+CREATE (a:Term {termid: 'f16335802cb21b79b07a91eab96f92fd', name: 'apex',definition:'toward the midline of the lamina'}),(b:Term {termid: 'dc68111a81dd8b6dc05f1411687e37ab', name: 'admedial', definition: 'toward the midline of the lamina'})
 
 // Manual of Leaf Architecture to SOURCE for terms
 // Note this is a blanket statement that set manual of leaf architecture as source for all terms, obviously you would need more logic in a situation with
 // multiple sources/terms
 MATCH (a:Term), (b:Reference)
-WHERE b.name='Manual of Leaf Architecture'
+WHERE b.refid='431d5b07caa98bec0db700748de6e918'
 CREATE (b)-[r:SOURCE]->(a) // Note that -> means there is directionality in the relationship
 RETURN type(r)
 
 // Added enterer relation to self plus other persons
 MATCH (a:Person), (b:Person)
-WHERE a.name='Andrew A. Zaffos'
+WHERE a.userid='75cb1ca0e6286d31133ce51b0ad4f44f'
 CREATE (a)-[r:ENTERER {timestamp: datetime()}]->(b)
 RETURN type(r)
 
 MATCH (a:Person), (b:Term)
-WHERE a.name='Andrew A. Zaffos'
+WHERE a.userid='75cb1ca0e6286d31133ce51b0ad4f44fs'
 CREATE (a)-[r:ENTERER {timestamp: datetime()}]->(b)
 RETURN type(r)
      
                                                                               
 // Mega entry that does a lot at once...
-MATCH (n:Person {name: 'Andrew A. Zaffos'}), (m:Reference {name: 'Manual of Leaf Architecture'})
+MATCH (n:Person {userid: '75cb1ca0e6286d31133ce51b0ad4f44f'}), (m:Reference {userid: '431d5b07caa98bec0db700748de6e918'})
 CREATE 
 (n) -[r1:ENTERER {timestamp: datetime()}]->
-(a:State {name: 'alternate', definition: 'one leaf at each node'}), 
+(a:State {stateid: 'b6ad9b8970cdfb1b1fb6005522d2d25e', name: 'alternate', definition: 'one leaf at each node'}), 
 (n) -[r2:ENTERER {timestamp: datetime()}]->
-(b:State {name: 'opposite', definition: 'two leaves at each node'}), 
+(b:State {stateid: '1861372cf9c8da97ff0a83e98ed6a953', name: 'opposite', definition: 'two leaves at each node'}), 
 (n) -[r3:ENTERER {timestamp: datetime()}]->
-(c:State {name: 'whorled', definition: 'three or more leaves at each node'}),
+(c:State {stateid: 'fe44d248f93537924725483684a69bc8', name: 'whorled', definition: 'three or more leaves at each node'}),
 (n) -[r4:ENTERER {timestamp: datetime()}]->
-(d:State {name: 'decussate', definition: 'each leaf attached at 90° from those above and below (can be opposite or alternate)'}),
-(m) -[r5:SCHEMA]-> (f:Character {name: 'Leaf Attachment'}),
+(d:State {stateid: 'e7a09c4351846a01826c243c1f166ad5', 'decussate', definition: 'each leaf attached at 90° from those above and below (can be opposite or alternate)'}),
+(m) -[r5:SCHEMA]-> (f:Character {charid: '2a7a60cf3f5b69a7960c6f7f7f241df3', name: 'Leaf Attachment'}),
 (f) -[r6:SCHEMA]-> (a),
 (f) -[r7:SCHEMA]-> (b),
 (f) -[r8:SCHEMA]-> (c),
