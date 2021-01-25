@@ -100,3 +100,7 @@ CREATE
 MATCH (a:Reference {name:'Manual of Leaf Architecture'})-[r:SCHEMA]-(char), 
       (char)-[q:SCHEMA]-(state) 
       RETURN a,r,char,q,state               
+
+// How to wipe a database
+MATCH (n)
+DETACH DELETE n
