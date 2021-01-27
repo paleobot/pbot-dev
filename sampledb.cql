@@ -134,9 +134,7 @@ CREATE (n)-[r:ENTERER {timestamp: datetime()}]->(a:Reference {
 // The enterer relationship
 MATCH (n:Person {personid: '543cab021a7e811e7cc69b7ed3aa1c16'}), (m:Reference {refid: '431d5b07caa98bec0db700748de6e918'})
 CREATE (n)-[:ENTERER {timestamp: datetime()}]->
-    (a:Character {
-    charid: '94cb4886ef93f11d71601e4c89e20f55', 
-    name: 'Leaf Attachment'})-[:SCHEMA]->(m),
+    (a:Character {charid: '94cb4886ef93f11d71601e4c89e20f55', name: 'Leaf Attachment'})-[:SCHEMA]->(m),
     (n) -[:ENTERER {timestamp: datetime()}]->
     (a1:State {stateid: 'b6ad9b8970cdfb1b1fb6005522d2d25e', name: 'alternate', definition: 'one leaf at each node'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
