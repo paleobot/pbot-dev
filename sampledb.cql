@@ -153,3 +153,7 @@ CREATE (n)-[:ENTERER {timestamp: datetime()}]->
     (a3:State {stateid: 'fe44d248f93537924725483684a69bc8', name: 'whorled', definition: 'three or more leaves at each node'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
     (d:State {stateid: 'e7a09c4351846a01826c243c1f166ad5', name: 'decussate', definition: 'each leaf attached at 90° from those above and below (can be opposite or alternate)'})-[:SCHEMA]->(a)
+
+// Create a specimen record
+MATCH (n:Person {personid: 'b6a792bfe6c20622620b48f999c5baaf'})
+CREATE (n)-[ENTERER {timestamp: datetime()}]->(a:Specimen {specimenid: 'a8875f1614e4a7e98e5f81eef694db0d', idigbiouuid: '982472a2-fd87-47fe-913a-3c707c82e3d4', pbdbcid: '10805', pbdboccid: '130975'} 
