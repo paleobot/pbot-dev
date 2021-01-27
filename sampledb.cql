@@ -114,28 +114,50 @@ CREATE (a:Person {
     orcid: '0000-0002-2689-0801'
     })
     
-// Create a new reference node
-// Note that you cannot (should not) have arrays or lists, even though it will accept it as part of the JSON
-CREATE (a:Reference {
-      refid: '431d5b07caa98bec0db700748de6e918'.
+MATCH (n: user {uid: "1"}) CREATE (n) -[r: posted]-> (p: post {pid: "42", title: "Good Night", msg: "Have a nice and peaceful sleep.", author: n.uid});
+
+// Create two new references as personid 75cb1ca0e6286d31133ce51b0ad4f44f
+MATCH (n:Person {personid: '75cb1ca0e6286d31133ce51b0ad4f44f'})
+CREATE (n)-[r:ENTERER {timestamp: datetime()}]->(a:Reference {
+      refid: '431d5b07caa98bec0db700748de6e918',
       title: 'Manual of Leaf Architecture - Morphological description and categorization of dicotyledonous and net-veined monocotyledonous angiosperms',
       year: '1999', 
       publisher: 'Smithsonian Institution',
       doi:'10.13140/2.1.3674.5282'
       }),
-      (b:Reference {
+      (n)-[r1:ENTERER {timestamp: datetime()}]->(b:Reference {
       refid: 'f6cc59e5793b6ec1bc8777fe972d2a99',
       title: 'Manual of Leaf Architecture',
       year: '2009',
-      publisher: 'Cornell University Press',
+      publisher: 'Cornell University Press'
       })
-      
 
-    
-    
-    
-    
-    
-    
-    
-    
+// Identify as user 543cab021a7e811e7cc69b7ed3aa1c16 (Rebecca Koll) and add a chracter "leaf attachement" to reference and also specify the
+// The enterer relationship
+MATCH (n:Person {userid: '543cab021a7e811e7cc69b7ed3aa1c16'}), (m:Reference {refid: '431d5b07caa98bec0db700748de6e918'})
+CREATE (m)-[r:SCHEMA]-
+    (a:Character {
+    charid: '94cb4886ef93f11d71601e4c89e20f55', 
+    name: 'Leaf Attachment'})
+    <-[r1:ENTERER {timestamp: datetime()}]-(n)
+
+// Characters for Manual of Leaf Architecture 1999
+CREATE (a:Character {
+    charid: '94cb4886ef93f11d71601e4c89e20f55',
+    name: 'Leaf Attachment'
+    }),
+    (b:Character {
+    charid: '1f6654b644593e67528d6e73f89be90d',
+    name: 'Leaf Organization'
+    })
+
+// States for Manual of Leaf Architecture 1999
+CREATE (a:State {
+        stateid: 'c18d0958b6a93c0bec6b3f7a615e0d9b'
+        name: 'simple'
+        definition: 'consisting of a single lamina'
+        }), // Leaf organization 
+        (b:State {
+        stateid: '134'
+        name: 'chonk'
+        })
