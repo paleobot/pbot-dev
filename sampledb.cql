@@ -129,6 +129,16 @@ CREATE (n)-[r:ENTERER {timestamp: datetime()}]->(a:Reference {
       year: '2009',
       publisher: 'Cornell University Press'
       })
+      
+// Assign authors to the 1999 reference
+MATCH (a:Person), (m:Reference {refid: '431d5b07caa98bec0db700748de6e918'})
+WHERE a.surname IN ['Ash', 'Ellis','Wing','Hickey','Johnson','Wilf','Wing']
+CREATE (a)-[:AUTHOR]->(m)
+
+// Assign authors to the 20009 reference
+MATCH (a:Person), (m:Reference {refid: 'f6cc59e5793b6ec1bc8777fe972d2a99'})
+WHERE a.surname IN ['Ellis','Wing','Hickey','Johnson','Wilf','Wing','Mitchell','Daly']
+CREATE (a)-[:AUTHOR]->(m)
 
 // Identify as user 543cab021a7e811e7cc69b7ed3aa1c16 (Rebecca Koll) and add a chracter "leaf attachement" to reference and also specify the
 // The enterer relationship
