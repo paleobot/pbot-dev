@@ -154,7 +154,12 @@ CREATE (n)-[:ENTERER {timestamp: datetime()}]->
     (n) -[:ENTERER {timestamp: datetime()}]->
     (d:State {stateid: 'e7a09c4351846a01826c243c1f166ad5', name: 'decussate', definition: 'each leaf attached at 90° from those above and below (can be opposite or alternate)'})-[:SCHEMA]->(a)
 
-// Create a specimen record
+// Create a specimen record (and associated organ type) and an OTU record
+// Note that I store the enterer id as a property of relation Schema
 MATCH (n:Person {personid: 'b6a792bfe6c20622620b48f999c5baaf'})
 CREATE (n)-[:ENTERER {timestamp: datetime()}]->
-    (a:Specimen {specimenid: 'a8875f1614e4a7e98e5f81eef694db0d', idigbiouuid: '982472a2-fd87-47fe-913a-3c707c82e3d4', pbdbcid: '10805', pbdboccid: '130975'}) 
+    (a:Specimen {specimenid: 'a8875f1614e4a7e98e5f81eef694db0d', idigbiouuid: '982472a2-fd87-47fe-913a-3c707c82e3d4', pbdbcid: '10805', pbdboccid: '130975'}), 
+    (a)-[:TYPE]->(b:Organ {organid: '391643a8c18bb294a873c274b351b252', type: 'Leaf'}),
+    (n)-[:ENTERER {timestop: datetime()}]->
+    (c:OTU {otuid: '50eb719b3b6e3ea460bf8ad9c9d8d96b', name: 'Cornus hyperborea', family: 'Cornacaea', genus: 'Cornus', species: 'hyperborea'}),
+    (c)-[:SCHEMA {enterer: n.personid, timestamp: datetime()}]->(a)
