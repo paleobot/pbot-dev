@@ -1,4 +1,32 @@
-1. Leaf Mass per Area: The leaf dry-mass investment per unit of light-intercepting leaf area deployed. In modern specimens, it is determined by dividing leaf dry mass by leaf area. Leaf mass per area can be reconstructed in fossils using the method of Royer et al. 2007.
-Stomatal Density
-Stomatal Index
-Insect Herbivore Damage
+1. Leaf Mass per Area 
+- Definition: The leaf dry-mass investment per unit of light-intercepting leaf area deployed. 
+- Measurement: For modern specimens, divide leaf dry mass by leaf area. For fossils, measure petiole width and leaf area and use the calibration model of Royer et al. 2007.
+
+2. Stomatal Density
+- Definition: number of stomata per leaf area
+
+3. Stomatal Index
+- Definition: the proportion of stomata relative to total epidermal cell number. (stomatal density) / (stomatal density + epidermal cell density) x 100%. Alternately, (# stomata) / (# stomata + # epidermal cells) x 100
+
+4. Insect Herbivore Damage
+- Definition: Plant organ was damaged while alive, and damage scars are most likely to have been made by insect herbivores.
+- Measurement:
+    a. Presence / Absence
+    b. Functional feeding group present: hole feeding, margin feeding, skeletonization, surface feeding, mining, galling, piercing & sucking, oviposition, boring, fungal & pathogen
+    c. Damage types present, following Labandeira et al.'s Damage Guide
+    
+5. Leaf vein density
+- Definition: vein length per unit leaf area
+
+6. Leaf size
+- Definition: Area of the leaf
+
+7. Digital Leaf Physiognomy Variables
+- Shape factor: 4(pi)(leaf area / leaf perimeter squared)
+- Feret-diameter ratio: feret diameter / major axis length
+- Tooth-area ratio: area of all teeth / leaf area
+- Tooth count: total number of teeth
+- Standardized tooth count: tooth count / leaf perimeter
+- Internal perimeter: leaf perimeter after teeth are removed
+- Blade perimeter: leaf perimeter
+
