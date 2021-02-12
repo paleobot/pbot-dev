@@ -11,19 +11,23 @@ MATCH (n:Person {personid: '543cab021a7e811e7cc69b7ed3aa1c16'}), (m:Reference {r
 CREATE (n)-[:ENTERER {timestamp: datetime()}]->
     (a:Character {charid: '40e73d92403e678b06dc170e58ce7cfc', name: 'Leaf Arrangement', definition: 'the placement of adjacent leaves on the nodes of the axis (more than one may apply)'})-[:SCHEMA]->(m),
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a1:State {stateid: '6f56586218084a39f8de127b5b3abf01', name: 'distichous', definition: 'adjacent leaves occur above or below others on the axis with one leaf per node (in one plane in two ranks on opposite sides of the axis)'})-[:SCHEMA]->(a),
+    (a1:State {stateid: '6f56586218084a39f8de127b5b3abf01', name: 'alternate distichous', definition: 'adjacent leaves occur above or below others on the axis with one leaf per node (in one plane in two ranks on opposite sides of the axis)'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a2:State {stateid: 'a255f86487a54ea9577c1db148f1b779', name: 'helical', definition: 'adjacent leaves occur above or below others on the axis with one leaf per node (in a spiral along the axis)'})-[:SCHEMA]->(a), 
+    (a2:State {stateid: 'a255f86487a54ea9577c1db148f1b779', name: 'alternate helical', definition: 'adjacent leaves occur above or below others on the axis with one leaf per node (in a spiral along the axis)'})-[:SCHEMA]->(a), 
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a3:State {stateid: '122de8336af6336a41cfaa43886e4977', name: 'opposite', definition: 'leaves occur in opposed pairs that arise from the same node along the axis (leaf pairs may be decussate, distichous, or spirodecussate)'})-[:SCHEMA]->(a), 
+    (a3:State {stateid: '122de8336af6336a41cfaa43886e4977', name: 'opposite decussate', definition: 'leaves occur in opposed pairs that arise from the same node along the axis (leaf pairs inserted at 90 to those above and below)'})-[:SCHEMA]->(a), 
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a4:State {stateid: '29e881ec2417928e442279ccec88b1f2', name: 'whorled', definition: 'three or more leaves are borne at each node'})-[:SCHEMA]->(a),
+    (a4:State {stateid: '1a5379904bc220e2d1f3e8b28205b9f4', name: 'opposite distichous', definition: 'leaves occur in opposed pairs that arise from the same node along the axis (leaf pairs aligned with those above and below)'})-[:SCHEMA]->(a), 
+    (n) -[:ENTERER {timestamp: datetime()}]->
+    (a5:State {stateid: '9b76760ed28dca6af4070535a968887d', name: 'opposite spirodecussate', definition: 'leaves occur in opposed pairs that arise from the same node along the axis (leaf pairs inserted at angles >90 to those above and below)'})-[:SCHEMA]->(a), 
+    (n) -[:ENTERER {timestamp: datetime()}]->
+    (a6:State {stateid: '29e881ec2417928e442279ccec88b1f2', name: 'whorled', definition: 'three or more leaves are borne at each node'})-[:SCHEMA]->(a),
    (n) -[:ENTERER {timestamp: datetime()}]->
-    (a5:State {stateid: 'f40dac433ca587274b76dd70c158a169', name: 'decussate', definition: 'adjacent leaves occur in pairs that are nearly but not strictly opposite (leaf pairs inserted at ~90 to those above and below)'})-[:SCHEMA]->(a),
+    (a7:State {stateid: 'f40dac433ca587274b76dd70c158a169', name: 'subopposite decussate', definition: 'adjacent leaves occur in pairs that are nearly but not strictly opposite (leaf pairs inserted at ~90 to those above and below)'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
-   (a6:State {stateid: '5ec13751ea7d019d563b68571cfa375b', name: 'distichous', definition: 'adjacent leaves occur in pairs that are nearly but not strictly opposite (leaf pairs are aligned with those above and below)'})-[:SCHEMA]->(a),
+   (a8:State {stateid: '5ec13751ea7d019d563b68571cfa375b', name: 'subopposite distichous', definition: 'adjacent leaves occur in pairs that are nearly but not strictly opposite (leaf pairs are aligned with those above and below)'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
-   (a7:State {stateid: 'da433b0b3433faf5fa1d98e2a4c5939f', name: 'spirodistichous', definition: 'adjacent leaves occur in pairs that are nearly but not strictly opposite (successive leaf pairs inserted at angles >90 to those above and below)'})-[:SCHEMA]->(a)
+   (a9:State {stateid: 'da433b0b3433faf5fa1d98e2a4c5939f', name: 'subopposite spirodistichous', definition: 'adjacent leaves occur in pairs that are nearly but not strictly opposite (successive leaf pairs inserted at angles >90 to those above and below)'})-[:SCHEMA]->(a)
     
 
 MATCH (n:Person {personid: '543cab021a7e811e7cc69b7ed3aa1c16'}), (m:Reference {refid: 'f6cc59e5793b6ec1bc8777fe972d2a99'})
@@ -34,7 +38,7 @@ CREATE (n)-[:ENTERER {timestamp: datetime()}]->
     (n) -[:ENTERER {timestamp: datetime()}]->
     (a2:State {stateid: '6ef30f723e614714eb300fcdc623d155', name: 'palmately compound', definition: 'leaf has more than two separate laminar sub-units (leaflets) attached at the apex of the petiole'})-[:SCHEMA]->(a), 
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a3:State {stateid: '7763fcf788ba0a55ad4373f1df679de1', name: 'once compound', definition: 'leaflet arranged along a rachis (with a single order of pinnate leaflets)'})-[:SCHEMA]->(a),
+    (a3:State {stateid: '7763fcf788ba0a55ad4373f1df679de1', name: 'once pinnately compound', definition: 'leaflet arranged along a rachis (with a single order of pinnate leaflets)'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
     (a4:State {stateid: '566e410a681f930bbdf4a06b06c475cc', name: 'bipinnately compound', definition: 'leaflet arranged along a rachis (dissected twice with leaflets arranged along rachillae that are attached to the rachis)'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
@@ -69,7 +73,9 @@ CREATE (n)-[:ENTERER {timestamp: datetime()}]->
     (n) -[:ENTERER {timestamp: datetime()}]->
     (a1:State {stateid: '0f2a311a52b41a233e45d2018566f343', name: 'sheathing', definition: 'petiole expands to clasp the stem'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a2:State {stateid: '3fab359c1456d801896a0da8d3a3eab5', name: 'pulvin(ul)ate', definition: 'having an abruptly swollen portion near the node around which the leaf(let) can flex (may occur with or without an abscission joint)'})-[:SCHEMA]->(a) 
+    (a2:State {stateid: '3fab359c1456d801896a0da8d3a3eab5', name: 'pulvinate', definition: 'having an abruptly swollen portion near the node around which the leaf can flex, may occur with or without an abscission joint'})-[:SCHEMA]->(a) 
+(n) -[:ENTERER {timestamp: datetime()}]->
+    (a3:State {stateid: '3aa22417e313d84789007d0e8d8aed01', name: 'pulvinulate', definition: 'having an abruptly swollen portion near the node around which the leaflet can flex, may occur with or without an abscission joint (on compound leaves, pulvinulus may occur at the proximal and/or distal end of the petiolule and sometimes only on the terminal leaflet)'})-[:SCHEMA]->(a) 
 
 
  MATCH (n:Person {personid: '543cab021a7e811e7cc69b7ed3aa1c16'}), (m:Reference {refid: 'f6cc59e5793b6ec1bc8777fe972d2a99'})
@@ -118,15 +124,23 @@ CREATE (n)-[:ENTERER {timestamp: datetime()}]->
     (n) -[:ENTERER {timestamp: datetime()}]->
     (a1:State {stateid: '94e0f1bb025131bc1396c5e66f7e8c80', name: 'elliptic', definition: 'the widest part of the leaf is in the middle one-fifth'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a2:State {stateid: '2c85adf0d253d2be277709760be09cb6', name: 'obovate', definition: 'the widest part of the leaf is in the distal two-fifths'})-[:SCHEMA]->(a), 
+    (a2:State {stateid: '87c41ef96273f5df8b225c4bd7ce869c', name: 'orbiculate', definition: 'elliptic leaves with a L:W ratio ranging from 1.2:1 to 1:1'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a3:State {stateid: '8cf74efa371c5e10cbfd7991502afcc8', name: 'ovate', definition: 'the widest part of the leaf is in the proximal two-fifths'})-[:SCHEMA]->(a),
+    (a3:State {stateid: '3b071fbae2f22674d2068c6fc601bf87', name: 'oblate', definition: 'elliptic leaves with a L:W ratio <1:1'})-[:SCHEMA]->(a), 
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a4:State {stateid: '97cef3716360cf5eb37e87c30e974c0f', name: 'oblong', definition: 'the opposite margins are roughly parallel for at least the middle one-third of the leaf'})-[:SCHEMA]->(a),
+    (a4:State {stateid: '2c85adf0d253d2be277709760be09cb6', name: 'obovate', definition: 'the widest part of the leaf is in the distal two-fifths'})-[:SCHEMA]->(a), 
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a5:State {stateid: '90ea5f46d177904bd791551f32b06ce5', name: 'linear', definition: 'the L:W ratio of a leaf is greater than or equal to 10:1, regardless of the position of the widest part of the leaf'})-[:SCHEMA]->(a), 
+    (a5:State {stateid: 'd898bcff69ce35c29d5bb07c028eecd5', name: 'oblanceolate', definition: 'obovate leaves with a L:W ratio between 3:1 to 10:1'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a6:State {stateid: '523e34e539455f81b1132fc68673b1e7', name: 'special', definition: 'outlines that do not fall readily into one of the shape classes above'})-[:SCHEMA]->(a)
+    (a6:State {stateid: '8cf74efa371c5e10cbfd7991502afcc8', name: 'ovate', definition: 'the widest part of the leaf is in the proximal two-fifths'})-[:SCHEMA]->(a),
+    (n) -[:ENTERER {timestamp: datetime()}]->
+    (a7:State {stateid: 'b53eaf4c5efa4dea8afe39e1dba0c7be', name: 'lanceolate', definition: 'ovate leaves with a L:W ratio between 3:1 to 10:1'})-[:SCHEMA]->(a),
+    (n) -[:ENTERER {timestamp: datetime()}]->
+    (a8:State {stateid: '97cef3716360cf5eb37e87c30e974c0f', name: 'oblong', definition: 'the opposite margins are roughly parallel for at least the middle one-third of the leaf'})-[:SCHEMA]->(a),
+    (n) -[:ENTERER {timestamp: datetime()}]->
+    (a9:State {stateid: '90ea5f46d177904bd791551f32b06ce5', name: 'linear', definition: 'the L:W ratio of a leaf is greater than or equal to 10:1, regardless of the position of the widest part of the leaf'})-[:SCHEMA]->(a), 
+    (n) -[:ENTERER {timestamp: datetime()}]->
+    (a10:State {stateid: '523e34e539455f81b1132fc68673b1e7', name: 'special', definition: 'outlines that do not fall readily into one of the shape classes above'})-[:SCHEMA]->(a)
          
 
 MATCH (n:Person {personid: '543cab021a7e811e7cc69b7ed3aa1c16'}), (m:Reference {refid: 'f6cc59e5793b6ec1bc8777fe972d2a99'})
