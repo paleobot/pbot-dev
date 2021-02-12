@@ -318,7 +318,7 @@ CREATE (n)-[:ENTERER {timestamp: datetime()}]->
     (n) -[:ENTERER {timestamp: datetime()}]->
     (a3:State {stateid: '6d1587cf337ed655385952518d228f35', name: 'apical', definition: 'glands present only near the blade apex'})-[:SCHEMA]->(a),
     (n) -[:ENTERER {timestamp: datetime()}]->
-    (a4:State {stateid: 'e19026ad3a75150eeb1e7ec42e32b62f', name: 'basilaminar', definition: 'glands present only near the base of the blade'})-[:SCHEMA]->(a)
+    (a4:State {stateid: 'e19026ad3a75150eeb1e7ec42e32b62f', name: 'basalaminar', definition: 'glands present only near the base of the blade'})-[:SCHEMA]->(a)
   
 
 
