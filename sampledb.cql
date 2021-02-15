@@ -156,6 +156,7 @@ CREATE (n)-[:ENTERER {timestamp: datetime()}]->
 
 // Create a specimen record (and associated organ type) and an OTU record
 // Note that I store the enterer id as a property of relation Schema
+// For more specimen information see https://docs.google.com/spreadsheets/d/1xzgVW_ImkGAs4wtL-oatQSITK2P8cGP5/edit#gid=582472317
 MATCH (n:Person {personid: 'b6a792bfe6c20622620b48f999c5baaf'})
 CREATE (n)-[:ENTERER {timestamp: datetime()}]->
     (a:Specimen {specimenid: 'a8875f1614e4a7e98e5f81eef694db0d', idigbiouuid: '982472a2-fd87-47fe-913a-3c707c82e3d4', pbdbcid: '10805', pbdboccid: '130975'}), 
