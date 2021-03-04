@@ -1,18 +1,18 @@
 //------------------------ Specimens ----------------------------------
-//NOTE: This section is still really janky. It should probably be in its own file, since it cannot be run with the above 
-//setup due to the need for IDs.
-//ALSO NOTE: All the IDs below need to be updated any time you run the graph setup above.
 // For more specimen information see https://docs.google.com/spreadsheets/d/1xzgVW_ImkGAs4wtL-oatQSITK2P8cGP5/edit#gid=582472317
 
-//Create Organ node. These are reused. This allows queries like "show me all the leaf specimens".
+//Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH 
 	(person:Person {given: 'Ellen', surname: 'Curranno'})
-CREATE 
-    (organ:Organ {organID: apoc.create.uuid(), type: 'Leaf'}),
+MERGE 
+    (organ:Organ { type: 'Leaf'})
+    ON CREATE SET organ.organID = apoc.create.uuid()
+MERGE
     (organ)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 
 //Create OTU node complex.
 MATCH 
+	(person:Person {given: 'Ellen', surname: 'Curranno'}),
 	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(leafAttachment:Character {name: 'Leaf Attachment'}),
 		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: 'petiolate'}),
 	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(leafOrganization:Character {name: 'Leaf Organization'}),
@@ -67,19 +67,31 @@ CREATE
 		(otu)-[:DEFINED_BY]->(characterInstance02),
 			(characterInstance02)-[:INSTANCE_OF]->(leafOrganization),
 			(characterInstance02)-[:HAS_STATE]->(leafOrganization_simple),
-		(characterInstance03:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
-		(characterInstance03)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-		(otu)-[:DEFINED_BY]->(characterInstance03),
-			(characterInstance03)-[:INSTANCE_OF]->(laminarSize),
-			(characterInstance03)-[:HAS_STATE]->(laminarSize_microphyll),
-			(characterInstance03)-[:HAS_STATE]->(laminarSize_notophyll),
-			(characterInstance03)-[:HAS_STATE]->(laminarSize_mesophyll),			
-		(characterInstance04:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
-		(characterInstance04)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-		(otu)-[:DEFINED_BY]->(characterInstance04),
-			(characterInstance04)-[:INSTANCE_OF]->(laminarShape),
-			(characterInstance04)-[:HAS_STATE]->(laminarShape_ovate),
-			(characterInstance04)-[:HAS_STATE]->(laminarShape_oblong),
+		(characterInstance03a:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance03a)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance03a),
+			(characterInstance03a)-[:INSTANCE_OF]->(laminarSize),
+			(characterInstance03a)-[:HAS_STATE]->(laminarSize_microphyll),
+		(characterInstance03b:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance03b)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance03b),
+			(characterInstance03b)-[:INSTANCE_OF]->(laminarSize),
+			(characterInstance03b)-[:HAS_STATE]->(laminarSize_notophyll),
+		(characterInstance03c:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance03c)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance03c),
+			(characterInstance03c)-[:INSTANCE_OF]->(laminarSize),
+			(characterInstance03c)-[:HAS_STATE]->(laminarSize_mesophyll),			
+		(characterInstance04a:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance04a)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance04a),
+			(characterInstance04a)-[:INSTANCE_OF]->(laminarShape),
+			(characterInstance04a)-[:HAS_STATE]->(laminarShape_ovate),
+		(characterInstance04b:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance04b)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance04b),
+			(characterInstance04b)-[:INSTANCE_OF]->(laminarShape),
+			(characterInstance04b)-[:HAS_STATE]->(laminarShape_oblong),
 		(characterInstance05:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
 		(characterInstance05)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance05),
@@ -120,12 +132,16 @@ CREATE
 		(otu)-[:DEFINED_BY]->(characterInstance12),
 			(characterInstance12)-[:INSTANCE_OF]->(baseShape),
 			(characterInstance12)-[:HAS_STATE]->(baseShape_convex),
-		(characterInstance13:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
-		(characterInstance13)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(characterInstance13a:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance13a)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance13a),
+			(characterInstance13a)-[:INSTANCE_OF]->(baseAngle),
+			(characterInstance13a)-[:HAS_STATE]->(baseAngle_acute),
+		(characterInstance13b:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance13b)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance13),
-			(characterInstance13)-[:INSTANCE_OF]->(baseAngle),
-			(characterInstance13)-[:HAS_STATE]->(baseAngle_acute),
-			(characterInstance13)-[:HAS_STATE]->(baseAngle_obtuse),
+			(characterInstance13b)-[:INSTANCE_OF]->(baseAngle),
+			(characterInstance13b)-[:HAS_STATE]->(baseAngle_obtuse),
 		(characterInstance14:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
 		(characterInstance14)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance14),
@@ -135,18 +151,18 @@ CREATE
 		(characterInstance15)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance15),
 			(characterInstance15)-[:INSTANCE_OF]->(apexAngle),
-			(characterInstance15)-[:HAS_STATE]->(apexAngle_acute);
+			(characterInstance15)-[:HAS_STATE]->(apexAngle_acute)
 	
 //Create Specimen node and connect to OTU and Organ	
+WITH otu
 MATCH 
 	(person:Person {given: 'Ellen', surname: 'Curranno'}),
 	(organ:Organ {type: 'Leaf'}),
-	(otu:OTU {otuID: 'b27ce46f-2c90-437c-bab1-159bc5fb76c1'}) //NOTE: Get this from the one created above!
 CREATE 
     (specimen:Specimen {specimenID: apoc.create.uuid(), name: 'YPM PB 028288', locality: 'USNM 14051', preservationMode: 'Compression', majorGroup: 'DIC', diagnosticFeatures: 'Eucamptodromous secondaries confined to the lower half of the leaf; perpendicular, straight opposite percurrent tertiaries.', idigbiouuid: '982472a2-fd87-47fe-913a-3c707c82e3d4', pbdbcid: '10805', pbdboccid: '130975'}), 
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu);
-	
+
 
 
