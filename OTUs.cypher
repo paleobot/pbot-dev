@@ -5,58 +5,58 @@
 
 //Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH
-	(person:Person {given: 'Ellen', surname: 'Curranno'})
+	(person:Person {given: "Ellen", surname: "Curranno"})
 MERGE
-    (organ:Organ { type: 'Leaf'})
+    (organ:Organ { type: "Leaf"})
     ON CREATE SET organ.organID = apoc.create.uuid()
 MERGE
     (organ)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 
 //Create OTU node complex.
 MATCH
-	(person:Person {given: 'Ellen', surname: 'Curranno'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(leafAttachment:Character {name: 'Leaf Attachment'}),
-		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: 'petiolate'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(leafOrganization:Character {name: 'Leaf Organization'}),
-		(leafOrganization)<-[:STATE_OF]-(leafOrganization_simple:State {name: 'simple'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminarSize:Character {name: 'Laminar Size'}),
-		(laminarSize)<-[:STATE_OF]-(laminarSize_microphyll:State {name: 'microphyll'}),
-		(laminarSize)<-[:STATE_OF]-(laminarSize_notophyll:State {name: 'notophyll'}),
-		(laminarSize)<-[:STATE_OF]-(laminarSize_mesophyll:State {name: 'mesophyll'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminarShape:Character {name: 'Laminar Shape'}),
-		(laminarShape)<-[:STATE_OF]-(laminarShape_ovate:State {name: 'ovate'}),
-		(laminarShape)<-[:STATE_OF]-(laminarShape_oblong:State {name: 'oblong'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminarRatio:Character {name: 'Laminar L:W Ratio'}),
-		(laminarRatio)<-[:STATE_OF]-(laminarRatio_quantity:State {name: 'quantity'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(lobation:Character {name: 'Lobation'}),
-		(lobation)<-[:STATE_OF]-(lobation_unlobed:State {name: 'unlobed'}),
-	//(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminaAttachment:Character {name: 'Position of Lamina Attachment'}),
-	//	(laminaAttachment)<-[:STATE_OF]-(laminaAttachment_marginal:State {name: 'marginal'}),
-	//(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(petioleBase:Character {name: 'Petiole Base'}),
-	//	(petioleBase)<-[:STATE_OF]-(petioleBase_regular:State {name: 'regular'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(marginType:Character {name: 'Margin Type'}),
-		(marginType)<-[:STATE_OF]-(marginType_untoothed:State {name: 'untoothed'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(baseSymmetry:Character {name: 'Base Symmetry'}),
-		(baseSymmetry)<-[:STATE_OF]-(baseSymmetry_symmetrical:State {name: 'base symmetrical'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(medialSymmetry:Character {name: 'Medial Symmetry'}),
-		(medialSymmetry)<-[:STATE_OF]-(medialSymmetry_symmetrical:State {name: 'symmetrical'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(baseShape:Character {name: 'Base Shape'}),
-		(baseShape)<-[:STATE_OF]-(State {name: 'no basal extension'})<-[:STATE_OF]-(baseShape_convex:State {name: 'convex'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(baseAngle:Character {name: 'Base Angle'}),
-		(baseAngle)<-[:STATE_OF]-(baseAngle_acute:State {name: 'acute'}),
-		(baseAngle)<-[:STATE_OF]-(baseAngle_obtuse:State {name: 'obtuse'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(apexShape:Character {name: 'Apex Shape'}),
-		(apexShape)<-[:STATE_OF]-(apexShape_acuminate:State {name: 'acuminate'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(apexAngle:Character {name: 'Apex Angle'}),
-		(apexAngle)<-[:STATE_OF]-(apexAngle_acute:State {name: 'acute'})
+	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(leafAttachment:Character {name: "Leaf Attachment"}),
+		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: "petiolate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(leafOrganization:Character {name: "Leaf Organization"}),
+		(leafOrganization)<-[:STATE_OF]-(leafOrganization_simple:State {name: "simple"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarSize:Character {name: "Laminar Size"}),
+		(laminarSize)<-[:STATE_OF]-(laminarSize_microphyll:State {name: "microphyll"}),
+		(laminarSize)<-[:STATE_OF]-(laminarSize_notophyll:State {name: "notophyll"}),
+		(laminarSize)<-[:STATE_OF]-(laminarSize_mesophyll:State {name: "mesophyll"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarShape:Character {name: "Laminar Shape"}),
+		(laminarShape)<-[:STATE_OF]-(laminarShape_ovate:State {name: "ovate"}),
+		(laminarShape)<-[:STATE_OF]-(laminarShape_oblong:State {name: "oblong"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarRatio:Character {name: "Laminar L:W Ratio"}),
+		(laminarRatio)<-[:STATE_OF]-(laminarRatio_quantity:State {name: "quantity"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(lobation:Character {name: "Lobation"}),
+		(lobation)<-[:STATE_OF]-(lobation_unlobed:State {name: "unlobed"}),
+	//(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminaAttachment:Character {name: "Position of Lamina Attachment"}),
+	//	(laminaAttachment)<-[:STATE_OF]-(laminaAttachment_marginal:State {name: "marginal"}),
+	//(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(petioleBase:Character {name: "Petiole Base"}),
+	//	(petioleBase)<-[:STATE_OF]-(petioleBase_regular:State {name: "regular"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(marginType:Character {name: "Margin Type"}),
+		(marginType)<-[:STATE_OF]-(marginType_untoothed:State {name: "untoothed"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseSymmetry:Character {name: "Base Symmetry"}),
+		(baseSymmetry)<-[:STATE_OF]-(baseSymmetry_symmetrical:State {name: "base symmetrical"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(medialSymmetry:Character {name: "Medial Symmetry"}),
+		(medialSymmetry)<-[:STATE_OF]-(medialSymmetry_symmetrical:State {name: "symmetrical"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseShape:Character {name: "Base Shape"}),
+		(baseShape)<-[:STATE_OF]-(State {name: "no basal extension"})<-[:STATE_OF]-(baseShape_convex:State {name: "convex"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseAngle:Character {name: "Base Angle"}),
+		(baseAngle)<-[:STATE_OF]-(baseAngle_acute:State {name: "acute"}),
+		(baseAngle)<-[:STATE_OF]-(baseAngle_obtuse:State {name: "obtuse"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(apexShape:Character {name: "Apex Shape"}),
+		(apexShape)<-[:STATE_OF]-(apexShape_acuminate:State {name: "acuminate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(apexAngle:Character {name: "Apex Angle"}),
+		(apexAngle)<-[:STATE_OF]-(apexAngle_acute:State {name: "acute"})
 CREATE
     (otu:OTU {
 		otuID: apoc.create.uuid(),
-		type: 'archetype',
-		name: 'Cornus hyperborea',
-		family: 'Cornacaea',
-		genus: 'Cornus',
-		species: 'hyperborea'
+		type: "archetype",
+		name: "Cornus hyperborea",
+		family: "Cornacaea",
+		genus: "Cornus",
+		species: "hyperborea"
 	}),
     (otu)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(characterInstance01:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
@@ -98,12 +98,12 @@ CREATE
 		(characterInstance05a)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance05a),
 			(characterInstance05a)-[:INSTANCE_OF]->(laminarRatio),
-			(characterInstance05a)-[:HAS_STATE {value: '3:2'}]->(laminarRatio_quantity),
+			(characterInstance05a)-[:HAS_STATE {value: "3:2"}]->(laminarRatio_quantity),
 		(characterInstance05b:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
 		(characterInstance05b)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance05b),
 			(characterInstance05b)-[:INSTANCE_OF]->(laminarRatio),
-			(characterInstance05b)-[:HAS_STATE {value: '3.3:1'}]->(laminarRatio_quantity),
+			(characterInstance05b)-[:HAS_STATE {value: "3.3:1"}]->(laminarRatio_quantity),
 		(characterInstance06:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
 		(characterInstance06)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance06),
@@ -163,10 +163,10 @@ CREATE
 //Create Specimen node and connect to OTU and Organ
 WITH otu
 MATCH
-	(person:Person {given: 'Ellen', surname: 'Curranno'}),
-	(organ:Organ {type: 'Leaf'}),
+	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {specimenID: apoc.create.uuid(), name: 'YPM PB 028288', locality: 'USNM 14051', preservationMode: 'Compression', majorGroup: 'DIC', diagnosticFeatures: 'Eucamptodromous secondaries confined to the lower half of the leaf; perpendicular, straight opposite percurrent tertiaries.', idigbiouuid: '982472a2-fd87-47fe-913a-3c707c82e3d4', pbdbcid: '10805', pbdboccid: '130975'}),
+    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "YPM PB 028288", locality: "USNM 14051", preservationMode: "Compression", majorGroup: "DIC", diagnosticFeatures: "Eucamptodromous secondaries confined to the lower half of the leaf; perpendicular, straight opposite percurrent tertiaries.", idigbiouuid: "982472a2-fd87-47fe-913a-3c707c82e3d4", pbdbcid: "10805", pbdboccid: "130975"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu);
@@ -176,52 +176,52 @@ CREATE
 
 //Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH
-	(person:Person {given: 'Ellen', surname: 'Curranno'})
+	(person:Person {given: "Ellen", surname: "Curranno"})
 MERGE
-    (organ:Organ { type: 'Leaf'})
+    (organ:Organ { type: "Leaf"})
     ON CREATE SET organ.organID = apoc.create.uuid()
 MERGE
     (organ)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 
 //Create OTU node complex.
 MATCH
-	(person:Person {given: 'Ellen', surname: 'Curranno'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminarSize:Character {name: 'Laminar Size'}),
-		(laminarSize)<-[:STATE_OF]-(laminarSize_microphyll:State {name: 'microphyll'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminarShape:Character {name: 'Laminar Shape'}),
-		(laminarShape)<-[:STATE_OF]-(laminarShape_ovate:State {name: 'ovate'}),
-		(laminarShape)<-[:STATE_OF]-(laminarShape_oblong:State {name: 'oblong'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminarRatio:Character {name: 'Laminar L:W Ratio'}),
-		(laminarRatio)<-[:STATE_OF]-(laminarRatio_quantity:State {name: 'quantity'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(lobation:Character {name: 'Lobation'}),
-		(lobation)<-[:STATE_OF]-(lobation_unlobed:State {name: 'unlobed'}),
-	//(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminaAttachment:Character {name: 'Position of Lamina Attachment'}),
-	//	(laminaAttachment)<-[:STATE_OF]-(laminaAttachment_marginal:State {name: 'marginal'}),
-	//(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(petioleBase:Character {name: 'Petiole Base'}),
-	//	(petioleBase)<-[:STATE_OF]-(petioleBase_regular:State {name: 'regular'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(marginType:Character {name: 'Margin Type'}),
-		(marginType)<-[:STATE_OF]-(:State {name: 'toothed'})<-[:STATE_OF]-(marginType_serrate:State {name: 'serrate'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(baseSymmetry:Character {name: 'Base Symmetry'}),
-		(baseSymmetry)<-[:STATE_OF]-(baseSymmetry_symmetrical:State {name: 'base symmetrical'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(medialSymmetry:Character {name: 'Medial Symmetry'}),
-		(medialSymmetry)<-[:STATE_OF]-(medialSymmetry_asymmetrical:State {name: 'asymmetrical'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(baseShape:Character {name: 'Base Shape'}),
-		(baseShape)<-[:STATE_OF]-(:State {name: 'no basal extension'})<-[:STATE_OF]-(:State {name: 'convex'})<-[:STATE_OF]-(baseShape_rounded:State {name: 'rounded'}),
-		(baseShape)<-[:STATE_OF]-(:State {name: 'basal extension'})<-[:STATE_OF]-(baseShape_cordate:State {name: 'cordate'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(baseAngle:Character {name: 'Base Angle'}),
-		(baseAngle)<-[:STATE_OF]-(baseAngle_obtuse:State {name: 'obtuse'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(apexShape:Character {name: 'Apex Shape'}),
-		(apexShape)<-[:STATE_OF]-(apexShape_acuminate:State {name: 'acuminate'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(apexAngle:Character {name: 'Apex Angle'}),
-		(apexAngle)<-[:STATE_OF]-(apexAngle_acute:State {name: 'acute'})
+	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarSize:Character {name: "Laminar Size"}),
+		(laminarSize)<-[:STATE_OF]-(laminarSize_microphyll:State {name: "microphyll"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarShape:Character {name: "Laminar Shape"}),
+		(laminarShape)<-[:STATE_OF]-(laminarShape_ovate:State {name: "ovate"}),
+		(laminarShape)<-[:STATE_OF]-(laminarShape_oblong:State {name: "oblong"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarRatio:Character {name: "Laminar L:W Ratio"}),
+		(laminarRatio)<-[:STATE_OF]-(laminarRatio_quantity:State {name: "quantity"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(lobation:Character {name: "Lobation"}),
+		(lobation)<-[:STATE_OF]-(lobation_unlobed:State {name: "unlobed"}),
+	//(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminaAttachment:Character {name: "Position of Lamina Attachment"}),
+	//	(laminaAttachment)<-[:STATE_OF]-(laminaAttachment_marginal:State {name: "marginal"}),
+	//(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(petioleBase:Character {name: "Petiole Base"}),
+	//	(petioleBase)<-[:STATE_OF]-(petioleBase_regular:State {name: "regular"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(marginType:Character {name: "Margin Type"}),
+		(marginType)<-[:STATE_OF]-(:State {name: "toothed"})<-[:STATE_OF]-(marginType_serrate:State {name: "serrate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseSymmetry:Character {name: "Base Symmetry"}),
+		(baseSymmetry)<-[:STATE_OF]-(baseSymmetry_symmetrical:State {name: "base symmetrical"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(medialSymmetry:Character {name: "Medial Symmetry"}),
+		(medialSymmetry)<-[:STATE_OF]-(medialSymmetry_asymmetrical:State {name: "asymmetrical"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseShape:Character {name: "Base Shape"}),
+		(baseShape)<-[:STATE_OF]-(:State {name: "no basal extension"})<-[:STATE_OF]-(:State {name: "convex"})<-[:STATE_OF]-(baseShape_rounded:State {name: "rounded"}),
+		(baseShape)<-[:STATE_OF]-(:State {name: "basal extension"})<-[:STATE_OF]-(baseShape_cordate:State {name: "cordate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseAngle:Character {name: "Base Angle"}),
+		(baseAngle)<-[:STATE_OF]-(baseAngle_obtuse:State {name: "obtuse"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(apexShape:Character {name: "Apex Shape"}),
+		(apexShape)<-[:STATE_OF]-(apexShape_acuminate:State {name: "acuminate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(apexAngle:Character {name: "Apex Angle"}),
+		(apexAngle)<-[:STATE_OF]-(apexAngle_acute:State {name: "acute"})
 CREATE
     (otu:OTU {
 		otuID: apoc.create.uuid(),
-		type: 'archetype',
-		name: 'Chaetoptelea microphylla',
-		family: 'Ulmaceae',
-		genus: 'Chaetoptelea',
-		species: 'microphylla'
+		type: "archetype",
+		name: "Chaetoptelea microphylla",
+		family: "Ulmaceae",
+		genus: "Chaetoptelea",
+		species: "microphylla"
 	}),
     (otu)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(characterInstance01:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
@@ -243,12 +243,12 @@ CREATE
 		(characterInstance03a)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance03a),
 			(characterInstance03a)-[:INSTANCE_OF]->(laminarRatio),
-			(characterInstance03a)-[:HAS_STATE {value: '3:2'}]->(laminarRatio_quantity),
+			(characterInstance03a)-[:HAS_STATE {value: "3:2"}]->(laminarRatio_quantity),
 		(characterInstance03b:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
 		(characterInstance03b)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance03b),
 			(characterInstance03b)-[:INSTANCE_OF]->(laminarRatio),
-			(characterInstance03b)-[:HAS_STATE {value: '7:2'}]->(laminarRatio_quantity),
+			(characterInstance03b)-[:HAS_STATE {value: "7:2"}]->(laminarRatio_quantity),
 		(characterInstance04:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
 		(characterInstance04)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance04),
@@ -308,10 +308,10 @@ CREATE
 //Create Specimen node and connect to OTU and Organ
 WITH otu
 MATCH
-	(person:Person {given: 'Ellen', surname: 'Curranno'}),
-	(organ:Organ {type: 'Leaf'})
+	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {specimenID: apoc.create.uuid(), name: 'YPM PB 028277', locality: 'USNM 14066a', preservationMode: 'Compression', majorGroup: 'DIC', diagnosticFeatures: 'Ovate to oblong lamina with two orders of large serrate teeth', idigbiouuid: '8917a8d6-4766-4172-bcf4-10daa6aaa3d6', pbdbcid: '?', pbdboccid: '?'}),
+    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "YPM PB 028277", locality: "USNM 14066a", preservationMode: "Compression", majorGroup: "DIC", diagnosticFeatures: "Ovate to oblong lamina with two orders of large serrate teeth", idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6", pbdbcid: "?", pbdboccid: "?"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu);
@@ -321,57 +321,57 @@ CREATE
 
 //Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH
-	(person:Person {given: 'Ellen', surname: 'Curranno'})
+	(person:Person {given: "Ellen", surname: "Curranno"})
 MERGE
-    (organ:Organ { type: 'Leaf'})
+    (organ:Organ { type: "Leaf"})
     ON CREATE SET organ.organID = apoc.create.uuid()
 MERGE
     (organ)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 
 //Create OTU node complex.
 MATCH
-	(person:Person {given: 'Ellen', surname: 'Curranno'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(leafAttachment:Character {name: 'Leaf Attachment'}),
-		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: 'petiolate'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(leafOrganization:Character {name: 'Leaf Organization'}),
-		(leafOrganization)<-[:STATE_OF]-(leafOrganization_simple:State {name: 'simple'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminarSize:Character {name: 'Laminar Size'}),
-		(laminarSize)<-[:STATE_OF]-(laminarSize_notophyll:State {name: 'notophyll'}),
-		(laminarSize)<-[:STATE_OF]-(laminarSize_mesophyll:State {name: 'mesophyll'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminarShape:Character {name: 'Laminar Shape'}),
-		(laminarShape)<-[:STATE_OF]-(laminarShape_ovate:State {name: 'ovate'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminarRatio:Character {name: 'Laminar L:W Ratio'}),
-		(laminarRatio)<-[:STATE_OF]-(laminarRatio_quantity:State {name: 'quantity'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(lobation:Character {name: 'Lobation'}),
-		(lobation)<-[:STATE_OF]-(:State {name: 'lobed'})<-[:STATE_OF]-(lobation_palmate:State {name: 'palmately lobed'}),
-	//(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(laminaAttachment:Character {name: 'Position of Lamina Attachment'}),
-	//	(laminaAttachment)<-[:STATE_OF]-(laminaAttachment_marginal:State {name: 'marginal'}),
-	//(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(petioleBase:Character {name: 'Petiole Base'}),
-	//	(petioleBase)<-[:STATE_OF]-(petioleBase_regular:State {name: 'regular'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(marginType:Character {name: 'Margin Type'}),
-		(marginType)<-[:STATE_OF]-(:State {name: 'toothed'})<-[:STATE_OF]-(marginType_dentate:State {name: 'dentate'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(baseSymmetry:Character {name: 'Base Symmetry'}),
-		(baseSymmetry)<-[:STATE_OF]-(baseSymmetry_symmetrical:State {name: 'base symmetrical'}),
-		(baseSymmetry)<-[:STATE_OF]-(:State {name: 'base asymmetrical'})<-[:STATE_OF]-(baseSymmetry_baseExAsym:State {name: 'basal extension asymmetrical'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(medialSymmetry:Character {name: 'Medial Symmetry'}),
-		(medialSymmetry)<-[:STATE_OF]-(medialSymmetry_asymmetrical:State {name: 'symmetrical'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(baseShape:Character {name: 'Base Shape'}),
-		(baseShape)<-[:STATE_OF]-(:State {name: 'basal extension'})<-[:STATE_OF]-(baseShape_cordate:State {name: 'cordate'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(baseAngle:Character {name: 'Base Angle'}),
-		(baseAngle)<-[:STATE_OF]-(baseAngle_obtuse:State {name: 'obtuse'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(apexShape:Character {name: 'Apex Shape'}),
-		(apexShape)<-[:STATE_OF]-(apexShape_straight:State {name: 'straight'}),
-	(:Schema {title: 'Cornell, 2009'})<-[:CHARACTER_OF]-(apexAngle:Character {name: 'Apex Angle'}),
-		(apexAngle)<-[:STATE_OF]-(apexAngle_acute:State {name: 'acute'}),
-		(apexAngle)<-[:STATE_OF]-(apexAngle_obtuse:State {name: 'obtuse'})
+	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(leafAttachment:Character {name: "Leaf Attachment"}),
+		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: "petiolate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(leafOrganization:Character {name: "Leaf Organization"}),
+		(leafOrganization)<-[:STATE_OF]-(leafOrganization_simple:State {name: "simple"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarSize:Character {name: "Laminar Size"}),
+		(laminarSize)<-[:STATE_OF]-(laminarSize_notophyll:State {name: "notophyll"}),
+		(laminarSize)<-[:STATE_OF]-(laminarSize_mesophyll:State {name: "mesophyll"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarShape:Character {name: "Laminar Shape"}),
+		(laminarShape)<-[:STATE_OF]-(laminarShape_ovate:State {name: "ovate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarRatio:Character {name: "Laminar L:W Ratio"}),
+		(laminarRatio)<-[:STATE_OF]-(laminarRatio_quantity:State {name: "quantity"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(lobation:Character {name: "Lobation"}),
+		(lobation)<-[:STATE_OF]-(:State {name: "lobed"})<-[:STATE_OF]-(lobation_palmate:State {name: "palmately lobed"}),
+	//(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminaAttachment:Character {name: "Position of Lamina Attachment"}),
+	//	(laminaAttachment)<-[:STATE_OF]-(laminaAttachment_marginal:State {name: "marginal"}),
+	//(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(petioleBase:Character {name: "Petiole Base"}),
+	//	(petioleBase)<-[:STATE_OF]-(petioleBase_regular:State {name: "regular"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(marginType:Character {name: "Margin Type"}),
+		(marginType)<-[:STATE_OF]-(:State {name: "toothed"})<-[:STATE_OF]-(marginType_dentate:State {name: "dentate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseSymmetry:Character {name: "Base Symmetry"}),
+		(baseSymmetry)<-[:STATE_OF]-(baseSymmetry_symmetrical:State {name: "base symmetrical"}),
+		(baseSymmetry)<-[:STATE_OF]-(:State {name: "base asymmetrical"})<-[:STATE_OF]-(baseSymmetry_baseExAsym:State {name: "basal extension asymmetrical"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(medialSymmetry:Character {name: "Medial Symmetry"}),
+		(medialSymmetry)<-[:STATE_OF]-(medialSymmetry_asymmetrical:State {name: "symmetrical"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseShape:Character {name: "Base Shape"}),
+		(baseShape)<-[:STATE_OF]-(:State {name: "basal extension"})<-[:STATE_OF]-(baseShape_cordate:State {name: "cordate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseAngle:Character {name: "Base Angle"}),
+		(baseAngle)<-[:STATE_OF]-(baseAngle_obtuse:State {name: "obtuse"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(apexShape:Character {name: "Apex Shape"}),
+		(apexShape)<-[:STATE_OF]-(apexShape_straight:State {name: "straight"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(apexAngle:Character {name: "Apex Angle"}),
+		(apexAngle)<-[:STATE_OF]-(apexAngle_acute:State {name: "acute"}),
+		(apexAngle)<-[:STATE_OF]-(apexAngle_obtuse:State {name: "obtuse"})
 CREATE
     (otu:OTU {
 		otuID: apoc.create.uuid(),
-		type: 'archetype',
-		name: 'Archeampelos acerifolia',
-		family: 'Vitaceae',
-		genus: 'Archeampelos',
-		species: 'acerifolia'
+		type: "archetype",
+		name: "Archeampelos acerifolia",
+		family: "Vitaceae",
+		genus: "Archeampelos",
+		species: "acerifolia"
 	}),
     (otu)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(characterInstance01:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
@@ -403,12 +403,12 @@ CREATE
 		(characterInstance05a)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance05a),
 			(characterInstance05a)-[:INSTANCE_OF]->(laminarRatio),
-			(characterInstance05a)-[:HAS_STATE {value: '3:4'}]->(laminarRatio_quantity),
+			(characterInstance05a)-[:HAS_STATE {value: "3:4"}]->(laminarRatio_quantity),
 		(characterInstance05b:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
 		(characterInstance05b)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance05b),
 			(characterInstance05b)-[:INSTANCE_OF]->(laminarRatio),
-			(characterInstance05b)-[:HAS_STATE {value: '4:3'}]->(laminarRatio_quantity),
+			(characterInstance05b)-[:HAS_STATE {value: "4:3"}]->(laminarRatio_quantity),
 		(characterInstance06:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
 		(characterInstance06)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(otu)-[:DEFINED_BY]->(characterInstance06),
@@ -473,10 +473,131 @@ CREATE
 //Create Specimen node and connect to OTU and Organ
 WITH otu
 MATCH
-	(person:Person {given: 'Ellen', surname: 'Curranno'}),
-	(organ:Organ {type: 'Leaf'})
+	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {specimenID: apoc.create.uuid(), name: 'YPM PB 028277???', locality: 'USNM 14066a', preservationMode: 'Compression', majorGroup: 'DIC', diagnosticFeatures: 'Trilobate with large, rounded teeth and actinodromous primary venation', idigbiouuid: '8917a8d6-4766-4172-bcf4-10daa6aaa3d6???', pbdbcid: '?', pbdboccid: '?'}),
+    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "YPM PB 028277???", locality: "USNM 14066a", preservationMode: "Compression", majorGroup: "DIC", diagnosticFeatures: "Trilobate with large, rounded teeth and actinodromous primary venation", idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6???", pbdbcid: "?", pbdboccid: "?"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu);
+
+
+//----------------------------------------------------------------------------------------
+//		Specimen OTUs
+//----------------------------------------------------------------------------------------
+
+//----------------------------- 68 -----------------------------------
+
+//Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
+MATCH
+	(person:Person {given: "Ellen", surname: "Curranno"})
+MERGE
+    (organ:Organ { type: "Leaf"})
+    ON CREATE SET organ.organID = apoc.create.uuid()
+MERGE
+    (organ)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+
+//Create OTU node complex.
+MATCH
+	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(leafAttachment:Character {name: "Leaf Attachment"}),
+		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: "petiolate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarSize:Character {name: "Laminar Size"}),
+		(laminarSize)<-[:STATE_OF]-(laminarSize_microphyll:State {name: "microphyll"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarShape:Character {name: "Laminar Shape"}),
+		(laminarShape)<-[:STATE_OF]-(laminarShape_elliptic:State {name: "elliptic"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarRatio:Character {name: "Laminar L:W Ratio"}),
+		(laminarRatio)<-[:STATE_OF]-(laminarRatio_quantity:State {name: "quantity"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(lobation:Character {name: "Lobation"}),
+		(lobation)<-[:STATE_OF]-(lobation_unlobed:State {name: "unlobed"}),
+	//(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminaAttachment:Character {name: "Position of Lamina Attachment"}),
+	//	(laminaAttachment)<-[:STATE_OF]-(laminaAttachment_marginal:State {name: "marginal"}),
+	//(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(petioleBase:Character {name: "Petiole Base"}),
+	//	(petioleBase)<-[:STATE_OF]-(petioleBase_regular:State {name: "regular"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(marginType:Character {name: "Margin Type"}),
+		(marginType)<-[:STATE_OF]-(marginType_untoothed:State {name: "untoothed"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseShape:Character {name: "Base Shape"}),
+		(baseShape)<-[:STATE_OF]-(State {name: "no basal extension"})<-[:STATE_OF]-(baseShape_convex:State {name: "convex"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseAngle:Character {name: "Base Angle"}),
+		(baseAngle)<-[:STATE_OF]-(baseAngle_obtuse:State {name: "obtuse"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(apexShape:Character {name: "Apex Shape"}),
+		(apexShape)<-[:STATE_OF]-(apexShape_acuminate:State {name: "acuminate"}),
+	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(apexAngle:Character {name: "Apex Angle"}),
+		(apexAngle)<-[:STATE_OF]-(apexAngle_acute:State {name: "acute"})
+CREATE
+    (otu:OTU {
+		otuID: apoc.create.uuid(),
+		type: "specimen"
+	}),
+    (otu)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(characterInstance01:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance01)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance01),
+			(characterInstance01)-[:INSTANCE_OF]->(leafAttachment),
+			(characterInstance01)-[:HAS_STATE]->(leafAttachment_petiolate),
+		(characterInstance03a:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance03a)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance03a),
+			(characterInstance03a)-[:INSTANCE_OF]->(laminarSize),
+			(characterInstance03a)-[:HAS_STATE]->(laminarSize_microphyll),
+		(characterInstance04a:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance04a)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance04a),
+			(characterInstance04a)-[:INSTANCE_OF]->(laminarShape),
+			(characterInstance04a)-[:HAS_STATE]->(laminarShape_elliptic),
+		(characterInstance05a:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance05a)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance05a),
+			(characterInstance05a)-[:INSTANCE_OF]->(laminarRatio),
+			(characterInstance05a)-[:HAS_STATE {value: "2:1"}]->(laminarRatio_quantity),
+		(characterInstance06:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance06)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance06),
+			(characterInstance06)-[:INSTANCE_OF]->(lobation),
+			(characterInstance06)-[:HAS_STATE]->(lobation_unlobed),
+		//(characterInstance07:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		//(characterInstance07)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		//(otu)-[:DEFINED_BY]->(characterInstance07),
+		//	(characterInstance07)-[:INSTANCE_OF]->(laminaAttachment),
+		//	(characterInstance07)-[:HAS_STATE]->(laminaAttachment_marginal),
+		//(characterInstance08:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		//(characterInstance08)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		//(otu)-[:DEFINED_BY]->(characterInstance08),
+		//	(characterInstance08)-[:INSTANCE_OF]->(petioleBase),
+		//	(characterInstance08)-[:HAS_STATE]->(petioleBase_regular),
+		(characterInstance09:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance09)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance09),
+			(characterInstance09)-[:INSTANCE_OF]->(marginType),
+			(characterInstance09)-[:HAS_STATE]->(marginType_untoothed),
+		(characterInstance12:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance12)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance12),
+			(characterInstance12)-[:INSTANCE_OF]->(baseShape),
+			(characterInstance12)-[:HAS_STATE]->(baseShape_convex),
+		(characterInstance13b:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance13b)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance13b),
+			(characterInstance13b)-[:INSTANCE_OF]->(baseAngle),
+			(characterInstance13b)-[:HAS_STATE]->(baseAngle_obtuse),
+		(characterInstance14:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance14)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance14),
+			(characterInstance14)-[:INSTANCE_OF]->(apexShape),
+			(characterInstance14)-[:HAS_STATE]->(apexShape_acuminate),
+		(characterInstance15:CharacterInstance {characterInstanceID: apoc.create.uuid()}),
+		(characterInstance15)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(otu)-[:DEFINED_BY]->(characterInstance15),
+			(characterInstance15)-[:INSTANCE_OF]->(apexAngle),
+			(characterInstance15)-[:HAS_STATE]->(apexAngle_acute)
+
+//Create Specimen node and connect to OTU and Organ
+WITH otu
+MATCH
+	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(organ:Organ {type: "Leaf"})
+CREATE
+    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "68", locality: "EDC1202", majorGroup: "DIC", diagnosticFeatures: "The key feature distinguishing this from Acrovena laevis or Lauraceae 1 is the fact that there are 4 pairs of secondary veins, all in the basal half of the leaf. Description matches Hickey's well."}),
+    (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+    (specimen)-[:IS_TYPE]->(organ),
+    (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(otu);
