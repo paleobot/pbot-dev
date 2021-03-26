@@ -7,10 +7,11 @@
 MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"})
 MERGE
-    (organ:Organ { type: "Leaf"})
+    (organ:Organ { type: "Stem"})
     ON CREATE SET organ.organID = apoc.create.uuid()
 MERGE
-    (organ)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+    (organ)-[entered_by:ENTERED_BY]->(person)
+    ON CREATE SET entered_by.timestamp = datetime();
 
 //Create OTU node complex.
 MATCH
@@ -178,10 +179,11 @@ CREATE
 MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"})
 MERGE
-    (organ:Organ { type: "Leaf"})
+    (organ:Organ { type: "Stem"})
     ON CREATE SET organ.organID = apoc.create.uuid()
 MERGE
-    (organ)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+    (organ)-[entered_by:ENTERED_BY]->(person)
+    ON CREATE SET entered_by.timestamp = datetime();
 
 //Create OTU node complex.
 MATCH
@@ -323,11 +325,12 @@ CREATE
 MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"})
 MERGE
-    (organ:Organ { type: "Leaf"})
+    (organ:Organ { type: "Stem"})
     ON CREATE SET organ.organID = apoc.create.uuid()
 MERGE
-    (organ)-[:ENTERED_BY {timestamp: datetime()}]->(person);
-
+    (organ)-[entered_by:ENTERED_BY]->(person)
+    ON CREATE SET entered_by.timestamp = datetime();
+	
 //Create OTU node complex.
 MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"}),
@@ -492,10 +495,11 @@ CREATE
 MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"})
 MERGE
-    (organ:Organ { type: "Leaf"})
+    (organ:Organ { type: "Stem"})
     ON CREATE SET organ.organID = apoc.create.uuid()
 MERGE
-    (organ)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+    (organ)-[entered_by:ENTERED_BY]->(person)
+    ON CREATE SET entered_by.timestamp = datetime();
 
 //Create OTU node complex.
 MATCH
