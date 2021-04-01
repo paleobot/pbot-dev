@@ -109,3 +109,50 @@ RETURN specimen.name AS from,
        otu2Name AS to,
        gds.alpha.similarity.jaccard(description1, description2) AS similarity
 ORDER BY similarity DESC
+
+
+//Accepted OTU Description complex
+MATCH
+    (otuDescription:Description {name: "Cornus hyperborea"})-[defined_by:DEFINED_BY]->(characterInstance:CharacterInstance)-[hasState:HAS_STATE]->(state:State),
+    (characterInstance)-[instanceOf:INSTANCE_OF]-(character:Character)
+RETURN
+    otuDescription, defined_by, characterInstance, instanceOf, character, hasState, state
+
+
+//Prospective OTU Description complex
+MATCH
+    (otuDescription:Description {name: "Cornus hyperborea"})-[defined_by:DEFINED_BY]->(characterInstance:CharacterInstance)-[hasState:HAS_STATE]->(state:State),
+    (characterInstance)-[instanceOf:INSTANCE_OF]-(character:Character),
+    (otuDescription)<-[candidateFor:CANDIDATE_FOR]-(cCharacterInstance:CharacterInstance)-[cHasState:HAS_STATE]-(cState:State),
+    (cCharacterInstance)-[cInstanceOf:INSTANCE_OF]-(cCharacter:Character)
+RETURN
+    otuDescription, defined_by, characterInstance, instanceOf, character, hasState, state, candidateFor, cCharacterInstance, cHasState, cState, cInstanceOf, cCharacter
+
+
+//Creating EXAMPLE_OF relationship automatically from Jaccard comparison. This needs more verification.
+MATCH
+	(specimen:Specimen {name:"77"})-[:DESCRIBED_BY]->(specimenDescription:Description)-[defined_by:DEFINED_BY]->(characterInstance:CharacterInstance)-[instanceOf:INSTANCE_OF]->(character:Character),
+	(characterInstance)-[hasState:HAS_STATE]->(state:State)
+WITH
+	//otu1, collect([characterInstance, instanceOf, character, hasState, state]) AS description1
+	specimen, specimenDescription, collect(id(state)) AS fromDescriptionSet
+MATCH
+    (otuDescription:Description)-[defined_by2:DEFINED_BY]->(characterInstance2:CharacterInstance)-[instanceOf2:INSTANCE_OF]->(character2:Character), (characterInstance2)-[hasState2:HAS_STATE]->(state2:State),
+	(specimen2:Specimen)-[r]->(otuDescription)
+WHERE
+    specimenDescription <> otuDescription and r.inferenceMethod is null
+WITH
+    specimen, fromDescriptionSet,
+	otuDescription,
+	collect(id(state2)) AS toDescriptionSet
+WITH specimen, //I was surprised chaining WITHs like this works this way
+       otuDescription,
+       gds.alpha.similarity.jaccard(fromDescriptionSet, toDescriptionSet) AS similarity
+ORDER BY similarity DESC
+LIMIT 1 //take top result
+MATCH
+	(person:Person {given: "Douglas", surname: "Meredith"})
+MERGE
+	(specimen)-[ex:EXAMPLE_OF {inferenceMethod: "Jaccard on states present", inferenceValue: similarity, entered_by: person.personID}]->(otuDescription)
+	ON CREATE SET
+		ex.timestamp = datetime();
