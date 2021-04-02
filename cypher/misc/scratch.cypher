@@ -1,4 +1,4 @@
-Delete everything
+//Delete everything
 	MATCH (n)
 	DETACH DELETE n
 
@@ -27,9 +27,9 @@ Show Character and states/substates for Characters with substates, separated by 
     (schema)<-[cited_by:CITED_BY]-(reference:Reference)
 	RETURN character,state_of,state,character_of,schema,reference
 
-Show entire Schema
+//Show entire Schema (10 deep on States should be plenty)
 	MATCH
-		(schema:Schema {schemaID: '768feb86-19c4-4932-bc5e-08eb8bb8e5ad'}),
+		(schema:Schema {title: "Cornell, 2009"}),
 		(character:Character)-[character_of:CHARACTER_OF]->(schema),
 		(state:State)-[state_of:STATE_OF*1..10]->(character)
 	RETURN schema, character_of, character, state_of, state
@@ -98,7 +98,6 @@ MATCH
 WHERE
     otu1 <> otu2
 WITH
-    //otu1, description1, otu2, collect([characterInstance2, instanceOf2, character2, hasState2, state2]) AS description2
     specimen, otu1, description1,
 	CASE otu2.name
 		WHEN null THEN specimen2.name
@@ -111,22 +110,28 @@ RETURN specimen.name AS from,
 ORDER BY similarity DESC
 
 
-//Accepted OTU Description complex
+//Specimen Description complex
 MATCH
-    (otuDescription:Description {name: "Cornus hyperborea"})-[defined_by:DEFINED_BY]->(characterInstance:CharacterInstance)-[hasState:HAS_STATE]->(state:State),
+    (specimen:Specimen {name: "68"})-[describedBy:DESCRIBED_BY]->(description:Description )-[definedBy:DEFINED_BY]->(characterInstance:CharacterInstance)-[hasState:HAS_STATE]->(state:State),
     (characterInstance)-[instanceOf:INSTANCE_OF]-(character:Character)
 RETURN
-    otuDescription, defined_by, characterInstance, instanceOf, character, hasState, state
+    specimen, describedBy, description, definedBy, characterInstance, instanceOf, character, hasState, state
 
+//Accepted OTU Description complex
+MATCH
+    (otuDescription:Description {name: "Cornus hyperborea"})-[definedBy:DEFINED_BY]->(characterInstance:CharacterInstance)-[hasState:HAS_STATE]->(state:State),
+    (characterInstance)-[instanceOf:INSTANCE_OF]-(character:Character)
+RETURN
+    otuDescription, definedBy, characterInstance, instanceOf, character, hasState, state
 
 //Prospective OTU Description complex
 MATCH
-    (otuDescription:Description {name: "Cornus hyperborea"})-[defined_by:DEFINED_BY]->(characterInstance:CharacterInstance)-[hasState:HAS_STATE]->(state:State),
+    (otuDescription:Description {name: "Cornus hyperborea"})-[definedBy:DEFINED_BY]->(characterInstance:CharacterInstance)-[hasState:HAS_STATE]->(state:State),
     (characterInstance)-[instanceOf:INSTANCE_OF]-(character:Character),
     (otuDescription)<-[candidateFor:CANDIDATE_FOR]-(cCharacterInstance:CharacterInstance)-[cHasState:HAS_STATE]-(cState:State),
     (cCharacterInstance)-[cInstanceOf:INSTANCE_OF]-(cCharacter:Character)
 RETURN
-    otuDescription, defined_by, characterInstance, instanceOf, character, hasState, state, candidateFor, cCharacterInstance, cHasState, cState, cInstanceOf, cCharacter
+    otuDescription, definedBy, characterInstance, instanceOf, character, hasState, state, candidateFor, cCharacterInstance, cHasState, cState, cInstanceOf, cCharacter
 
 
 //Creating EXAMPLE_OF relationship automatically from Jaccard comparison. This needs more verification.
