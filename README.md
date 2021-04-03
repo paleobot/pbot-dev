@@ -17,10 +17,9 @@ DETACH DELETE n
 ```
 //Show entire Schema (10 deep on States should be plenty)
 MATCH
-	(schema:Schema {title: "Cornell, 2009"}),
-	(character:Character)-[character_of:CHARACTER_OF]->(schema),
-	(state:State)-[state_of:STATE_OF*1..10]->(character)
-RETURN schema, character_of, character, state_of, state
+	(schema:Schema {title: "Cornell, 2009"})<-[characterOf:CHARACTER_OF]-(character:Character)<-[stateOf:STATE_OF*1..10]-(state:State)
+RETURN
+    schema, characterOf, character, stateOf, state
 ```
 
 ```
