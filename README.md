@@ -6,7 +6,7 @@ Codebase and initial design documents for pbot client. Some example design docum
 ## How to format Git-flavoured markdown
 1. https://guides.github.com/features/mastering-markdown/
 
-##Some useful queries for the PBOT graph database
+## Some useful queries for the PBOT graph database
 
 ```
 //Delete everything (think very hard before you do this)
