@@ -75,3 +75,8 @@ RETURN specimen.name AS from,
        gds.alpha.similarity.jaccard(description1, description2) AS similarity
 ORDER BY similarity DESC
 ```
+
+```
+//If you want to see more nodes in your Neo4J Browser than it lets you by default (300)
+:config initialNodeDisplay: 1000
+```
