@@ -7,7 +7,7 @@ Codebase and initial design documents for pbot client. Some example design docum
 1. https://guides.github.com/features/mastering-markdown/
 
 ## Exporting/Importing the db
-This is from #13.
+This is from Issue #13.
 
 To export a db to a cypher file:
 1) Find your database on disk. The easiest way to do this is to click the three dots for your db in the GUI, then click Terminal. This will open something that looks like a cmd shell on Windows and a bash shell on Ubuntu in the directory for your database. Copy this path.
