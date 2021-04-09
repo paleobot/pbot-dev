@@ -86,7 +86,7 @@ return
 
 
 
-//Test a new specimen OTU against existing OTUs using a Jaccard comparison on the States
+//Test a new specimen Description complex against existing Description complexes using a Jaccard comparison on the States
 MATCH
 	(specimen:Specimen {name:"68"})-[:DESCRIBED_BY]->(otu1:OTU)-[defined_by:DEFINED_BY]->(characterInstance:CharacterInstance)-[instanceOf:INSTANCE_OF]->(character:Character), (characterInstance)-[hasState:HAS_STATE]->(state:State)
 WITH
@@ -108,6 +108,62 @@ RETURN specimen.name AS from,
        otu2Name AS to,
        gds.alpha.similarity.jaccard(description1, description2) AS similarity
 ORDER BY similarity DESC
+
+//The same as above, but paying attention to Laminar Ratio values.
+//This is a little contrived. I add a 1 to the toList. Then, depending on whether the ratio is within valid range of the OTU, 
+//I add either a 0 or 1 to the fromList. This approach will run aground as soon as we have more than one quantitative character.
+//But it's a start.
+MATCH //First, gather data for Description complexes other than the new one
+	(toDescription:Description)-[toDefinedBy:DEFINED_BY]->(toCharacterInstance:CharacterInstance)-[toInstanceOf:INSTANCE_OF]->(toCharacter:Character), 
+	(toCharacterInstance)-[toHasState:HAS_STATE]->(toState:State),
+	(toSpecimen:Specimen)-->(toDescription) //only needed to get name of specimen Descriptions
+WHERE
+	toSpecimen.name <> "68"
+WITH
+	CASE toDescription.name
+		WHEN null THEN toSpecimen.name
+		ELSE toDescription.name
+	END AS toName,
+	COLLECT(DISTINCT id(toState)) + [1] AS toDescriptionSet, //List of all State node ids. A 1 is added representing the Laminar Ratio
+	COLLECT(DISTINCT CASE toCharacter.name
+        WHEN "Laminar L:W Ratio" THEN toFloat(split(toHasState.value, ":")[0])/toFloat(split(toHasState.value,":")[1])
+        ELSE null
+    END) AS lamRatiosCrunched //Aggregate the Laminar Ratio values (since they could be a range), crunching them to float values
+MATCH //Second, gather data for the new Description complex
+	(fromSpecimen:Specimen {name:"68"})-[:DESCRIBED_BY]->(fromSpecimenDescription:Description)-[fromDefinedBy:DEFINED_BY]->(fromCharacterInstance:CharacterInstance)-[fromInstanceOf:INSTANCE_OF]->(fromCharacter:Character),
+	(fromCharacterInstance)-[fromHasState:HAS_STATE]->(fromState:State)
+WITH
+	toName, 
+	toDescriptionSet, 
+	lamRatiosCrunched,
+	fromSpecimen, 
+	COLLECT(id(fromState)) AS tmpFromDescriptionSet, //list of State node ids.
+	COLLECT(DISTINCT CASE fromCharacter.name
+        WHEN "Laminar L:W Ratio" THEN toFloat(split(fromHasState.value, ":")[0])/toFloat(split(fromHasState.value,":")[1])
+        ELSE null
+    END) AS fromLamValue //The Laminar Ratio of the new specimen, crunched to a float value. This must be aggregated in a list in order for other aggregations to work properly.
+WITH
+	toName, 
+	toDescriptionSet, 
+	fromSpecimen, 
+	tmpFromDescriptionSet,
+	CASE 
+        WHEN size(lamRatiosCrunched) = 1 AND fromLamValue[0] = lamRatiosCrunched[0] THEN 1
+        WHEN size(lamRatiosCrunched) = 2 AND fromLamValue[0] >= lamRatiosCrunched[0] AND fromLamValue[0] <= lamRatiosCrunched[1] THEN 1
+        ELSE 0
+    END AS lamCompareResult //If the Lam Ratio of the new specimen is legal, this will be 1. If not, 0.
+WITH
+	toName, 
+	toDescriptionSet, 
+	fromSpecimen.name AS fromName, 
+	tmpFromDescriptionSet + lamCompareResult AS fromDescriptionSet //Add the comparison result to the list of State ids
+RETURN fromName,
+       toName,
+       gds.alpha.similarity.jaccard(fromDescriptionSet, toDescriptionSet) AS similarity
+ORDER BY similarity DESC
+
+
+
 
 
 //Specimen Description complex
