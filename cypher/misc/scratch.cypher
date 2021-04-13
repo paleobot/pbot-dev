@@ -217,3 +217,42 @@ MERGE
 	(specimen)-[ex:EXAMPLE_OF {inferenceMethod: "Jaccard on states present", inferenceValue: similarity, entered_by: person.personID}]->(otuDescription)
 	ON CREATE SET
 		ex.timestamp = datetime();
+
+
+
+//Run nodeSimilarity compare on anonymous cypher projection mapping Description directly to States.
+//Not sure if this is useful in any way, but wanted to figure out how to do it.
+CALL gds.nodeSimilarity.stream({
+	nodeQuery: "MATCH (n) WHERE n:Description OR n:CharacterInstance OR n:State RETURN id(n) as id",
+	relationshipQuery: "MATCH (n:Description)-[h:DEFINED_BY]->(:CharacterInstance)-[c:HAS_STATE]->(s:State) RETURN id (n) as source, id(s) as target"
+})
+YIELD node1, node2, similarity
+RETURN 
+	gds.util.asNode(node1).name  AS From,
+	gds.util.asNode(node2).name AS To,
+	similarity
+ORDER BY similarity DESCENDING, From, To
+
+//Same thing but patching up the null names in specimen Descriptions
+CALL gds.nodeSimilarity.stream({
+	nodeQuery: "MATCH (n) WHERE n:Description OR n:CharacterInstance OR n:State RETURN id(n) as id",
+	relationshipQuery: "MATCH (n:Description)-[h:DEFINED_BY]->(:CharacterInstance)-[c:HAS_STATE]->(s:State) RETURN id (n) as source, id(s) as target"
+})
+YIELD node1, node2, similarity
+WITH
+	gds.util.asNode(node1) AS n1,
+	gds.util.asNode(node2) AS n2,
+	similarity
+OPTIONAL MATCH (n1)<-[:DESCRIBED_BY]-(specimen1:Specimen)
+OPTIONAL MATCH (n2)<-[:DESCRIBED_BY]-(specimen2:Specimen)
+RETURN
+	CASE
+		WHEN n1.name is null THEN specimen1.name
+		ELSE n1.name
+	END AS From,
+	CASE
+		WHEN n2.name is null THEN specimen2.name
+		ELSE n2.name
+	END AS To,
+	similarity
+ORDER BY similarity DESCENDING, From, To
