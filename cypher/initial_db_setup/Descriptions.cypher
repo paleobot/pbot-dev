@@ -168,7 +168,7 @@ MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "YPM PB 028288", locality: "USNM 14051", preservationMode: "Compression", majorGroup: "DIC", diagnosticFeatures: "Eucamptodromous secondaries confined to the lower half of the leaf; perpendicular, straight opposite percurrent tertiaries.", idigbiouuid: "982472a2-fd87-47fe-913a-3c707c82e3d4", pbdbcid: "10805", pbdboccid: "130975"}),
+    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "YPM PB 028288", locality: "USNM 14051", preservationMode: "Compression",  idigbiouuid: "982472a2-fd87-47fe-913a-3c707c82e3d4", pbdbcid: "10805", pbdboccid: "130975"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(description);
@@ -313,7 +313,7 @@ MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "YPM PB 028277", locality: "USNM 14066a", preservationMode: "Compression", majorGroup: "DIC", diagnosticFeatures: "Ovate to oblong lamina with two orders of large serrate teeth", idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6", pbdbcid: "?", pbdboccid: "?"}),
+    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "YPM PB 028277", locality: "USNM 14066a", preservationMode: "Compression", idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6", pbdbcid: "?", pbdboccid: "?"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(description);
@@ -478,7 +478,7 @@ MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "YPM PB 028277???", locality: "USNM 14066a", preservationMode: "Compression", majorGroup: "DIC", diagnosticFeatures: "Trilobate with large, rounded teeth and actinodromous primary venation", idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6???", pbdbcid: "?", pbdboccid: "?"}),
+    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "YPM PB 028277???", locality: "USNM 14066a", preservationMode: "Compression", idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6???", pbdbcid: "?", pbdboccid: "?"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(description);
@@ -598,7 +598,7 @@ MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "68", locality: "EDC1202", majorGroup: "DIC", diagnosticFeatures: "The key feature distinguishing this from Acrovena laevis or Lauraceae 1 is the fact that there are 4 pairs of secondary veins, all in the basal half of the leaf. Description matches Hickey's well."}),
+    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "68", locality: "EDC1202"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description);
@@ -750,7 +750,7 @@ MATCH
 	(person:Person {given: "Ellen", surname: "Curranno"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "77", locality: "EDC0606", majorGroup: "DIC"}),
+    (specimen:Specimen {specimenID: apoc.create.uuid(), name: "77", locality: "EDC0606"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description);
