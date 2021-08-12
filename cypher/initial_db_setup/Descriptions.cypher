@@ -356,7 +356,7 @@ MATCH
 		(baseSymmetry)<-[:STATE_OF]-(baseSymmetry_symmetrical:State {name: "base symmetrical"}),
 		(baseSymmetry)<-[:STATE_OF]-(:State {name: "base asymmetrical"})<-[:STATE_OF]-(baseSymmetry_baseExAsym:State {name: "basal extension asymmetrical"}),
 	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(medialSymmetry:Character {name: "Medial Symmetry"}),
-		(medialSymmetry)<-[:STATE_OF]-(medialSymmetry_asymmetrical:State {name: "symmetrical"}),
+		(medialSymmetry)<-[:STATE_OF]-(medialSymmetry_symmetrical:State {name: "symmetrical"}),
 	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseShape:Character {name: "Base Shape"}),
 		(baseShape)<-[:STATE_OF]-(:State {name: "basal extension"})<-[:STATE_OF]-(baseShape_cordate:State {name: "cordate"}),
 	(:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(baseAngle:Character {name: "Base Angle"}),
