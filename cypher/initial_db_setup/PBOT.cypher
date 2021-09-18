@@ -1,4 +1,13 @@
-//this is a test
+//Claire adds to Rebecca's work on schema MLA 2009 coding entries. I am adding the teeth section of the MLA 2009. 
+//Claire's code starts on line 792.
+//NOTE: there are template lines at the bottom of this script that should be removed from the code since I'm just using them 
+//to copy and paste in new lines of code as I work. 
+
+//Claire's coding questions/comments for consideration by paleobotanists. 
+//Becca did not add Character Trait 6 Petiole Features. She treated 6.1 Petiole Base as a Character Trait. Which way is best to handle?
+//Should we add the MLA character number to Character State information for quick reference when doing data entry--especially for beginners who want to jump to 
+//that section of the manual to look at images?
+//see tooth shape code starting line 837 and make sure we like this handling of it?
 
 
 
@@ -786,3 +795,258 @@ CREATE
 		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(state4:State {stateID: apoc.create.uuid(), name: "basilaminar", definition: "glands present only near the base of the blade"})-[:STATE_OF]->(character),
 		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Tooth Spacing"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "regular", definition: "minimum intertooth distance is >60% of the maximum intertooth distance"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),		
+		(state2:State {stateID: apoc.create.uuid(), name: "irregular", definition: "minimum intertooth distance is <60% of the maximum intertooth distance"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Number of Orders of Teeth"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "one", definition: "all teeth are the same size or vary in size continuously"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "two", definition: "teeth are of two distinct sizes"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "three", definition: "teeth are of three distinct sizes"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+//NOTE: This is a quantitative character. I"ve implemented this by attaching a State with name "quantity".
+//OTUs will add the value as a property of the HAS_STATE relationship.
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Number of Teeth per Centimeter"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "quantity"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Sinus Shape"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "angular"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "rounded"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Tooth Shape"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+    		(state1:State {stateID: apoc.create.uuid(), name: "tooth shape a", definition: "primary tooth shape observed, ex: distal flank convex:proximal flank straight OR cv/st"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "distal flank", definition: "curvature of the distal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state111:State {stateID: apoc.create.uuid(), name: "cv", definition: "convex"})-[:STATE_OF]->(state22),
+				(state111)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state112:State {stateID: apoc.create.uuid(), name: "st", definition: "straight"})-[:STATE_OF]->(state22),
+				(state112)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state113:State {stateID: apoc.create.uuid(), name: "cc", definition: "concave"})-[:STATE_OF]->(state22),
+				(state113)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state114:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
+				(state114)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state115:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state115)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state12:State {stateID: apoc.create.uuid(), name: "proximal flank", definition: "curvature of the proximal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
+			(state12)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state121:State {stateID: apoc.create.uuid(), name: "cv", definition: "convex"})-[:STATE_OF]->(state22),
+				(state121)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state122:State {stateID: apoc.create.uuid(), name: "st", definition: "straight"})-[:STATE_OF]->(state22),
+				(state122)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state123:State {stateID: apoc.create.uuid(), name: "cc", definition: "concave"})-[:STATE_OF]->(state22),
+				(state123)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state124:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
+				(state124)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state115:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state115)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "tooth shape b", definition: "tooth shape also observed, ex: distal flank convex:proximal flank straight OR cv/st"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "distal flank", definition: "curvature of the distal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state211:State {stateID: apoc.create.uuid(), name: "cv", definition: "convex"})-[:STATE_OF]->(state22),
+				(state211)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state212:State {stateID: apoc.create.uuid(), name: "st", definition: "straight"})-[:STATE_OF]->(state22),
+				(state212)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state213:State {stateID: apoc.create.uuid(), name: "cc", definition: "concave"})-[:STATE_OF]->(state22),
+				(state213)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state214:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
+				(state214)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state215:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state215)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "proximal flank", definition: "curvature of the proximal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state221:State {stateID: apoc.create.uuid(), name: "cv", definition: "convex"})-[:STATE_OF]->(state22),
+				(state221)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state222:State {stateID: apoc.create.uuid(), name: "st", definition: "straight"})-[:STATE_OF]->(state22),
+				(state222)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state223:State {stateID: apoc.create.uuid(), name: "cc", definition: "concave"})-[:STATE_OF]->(state22),
+				(state223)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state224:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
+				(state224)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state215:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state215)-[:ENTERED_BY {timestamp: datetime()}]->(person),		
+		(state3:State {stateID: apoc.create.uuid(), name: "tooth shape c", definition: "tooth shape also observed, ex: distal flank convex:proximal flank straight OR cv/st"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state31:State {stateID: apoc.create.uuid(), name: "distal flank", definition: "curvature of the distal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
+			(state31)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state311:State {stateID: apoc.create.uuid(), name: "cv", definition: "convex"})-[:STATE_OF]->(state22),
+				(state311)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state312:State {stateID: apoc.create.uuid(), name: "st", definition: "straight"})-[:STATE_OF]->(state22),
+				(state312)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state313:State {stateID: apoc.create.uuid(), name: "cc", definition: "concave"})-[:STATE_OF]->(state22),
+				(state313)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state314:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
+				(state314)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state315:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state315)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state32:State {stateID: apoc.create.uuid(), name: "proximal flank", definition: "curvature of the proximal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
+			(state32)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state321:State {stateID: apoc.create.uuid(), name: "cv", definition: "convex"})-[:STATE_OF]->(state22),
+				(state321)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state322:State {stateID: apoc.create.uuid(), name: "st", definition: "straight"})-[:STATE_OF]->(state22),
+				(state322)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state323:State {stateID: apoc.create.uuid(), name: "cc", definition: "concave"})-[:STATE_OF]->(state22),
+				(state323)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state324:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
+				(state324)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state315:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state315)-[:ENTERED_BY {timestamp: datetime()}]->(person),	
+		(state4:State {stateID: apoc.create.uuid(), name: "tooth shape d", definition: "tooth shape also observed, ex: distal flank convex:proximal flank straight OR cv/st"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state41:State {stateID: apoc.create.uuid(), name: "distal flank", definition: "curvature of the distal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
+			(state41)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state411:State {stateID: apoc.create.uuid(), name: "cv", definition: "convex"})-[:STATE_OF]->(state22),
+				(state411)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state412:State {stateID: apoc.create.uuid(), name: "st", definition: "straight"})-[:STATE_OF]->(state22),
+				(state412)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state413:State {stateID: apoc.create.uuid(), name: "cc", definition: "concave"})-[:STATE_OF]->(state22),
+				(state413)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state414:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
+				(state414)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state415:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state415)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state42:State {stateID: apoc.create.uuid(), name: "proximal flank", definition: "curvature of the proximal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
+			(state42)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state421:State {stateID: apoc.create.uuid(), name: "cv", definition: "convex"})-[:STATE_OF]->(state22),
+				(state421)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state422:State {stateID: apoc.create.uuid(), name: "st", definition: "straight"})-[:STATE_OF]->(state22),
+				(state422)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state423:State {stateID: apoc.create.uuid(), name: "cc", definition: "concave"})-[:STATE_OF]->(state22),
+				(state423)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state424:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
+				(state424)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state415:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state415)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+				
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Principal Vein"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "present"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "absent", definition: "generally occurrs in teeth that are supplied by two or more veins of equal guage"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Principal Vein Termination"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "submarginal"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "marginal"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "at the apex of tooth"})-[:STATE_OF]->(state2),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "on the distal flank"})-[:STATE_OF]->(state2),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state23:State {stateID: apoc.create.uuid(), name: "at the nadir of superjacent sinus"})-[:STATE_OF]->(state2),
+			(state23)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state24:State {stateID: apoc.create.uuid(), name: "on the proximal flank"})-[:STATE_OF]->(state2),
+			(state24)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Course of Major Accessor Vein(s)"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "convex relative to principal vein"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "looped", definition: "with multiple looping connections to principal vein"})-[:STATE_OF]->(state2),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "straight or concave to principal vein"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "running from sinus to principal vein"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Special Features of the Tooth Apex"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "simple", definition: "no tissue or structure is present within or on the tooth apex"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "specific tissue or structure present within the tooth apex"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "foraminate", definition: "having a bulb- or funnel-shapped cavity at the tooth apex that opens to the outside"})-[:STATE_OF]->(state2),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "tylate", definition: "having clear tissue at the termination of the principal vein"})-[:STATE_OF]->(state2),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state23:State {stateID: apoc.create.uuid(), name: "cassidate", definition: "having opaque tissue at the termination of the principal vein"})-[:STATE_OF]->(state2),
+			(state23)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "specific tissue or structure on the tooth apex"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),	
+			(state31:State {stateID: apoc.create.uuid(), name: "spinose", definition: "principal vein extends beyond the leaf margin; extension may be short or long, usually sharp"})-[:STATE_OF]->(state2),
+			(state31)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state32:State {stateID: apoc.create.uuid(), name: "mucronate", definition: "an opaque, vascularized, peg-shaped, non-deciduous projection is present at the apex"})-[:STATE_OF]->(state2),
+			(state32)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state33:State {stateID: apoc.create.uuid(), name: "setaceous", definition: "an opaque, peg-shaped, deciduous projection is present at the apex"})-[:STATE_OF]->(state2),
+			(state33)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state34:State {stateID: apoc.create.uuid(), name: "papillate", definition: "a clear, flame-shaped projection is present at the apex"})-[:STATE_OF]->(state2),
+			(state34)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state35:State {stateID: apoc.create.uuid(), name: "spherulate", definition: "a clear, spherical projection is present at the apex"})-[:STATE_OF]->(state2),
+			(state35)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state4:State {stateID: apoc.create.uuid(), name: "nonspecific", definition: "to be used for fossil teeth with a visible concentration of material in or on the tooth apex not assignable to the other special features described here"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person),	
+			
+		
+		
+		
+
+
+
+//TEMPLATE so that Claire can copy and paste while coding--DELETE ALL CODE BELOW BEFORE COMMITTING CHANGES!!!!!!!!!!!!!!!
+
+
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "CharacterTraitName"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "state1name", definition: "uPDATE"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		
+			(state11:State {stateID: apoc.create.uuid(), name: "state11name", definition: "uPDATE"})-[:STATE_OF]->(state2),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			
+				(state111:State {stateID: apoc.create.uuid(), name: "state111name", definition: "uPDATE"})-[:STATE_OF]->(state22),
+				(state111)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				
+					(state1111:State {stateID: apoc.create.uuid(), name: "state1111name", definition: "uPDATE"})-[:STATE_OF]->(state22),
+					(state1111)-[:ENTERED_BY {timestamp: datetime()}]->(person);  END CHARACTER WITH SEMICOLON
+					
+					
+//Example of state without definition
+		(state1:State {stateID: apoc.create.uuid(), name: "state1name"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+					
+//NOTE: This is a quantitative character. I"ve implemented this by attaching a State with name "quantity".
+//OTUs will add the value as a property of the HAS_STATE relationship.
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "CharacterTraitName"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "quantity"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+					
