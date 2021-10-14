@@ -1,5 +1,5 @@
-//Claire adds to Rebecca's work on schema MLA 2009 coding entries. I am adding the teeth section of the MLA 2009. 
-//Claire's code starts on line 792.
+//Claire adds to Rebecca's work on schema MLA 2009 coding entries. I am adding the teeth section and venation of the MLA 2009. 
+//Claire's code starts on line 799.
 //NOTE: there are template lines at the bottom of this script that should be removed from the code since I'm just using them 
 //to copy and paste in new lines of code as I work. 
 
@@ -813,11 +813,12 @@ CREATE
 		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(state2:State {stateID: apoc.create.uuid(), name: "two", definition: "teeth are of two distinct sizes"})-[:STATE_OF]->(character),
 		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-		(state2:State {stateID: apoc.create.uuid(), name: "three", definition: "teeth are of three distinct sizes"})-[:STATE_OF]->(character),
-		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		(state3:State {stateID: apoc.create.uuid(), name: "three", definition: "teeth are of three distinct sizes"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 		
 //NOTE: This is a quantitative character. I"ve implemented this by attaching a State with name "quantity".
 //OTUs will add the value as a property of the HAS_STATE relationship.
+
 MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
 CREATE
     (character:Character {characterID: apoc.create.uuid(), name: "Number of Teeth per Centimeter"})-[:CHARACTER_OF]->(schema),
@@ -862,8 +863,8 @@ CREATE
 				(state123)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 				(state124:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
 				(state124)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-				(state115:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
-				(state115)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state125:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state125)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(state2:State {stateID: apoc.create.uuid(), name: "tooth shape b", definition: "tooth shape also observed, ex: distal flank convex:proximal flank straight OR cv/st"})-[:STATE_OF]->(character),
 		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 			(state21:State {stateID: apoc.create.uuid(), name: "distal flank", definition: "curvature of the distal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
@@ -888,8 +889,8 @@ CREATE
 				(state223)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 				(state224:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
 				(state224)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-				(state215:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
-				(state215)-[:ENTERED_BY {timestamp: datetime()}]->(person),		
+				(state225:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state225)-[:ENTERED_BY {timestamp: datetime()}]->(person),		
 		(state3:State {stateID: apoc.create.uuid(), name: "tooth shape c", definition: "tooth shape also observed, ex: distal flank convex:proximal flank straight OR cv/st"})-[:STATE_OF]->(character),
 		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 			(state31:State {stateID: apoc.create.uuid(), name: "distal flank", definition: "curvature of the distal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
@@ -914,8 +915,8 @@ CREATE
 				(state323)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 				(state324:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
 				(state324)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-				(state315:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
-				(state315)-[:ENTERED_BY {timestamp: datetime()}]->(person),	
+				(state325:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state325)-[:ENTERED_BY {timestamp: datetime()}]->(person),	
 		(state4:State {stateID: apoc.create.uuid(), name: "tooth shape d", definition: "tooth shape also observed, ex: distal flank convex:proximal flank straight OR cv/st"})-[:STATE_OF]->(character),
 		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 			(state41:State {stateID: apoc.create.uuid(), name: "distal flank", definition: "curvature of the distal flank relative to the middline of the tooth"})-[:STATE_OF]->(character),
@@ -940,8 +941,8 @@ CREATE
 				(state423)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 				(state424:State {stateID: apoc.create.uuid(), name: "fl", definition: "flexuous such that tooth flank is apically concave and basally convex"})-[:STATE_OF]->(state22),
 				(state424)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-				(state415:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
-				(state415)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+				(state425:State {stateID: apoc.create.uuid(), name: "rt", definition: "retroflexed such that tooth flank is basally concave and apically convex"})-[:STATE_OF]->(state22),
+				(state425)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 				
 MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
 CREATE
@@ -1040,13 +1041,21 @@ CREATE
 //Example of state without definition
 		(state1:State {stateID: apoc.create.uuid(), name: "state1name"})-[:STATE_OF]->(character),
 		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-					
-//NOTE: This is a quantitative character. I"ve implemented this by attaching a State with name "quantity".
-//OTUs will add the value as a property of the HAS_STATE relationship.
+		
+//Example of state that is a quantity
 MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
 CREATE
-    (character:Character {characterID: apoc.create.uuid(), name: "CharacterTraitName"})-[:CHARACTER_OF]->(schema),
+    (character:Character {characterID: apoc.create.uuid(), name: "Number of Teeth per Centimeter"})-[:CHARACTER_OF]->(schema),
     (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(state1:State {stateID: apoc.create.uuid(), name: "quantity"})-[:STATE_OF]->(character),
 		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+					
+//NOTE: This is a present or not character. I"ve implemented this with true/false states.
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Phyllodes", definition: "petiole or rachis is expanded to make a lamina"})-[:CHARACTER_OF]->(schema),
+		(state1:State {stateID: apoc.create.uuid(), name: "true"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "false"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 					
