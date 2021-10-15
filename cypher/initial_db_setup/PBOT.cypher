@@ -1010,9 +1010,334 @@ CREATE
 			(state35:State {stateID: apoc.create.uuid(), name: "spherulate", definition: "a clear, spherical projection is present at the apex"})-[:STATE_OF]->(state2),
 			(state35)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(state4:State {stateID: apoc.create.uuid(), name: "nonspecific", definition: "to be used for fossil teeth with a visible concentration of material in or on the tooth apex not assignable to the other special features described here"})-[:STATE_OF]->(character),
-		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person),	
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person);	
 			
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Primary Vein Framework"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "pinnate", definition: "leaf or leaflet has a single 1° vein"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "palmate", leaf has three or more basal veins, of which at least two are primaries, use 75% of gauge cutoff for primary veins: "uPDATE"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "actinodromous", definition: "three or more 1° veins diverge radially from a single point"})-[:STATE_OF]->(state2),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state211:State {stateID: apoc.create.uuid(), name: "basal", definition: "primary veins radiate from the petiolar insertion point"})-[:STATE_OF]->(state22),
+				(state211)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state212:State {stateID: apoc.create.uuid(), name: "suprabasal", definition: "primary veins radiate from a point distal to petiolar insertion"})-[:STATE_OF]->(state22),
+				(state212)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "palinactinodromous", definition: "three or more primaries diverge in a series of branches rather than from a single point"})-[:STATE_OF]->(state2),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state23:State {stateID: apoc.create.uuid(), name: "acrodromous", definition: "three or more primaries originiate from a point and run in convergent arches toward the leaf apex"})-[:STATE_OF]->(state2),
+			(state23)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state231:State {stateID: apoc.create.uuid(), name: "basal", definition: "primary veins radiate from the petiolar insertion point"})-[:STATE_OF]->(state22),
+				(state231)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state232:State {stateID: apoc.create.uuid(), name: "suprabasal", definition: "primary veins radiate from a point distal to petiolar insertion"})-[:STATE_OF]->(state22),
+				(state232)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state24:State {stateID: apoc.create.uuid(), name: "flabellate", definition: "several to many equally fine basal veins diverge radially at low angles to each other and branch distally"})-[:STATE_OF]->(state2),
+			(state24)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state25:State {stateID: apoc.create.uuid(), name: "parallelodromous", definition: "multiple parallel 1° viens originate collaterally at the leaf base and converge toward the leaf apex"})-[:STATE_OF]->(state2),
+			(state25)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state26:State {stateID: apoc.create.uuid(), name: "campylodromous", definition: "multiple parallel 1° veins originate collaterally at or near the leaf base and run in strongly recurved arches that converge toward the leaf apex"})-[:STATE_OF]->(state2),
+			(state26)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+			
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Naked Basal Veins"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "absent"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "present", definition: "the exmedial side of one or both lateral primaries, or of basal scondaries, forms part of the leaf margin at the base"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Number of Basal Veins"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "quantity", definition: "total number of 1° and 2° veins that originate in the base of the leaf and have courses similar to the course(s) of the primary or primaries"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Agrophic Veins"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "absent"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "present", definition: "a comblike complex of veins composed of a lateral 1° or 2° vein with two or more excurrent minor 2° veins that originate on it and travel roughly parallel courses toward the margin"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "simple", definition: "one or two agrophic veins that may be paired or appear only on one side of the leaf"})-[:STATE_OF]->(state2),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "compound", definition: "more than two agrophic veins"})-[:STATE_OF]->(state2),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+			
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Major Secondary Vein Framework"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "major secondaries (or their branches) reach the margin"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "craspedodromous", definition: "secondaries terminate at the margin or at the marginal vein"})-[:STATE_OF]->(state2),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state12:State {stateID: apoc.create.uuid(), name: "semicraspedodromous (usually in toothed leaves)", definition: "secondaries branch near the margin; one of the branches terminates at the margin and the other joins the superjacent secondary"})-[:STATE_OF]->(state2),
+			(state12)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state13:State {stateID: apoc.create.uuid(), name: "festooned semicraspedodromous", definition: "secondaries form more than one set of loops, with branches from the most exmedial loops terminating at the margin"})-[:STATE_OF]->(state2),
+			(state13)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "major secondaries and their branches do not reach the margin and lose gauge by attenuation"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "eucamptodromous", definition: "secondaries connect to superadjacent major secondaries via tertiaries without forming marginal loops of secondary gauge"})-[:STATE_OF]->(state2),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state211:State {stateID: apoc.create.uuid(), name: "basal eucamptodromous", definition: "all eucamptodromous secondaries arise from the base of the leaf, within 0.25L from base of leaf"})-[:STATE_OF]->(state22),
+				(state211)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state212:State {stateID: apoc.create.uuid(), name: "hemieucamptodromous", definition: "all eucamptodromous secondaries arise from the proximal half of the leaf, with 0.5L from base of leaf"})-[:STATE_OF]->(state22),
+				(state212)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state213:State {stateID: apoc.create.uuid(), name: "eucamptodromous becoming brochidodromous distally", definition: "proximal secondaries are eucamptodromous, but distal secondaries form loops of secondary guage"})-[:STATE_OF]->(state22),
+				(state213)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "reticulodromous", definition: "secondries branch into a reticulum of higher-order veins"})-[:STATE_OF]->(state2),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state23:State {stateID: apoc.create.uuid(), name: "cladodromous", definition: "secondaries freely ramify exmedially"})-[:STATE_OF]->(state2),
+			(state23)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "major secondaries form loops of secondary gauge and do not reach the margin"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state31:State {stateID: apoc.create.uuid(), name: "simple brochidodromous", definition: "secondaries join in a series of proinent arhes or loops of seconary gauge, and junctions between secondaries are excurrent and the smaller vein has >25% of the gauge of the larger vein at the junction"})-[:STATE_OF]->(state2),
+			(state31)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state32:State {stateID: apoc.create.uuid(), name: "festooned brochidodromous", definition: "secondaries branch into multiple sets of loops of secondary gauge, often with accessory loops of higher gauge"})-[:STATE_OF]->(state2),
+			(state32)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state4:State {stateID: apoc.create.uuid(), name: "mixed", definition: "major secondary course varies within the leaf"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Interior Secondaries"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "absent"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "present", definition: "secondaries cross between 1° veins or between 1° and perimarginal 2° veins but do not reach the margin"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Minor Secondary Course"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "craspedodromous", definition: "terminating at the margin"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "simple brochidodromous", definition: "joined together in a series of prominent arches or loops of secondary gauge, and junctions between secondaries are excurrent and the smaller vein has >25% of the gauge of the larger"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "semicraspedodromous", definition: "minor secondaries branch near the margin and one of the branches eventually terminates at the margin, the other joins the superajacent minor secondary"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Perimarginal Veins", definition: "when present, these veins closely parallel the leaf margin and lose little gauge distally"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "marginal secondary", definition: "vein of 2° gauge running on the leaf margin with no laminar tissue exmedial to it"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "intramarginal secondary", definition: "vein of 2° gauge running near the margin with laminar tissue exmedial to it"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "fimbrial vein", definition: "vein of consistent 3° gauge running on the margin with no laminar tissue exmedial to it"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Major Secondary Spacing"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "regular", definition: "secondary spacing proportionally decreases distally and proximally"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "irregular", definition: "secondary spacing varies over the lamina"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "decreasing proximally", definition: "secondary spacing decreases toward base and may be regular or irregular"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state4:State {stateID: apoc.create.uuid(), name: "gradually increasing proximally", definition: "secondary spacing increases gradually toward base"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state5:State {stateID: apoc.create.uuid(), name: "abruptly increasing proximally", definition: "secondary spacing increases abruptly toward base"})-[:STATE_OF]->(character),
+		(state5)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Variation of Major Secondary Angle to Midvein", definition: "the major secondary angle should be evaluated proximal to 0.75 lm; each angle measured on the distal side of the junction (the vertex) of the secondary with the midvein; one ray of the angle follows the midvein distal to the junctions and the other follows the secondary for 25% of its length"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "uniform", definition: "major 2° angle varies <10° from the base to 0.75 lm"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "inconsistent", definition: "major 2° angle varies >10° from the base to 0.75 lm"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "smoothly increasing proximally"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state4:State {stateID: apoc.create.uuid(), name: "smoothly decreasing proximally"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state5:State {stateID: apoc.create.uuid(), name: "abruptly increasing proximally"})-[:STATE_OF]->(character),
+		(state5)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state6:State {stateID: apoc.create.uuid(), name: "one pair of acute basal secondaries"})-[:STATE_OF]->(character),
+		(state6)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Major Secondary Attachment to Midvein"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "decurrent", definition: "major secondaries meet the midvein asymptotically"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "proximal secondaries decurrent", definition: "major secondaries near the lamina base are decurrent on midvein, though distal secondaries are excurrent"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "excurrent", definition: "major secondaries join the midvein without deflecting it, midvein monopodial"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state4:State {stateID: apoc.create.uuid(), name: "deflected", definition: "midvein is deflected at junctions with major secondaries and is thus sympodial"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Intersecondary Veins", definition: "veins with courses similar to those of the major secondaries, but generally shorter in exmedial extent and intermediate in gauge between major secondaries and tertiaries"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "intersecondary proximal course"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "parallel to major secondaries"})-[:STATE_OF]->(state2),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state12:State {stateID: apoc.create.uuid(), name: "perpendicular to midvein"})-[:STATE_OF]->(state2),
+			(state12)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "intersecondary length"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "less than 50% of subjacent secondary"})-[:STATE_OF]->(state2),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "more than 50% of subjacent secondary"})-[:STATE_OF]->(state2),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "intersecondary distal course"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state31:State {stateID: apoc.create.uuid(), name: "reticulating or ramifying", definition: "branching and losing a defined course"})-[:STATE_OF]->(state2),
+			(state31)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state32:State {stateID: apoc.create.uuid(), name: "parallel to a major secondary"})-[:STATE_OF]->(state2),
+			(state32)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state33:State {stateID: apoc.create.uuid(), name: "perpendicular to a subjacent major secondary"})-[:STATE_OF]->(state2),
+			(state33)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state34:State {stateID: apoc.create.uuid(), name: "basiflexed but not joining the subjacent secondary at right angles", definition: "uPDATE"})-[:STATE_OF]->(state2),
+			(state34)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state4:State {stateID: apoc.create.uuid(), name: "intersecondary frequency", definition: "average number of intersecondary veins per intercostal area"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state41:State {stateID: apoc.create.uuid(), name: "less than one per intercostal area"})-[:STATE_OF]->(state2),
+			(state41)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state42:State {stateID: apoc.create.uuid(), name: "usually one per intercostal area"})-[:STATE_OF]->(state2),
+			(state42)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state43:State {stateID: apoc.create.uuid(), name: "more than one per intercostl area"})-[:STATE_OF]->(state2),
+			(state43)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Intercostal Tertiary Vein Fabric"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "percurrent", definition: "tertiaries cross between adjacent secondaries"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "course of percurrent tertiaries"})-[:STATE_OF]->(state2),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state111:State {stateID: apoc.create.uuid(), name: "opposite", definition: "majority of tertiaries cross betwen adjacent secondaries in parallel paths without branching"})-[:STATE_OF]->(state22),
+				(state111)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+					(state1111:State {stateID: apoc.create.uuid(), name: "straight", definition: "passing across the intercostal area without a noticeable change in course"})-[:STATE_OF]->(state22),
+					(state1111)-[:ENTERED_BY {timestamp: datetime()}]->(person)
+					(state1112:State {stateID: apoc.create.uuid(), name: "convex", definition: "middle portion of the vein arches exmedially, without an inflection point"})-[:STATE_OF]->(state22),
+					(state1112)-[:ENTERED_BY {timestamp: datetime()}]->(person)
+					(state1113:State {stateID: apoc.create.uuid(), name: "sinuous", definition: "changes direction of curvature"})-[:STATE_OF]->(state22),
+					(state1113)-[:ENTERED_BY {timestamp: datetime()}]->(person)
+					(state1114:State {stateID: apoc.create.uuid(), name: "forming a chevron", definition: "most tertiary courses have a markedly sharp bend"})-[:STATE_OF]->(state22),
+					(state1114)-[:ENTERED_BY {timestamp: datetime()}]->(person)
+				(state112:State {stateID: apoc.create.uuid(), name: "alternate", definition: "majority of tertiaries cross between secondaries with regular offsets (abrupt angular dicontinuities) near the middle of the intercostal area"})-[:STATE_OF]->(state22),
+				(state112)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state113:State {stateID: apoc.create.uuid(), name: "mixed", definition: "tertiaries have both opposite and alternate pecurrent courses"})-[:STATE_OF]->(state22),
+				(state113)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state12:State {stateID: apoc.create.uuid(), name: "angle of percurrent tertiaries", definition: "angle formed between the midvein trend and the course of a percurrent 3° vein projected to the midvein"})-[:STATE_OF]->(state2),
+			(state12)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state121:State {stateID: apoc.create.uuid(), name: "acute", definition: "angle >0° and <90°"})-[:STATE_OF]->(state22),
+				(state121)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state122:State {stateID: apoc.create.uuid(), name: "obtuse", definition: "angle >90° and <180°"})-[:STATE_OF]->(state22),
+				(state122)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state123:State {stateID: apoc.create.uuid(), name: "perpendicular", definition: "angle is ~90°"})-[:STATE_OF]->(state22),
+				(state123)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "reticulate", definition: "veins anastomose with other tertiary veins or secondary veins to form a net"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "irregular", definition: "tertiaries anastomose at various angles to form irregular polygons or non-polygonal nets"})-[:STATE_OF]->(state2),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "regular", definition: "tertiaries anastomose with other tertiaries at regular angles to generate a regular polygonal field"})-[:STATE_OF]->(state2),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state23:State {stateID: apoc.create.uuid(), name: "composite admedial", definition: "tertiaries connect to a trunk that ramifies admedially toward the axil of the subjacent costal secondary"})-[:STATE_OF]->(state2),
+			(state23)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "ramified", definition: "tertiaries branch without forming a tertiary reticulum"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state31:State {stateID: apoc.create.uuid(), name: "admedially ramified", definition: "multiple tertiary veins branch toward the primary or midvein"})-[:STATE_OF]->(state2),
+			(state31)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state32:State {stateID: apoc.create.uuid(), name: "exmedially ramified", definition: "tertiary branching is oriented toward the leaf margin"})-[:STATE_OF]->(state2),
+			(state32)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state33:State {stateID: apoc.create.uuid(), name: "transversly ramified", definition: "opposed 3° veins from adjacent major secondaries ramify and join at a higher vein order"})-[:STATE_OF]->(state2),
+			(state33)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state34:State {stateID: apoc.create.uuid(), name: "transversly freely ramified", definition: "tertiary veins originating on one secondary vein branch toward adjacent secondary but do not join other veins from the opposing secondary"})-[:STATE_OF]->(state2),
+			(state34)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+			
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Intercostal Tertiary Vein Angle Variability", definition: "applies only to leaves with percurrent tertiaries"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "inconsistent", definition: "angles of the tertiaries vary randomly over the lamina"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "consistent", definition: "angles of the tertiaries do not vary over the surface of the lamina by more than 10%"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "increasing exmedially", definition: "angles of the tertiaries become more obtuse away from the midvein"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state31:State {stateID: apoc.create.uuid(), name: "basally concentric", definition: "special case of "increasing exmedially" such that the tertiaries form a "spider web pattern" around the primary vein(s) at the base of the leaf"})-[:STATE_OF]->(state2),
+			(state31)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state4:State {stateID: apoc.create.uuid(), name: "decreasing exmedially", definition: "angles of the tertiaries become more acute away from the midvein"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state5:State {stateID: apoc.create.uuid(), name: "increasing proximally", definition: "angles of the tertiaries become more obtuse toward the base of the lamina"})-[:STATE_OF]->(character),
+		(state5)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state6:State {stateID: apoc.create.uuid(), name: "decreasing proximally", definition: "angles of the tertiaries become more acute toward the base of the lamina"})-[:STATE_OF]->(character),
+		(state6)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Epimedial Tertiaries", definition: "tertiaries that intesect a 1° vein"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "epimedial tertiary fabric"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "percurrent", definition: "epimedial veins cross between 1° and 2° veins"})-[:STATE_OF]->(state2),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state111:State {stateID: apoc.create.uuid(), name: "opposite percurrent", definition: "majority of tertiaries cross between primary and secondaries in parallel paths without branching"})-[:STATE_OF]->(state22),
+				(state111)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state112:State {stateID: apoc.create.uuid(), name: "alternate percurrent", definition: "majority of tertiaries cross between primary and secondaries with regular offsets (abrupt angular dicontinuities)"})-[:STATE_OF]->(state22),
+				(state112)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state113:State {stateID: apoc.create.uuid(), name: "mixed", definition: "approximately equal number of opposite and alternate percurrent tertiaries"})-[:STATE_OF]->(state22),
+				(state113)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state12:State {stateID: apoc.create.uuid(), name: "ramified", definition: "epimedial tertiaries branch toward the leaf margin"})-[:STATE_OF]->(state2),
+			(state12)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state13:State {stateID: apoc.create.uuid(), name: "reticulate", definition: "epimedial tertiaries anastomose with other 3° veins to form a net"})-[:STATE_OF]->(state2),
+			(state13)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state14:State {stateID: apoc.create.uuid(), name: "mixed", definition: "epimedial tertiaries do not consistently exhibit one characteristic"})-[:STATE_OF]->(state22),
+			(state14)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "course of percurrent epimedial tertiaries"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "proximal/admedial course of the epimedial tertiaries", definition: "course of the epimedial tertiaries from the junction with the midvein to their approximate midpoint, more than one character state may apply"})-[:STATE_OF]->(state22),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state211:State {stateID: apoc.create.uuid(), name: "parallel to the subjacent secondary"})-[:STATE_OF]->(state22),
+				(state211)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state212:State {stateID: apoc.create.uuid(), name: "parallel to the intercostal tertiaries"})-[:STATE_OF]->(state22),
+				(state212)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state213:State {stateID: apoc.create.uuid(), name: "perpendicular to the midvein"})-[:STATE_OF]->(state22),
+				(state213)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state214:State {stateID: apoc.create.uuid(), name: "parallel to the intersecondary"})-[:STATE_OF]->(state22),
+				(state214)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state215:State {stateID: apoc.create.uuid(), name: "obtuse to the midvein"})-[:STATE_OF]->(state22),
+				(state215)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state216:State {stateID: apoc.create.uuid(), name: "acute to the midvein"})-[:STATE_OF]->(state22),
+				(state216)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "distal/exmedial course of the epimedial tertiaries", definition: "course of the epimedial tertiaries from their approximate midpoint to their intersection with the adjacent secondary (if not ramifying or reticulating), more than one character state may apply"})-[:STATE_OF]->(state22),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state221:State {stateID: apoc.create.uuid(), name: "parallel to intercostal tertiary", definition: "epimedial tertiaries match pattern of adjacent intercostal tertiaries"})-[:STATE_OF]->(state22),
+				(state221)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state222:State {stateID: apoc.create.uuid(), name: "basiflexed", definition: "course bends toward the base of the leaf and may either join the secondaries or lose gauge"})-[:STATE_OF]->(state22),
+				(state222)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state223:State {stateID: apoc.create.uuid(), name: "acroflexed", definition: "course bends toward the apex of the leaf and may either join the secondaries or lose gauge"})-[:STATE_OF]->(state22),
+				(state223)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+			
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "CharacterTraitName"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "state1name", definition: "uPDATE"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),			
+		
+			
+
 		
 		
 
@@ -1028,14 +1353,16 @@ CREATE
 		(state1:State {stateID: apoc.create.uuid(), name: "state1name", definition: "uPDATE"})-[:STATE_OF]->(character),
 		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		
-			(state11:State {stateID: apoc.create.uuid(), name: "state11name", definition: "uPDATE"})-[:STATE_OF]->(state2),
+			(state11:State {stateID: apoc.create.uuid(), name: "state11name", definition: "uPDATE"})-[:STATE_OF]->(state22),
 			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 			
 				(state111:State {stateID: apoc.create.uuid(), name: "state111name", definition: "uPDATE"})-[:STATE_OF]->(state22),
 				(state111)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 				
 					(state1111:State {stateID: apoc.create.uuid(), name: "state1111name", definition: "uPDATE"})-[:STATE_OF]->(state22),
-					(state1111)-[:ENTERED_BY {timestamp: datetime()}]->(person);  END CHARACTER WITH SEMICOLON
+					(state1111)-[:ENTERED_BY {timestamp: datetime()}]->(person)
+					
+					;  END CHARACTER WITH SEMICOLON
 					
 					
 //Example of state without definition
@@ -1045,7 +1372,7 @@ CREATE
 //Example of state that is a quantity
 MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
 CREATE
-    (character:Character {characterID: apoc.create.uuid(), name: "Number of Teeth per Centimeter"})-[:CHARACTER_OF]->(schema),
+    (character:Character {characterID: apoc.create.uuid(), name: "CharacterTraitName"})-[:CHARACTER_OF]->(schema),
     (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 		(state1:State {stateID: apoc.create.uuid(), name: "quantity"})-[:STATE_OF]->(character),
 		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person);
