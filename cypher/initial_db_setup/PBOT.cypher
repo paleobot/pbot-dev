@@ -1331,12 +1331,120 @@ CREATE
 			
 MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
 CREATE
-    (character:Character {characterID: apoc.create.uuid(), name: "CharacterTraitName"})-[:CHARACTER_OF]->(schema),
+    (character:Character {characterID: apoc.create.uuid(), name: "Exterior Tertiary Course", definition: "Configuration of the third-order veins that lie exmedially to the outermost secondaries but do not necessarily form the marginal ulimate veins"})-[:CHARACTER_OF]->(schema),
     (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-		(state1:State {stateID: apoc.create.uuid(), name: "state1name", definition: "uPDATE"})-[:STATE_OF]->(character),
-		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),			
+		(state1:State {stateID: apoc.create.uuid(), name: "Absent", definition: "leaf does not have exterior tertiaries"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "looped", definition: "tertiaries form loops"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "terminating at the margin", definition: "tertiaries terminate at the margin"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state4:State {stateID: apoc.create.uuid(), name: "variable", definition: "pattern is not consistent"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Quarternary Vein Fabric", definition: "pattern formed by the fourth-order vein courses; these and other higher-order venation characters should be scored near the center of the blade"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "Percurrent"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "opposite", definition: "most quaternary veins cross between adjacent tertiary veins in parallel paths without branching"})-[:STATE_OF]->(state22),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state12:State {stateID: apoc.create.uuid(), name: "alternte", definition: "most quaternary veins cross between adjacent tertiaries with an offset (an abrupt angular discontinuity)"})-[:STATE_OF]->(state22),
+			(state12)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state13:State {stateID: apoc.create.uuid(), name: "mixed percurrent", definition: "quaternaries are alternate and opposite in equal proportions"})-[:STATE_OF]->(state22),
+			(state13)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "reticulate", definition: "quaternaries anastomose with other veins to form a net"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "regular", definition: "angles formed by the vein intersections are regular"})-[:STATE_OF]->(state22),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "irregular", definition: "angles formed by the vein intersections are highly variable"})-[:STATE_OF]->(state22),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "freely ramifying", definition: "quaternaries branch freely and are the finest vein-order the leaf exhibits"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Quinternary Vein Fabric", definition: "pattern formed by 5° vein corses, when present; these and other higher-order venation characters should be scored near the center of the blade"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "reticulate", definition: "quinternaries anastomose with other veins to form polygons"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "regular", definition: "angles formed by the vein intersections are regular"})-[:STATE_OF]->(state22),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state12:State {stateID: apoc.create.uuid(), name: "irregular", definition: "angles formed by the vein intersections are highly variable"})-[:STATE_OF]->(state22),
+			(state12)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "freely ramifying", definition: "quaternaries branch freely and are the finest vein-order the leaf exhibits"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Areolation", definition: "areoles are the smallest areas of the leaf tissue that are completely surrounded by veins; taken together they form a contiguous field of polygons over most of the area of the lamina; any order of venation can form one or more sides of an areole"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "lacking", definition: "venation ramifies into the intercostal area without producing closed meshes"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "present"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "poor development", definition: "areoles many-sided (often >7) and of highly irregular size and shape"})-[:STATE_OF]->(state22),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "moderate development", definition: "areoles of irregular shape, more or less variable in size, generally with <7 sides"})-[:STATE_OF]->(state22),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state23:State {stateID: apoc.create.uuid(), name: "good development", definition: "areoles of relatively consistent size and shape and generally with 3-6 sides"})-[:STATE_OF]->(state22),
+			(state23)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state24:State {stateID: apoc.create.uuid(), name: "paxillate", definition: "areoles occurring in distinct oriented fields"})-[:STATE_OF]->(state22),
+			(state24)-[:ENTERED_BY {timestamp: datetime()}]->(person);
 			
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Freely Ending Veinlets (FEVs)", definition: "highest-order veins that freely ramify"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "FEV branching"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "FEVs absent"})-[:STATE_OF]->(state22),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state12:State {stateID: apoc.create.uuid(), name: "mostly unbranched", definition: "FEVs present but unbranched, may be straight or curved"})-[:STATE_OF]->(state22),
+			(state12)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state13:State {stateID: apoc.create.uuid(), name: "mostly with one branch"})-[:STATE_OF]->(state22),
+			(state13)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state14:State {stateID: apoc.create.uuid(), name: "mostly with two or more branches"})-[:STATE_OF]->(state22),
+			(state14)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state141:State {stateID: apoc.create.uuid(), name: "branching equal (dichotomous)"})-[:STATE_OF]->(state22),
+				(state141)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+				(state142:State {stateID: apoc.create.uuid(), name: "branching unequal (dendritic)"})-[:STATE_OF]->(state22),
+				(state142)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "FEV terminals"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "simple"})-[:STATE_OF]->(state22),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state22:State {stateID: apoc.create.uuid(), name: "tracheoid idioblasts", definition: "FEV endings are club-shaped and consist of tracheal cells with spiral wall thickenings"})-[:STATE_OF]->(state22),
+			(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state23:State {stateID: apoc.create.uuid(), name: "highly branched sclerids", definition: "FEVs branch densely (10+) out of the plane of the veins; the finer branches often stain differently because they are sclerids, not tracheids"})-[:STATE_OF]->(state22),
+			(state23)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+			
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "Marginal Ultimate Venation", definition: "configuration of the highest-order veins at the margin"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "absent", definition: "ultimate veins join perimarginal veins"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state2:State {stateID: apoc.create.uuid(), name: "incomplete", definition: "marginal ultimate veins recurve to form incomplete loops"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state3:State {stateID: apoc.create.uuid(), name: "spiked", definition: "marginal ultimate veins form outward-pointing spikes"})-[:STATE_OF]->(character),
+		(state3)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state4:State {stateID: apoc.create.uuid(), name: "looped", definition: "marginal ultimate veins recurved to form loops"})-[:STATE_OF]->(character),
+		(state4)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		
+MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (schema:Schema {title: "Cornell, 2009"})
+CREATE
+    (character:Character {characterID: apoc.create.uuid(), name: "MLA Measurements"})-[:CHARACTER_OF]->(schema),
+    (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+		(state1:State {stateID: apoc.create.uuid(), name: "lamina length", definition: "L = lm + la + lb"})-[:STATE_OF]->(character),
+		(state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state11:State {stateID: apoc.create.uuid(), name: "quantity"})-[:STATE_OF]->(state1),
+			(state11)-[:ENTERED_BY {timestamp: datetime()}]->(person);
+		(state2:State {stateID: apoc.create.uuid(), name: "apical extension length", definition: "la"})-[:STATE_OF]->(character),
+		(state2)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+			(state21:State {stateID: apoc.create.uuid(), name: "quantity"})-[:STATE_OF]->(state2),
+			(state21)-[:ENTERED_BY {timestamp: datetime()}]->(person);	
 
 		
 		
