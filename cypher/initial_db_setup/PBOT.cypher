@@ -113,6 +113,21 @@ CREATE (:Person {
     orcid: "0000-0002-2689-0801"
     });
     
+//guest user 
+CREATE 
+    (p:Person {
+        pbotID: apoc.create.uuid(),
+        given: "guest",
+        surname: "guest",
+        email: "guest"
+    });
+    
+MATCH 
+    (p:Person),
+    (eP:Person {surname:"Meredith"})
+CREATE
+    (p)<-[:ENTERED_BY {timestamp: datetime()}]-(eP)
+    
 //Roles and assignment
 CREATE 
 	(:Role {
@@ -126,31 +141,48 @@ CREATE
 	
 match 
     (role:Role {name:"user"}),
-    (person:Person {email:"douglasm@arizona.edu"}) 
+    (person:Person {email:"douglasm@arizona.edu"}),
+    (guest:Person {email: "guest"})
 create
-    (person)-[:HAS_ROLE]->(role);
+    (person)-[:HAS_ROLE]->(role),
+    (guest)-[:HAS_ROLE]->(role);
 
 match 
     (role:Role {name:"admin"}),
     (person:Person {email:"douglasm@arizona.edu"}) 
 create
     (person)-[:HAS_ROLE]->(role);
+    
+//Public group
+CREATE
+    (:Group {name: "public"});
+
+MATCH
+    (person:Person {email: "guest"}),
+    (group:Group {name: "public"})
+CREATE
+    (person)-[:MEMBER_OF]->(group);
+
 
 // Create two new references as Andrew Zaffos
-MATCH (person:Person {given: "Andrew", surname: "Zaffos"})
-CREATE (:Reference {
+MATCH 
+    (person:Person {given: "Andrew", surname: "Zaffos"}),
+    (group:Group {name: "public"})
+CREATE (ref1:Reference {
       pbotID: apoc.create.uuid(),
       title: "Manual of Leaf Architecture - Morphological description and categorization of dicotyledonous and net-veined monocotyledonous angiosperms",
       year: "1999",
       publisher: "Smithsonian Institution",
       doi:"10.13140/2.1.3674.5282"
       })-[:ENTERED_BY {timestamp: datetime()}]->(person),
-      (:Reference {
+      (ref1)-[:ELEMENT_OF]->(group),
+      (ref2:Reference {
       pbotID: apoc.create.uuid(),
       title: "Manual of Leaf Architecture",
       year: "2009",
       publisher: "Cornell University Press"
-      })-[:ENTERED_BY {timestamp: datetime()}]->(person);
+      })-[:ENTERED_BY {timestamp: datetime()}]->(person),
+      (ref2)-[:ELEMENT_OF]->(group);
 
 // Assign authors to the Smithsonian (1999) reference
 UNWIND [{lastname: "Ash", order: 1},
