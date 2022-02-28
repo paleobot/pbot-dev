@@ -44,7 +44,7 @@ CREATE (:Person {
     (:Person {
     pbotID: apoc.create.uuid(),
     given: "Ellen",
-    surname: "Curranno",
+    surname: "Currano",
     email: "ecurrano@uwyo.edu",
     orcid: "0000-0002-5242-8573"
     }),
