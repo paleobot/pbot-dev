@@ -23,125 +23,12 @@ CREATE
 // My current philosophy as to what should be a node as opposed to a property of a node is that if the propetry is something that you want to have metadata
 // of its own, then it should be a new node. If not, then it should be a property - i.e., properties should be terminal information.
 // So, in this case, whether a user is an Admin should be signified by attachment to an Admin node rather than it being stated as a property of the Person node.
-<<<<<<< HEAD
 MATCH
     (admin:Role {name: "admin"}),
     (user:Role {name: "user"}),
     (public:Group {name: "public"})
-WITH admin, user, public
+WITH admin, user, public    
     CREATE 
-=======
-CREATE (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Andrew",
-    surname: "Zaffos",
-    email: "azaffos@arizona.edu",
-    orcid: "0000-0002-4731-6091"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Scott",
-    surname: "Wing",
-    email: "wing@si.edu",
-    orcid: "0000-0002-2954-8905"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Amanda",
-    surname: "Ash"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Leo",
-    surname: "Hickey"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Kirk",
-    surname: "Johnson"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Dori",
-    surname: "Contreras",
-    email: "dori.contreras@perotmuseum.org",
-    orcid: "0000-0001-6820-7364"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Ellen",
-    surname: "Currano",
-    email: "ecurrano@uwyo.edu",
-    orcid: "0000-0002-5242-8573"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Beth",
-    surname: "Ellis"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "John",
-    surname: "Mitchell"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Douglas",
-    surname: "Daly",
-    email: "ddaly@nybg.org"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Peter",
-    surname: "Wilf",
-    email: "pwilf@psu.edu",
-    orcid: "0000-0001-6813-1937"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Claire",
-    surname: "Cleveland",
-    email: "clairecleveland@psu.edu",
-    orcid: "0000-0002-0403-3243"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Simon",
-    surname: "Goring",
-    email: "simon.j.goring@gmail.com",
-    orcid: "0000-0002-2700-4605"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Douglas",
-    surname: "Meredith",
-    email: "douglasm@arizona.edu"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Rebecca",
-    surname: "Koll",
-    email: "rebecca.koll@perotmuseum.org",
-    orcid: "0000-0001-5601-6632"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Shanan",
-    surname: "Peters",
-    email: "peters@geology.wisc.edu",
-    orcid: "0000-0002-3346-4317"
-    }),
-    (:Person {
-    pbotID: apoc.create.uuid(),
-    given: "Mark",
-    surname: "Uhen",
-    email: "muhen@gmu.edu",
-    orcid: "0000-0002-2689-0801"
-    });
-    
-//guest user 
-CREATE 
->>>>>>> 22a292f4fac5b2431478fe645e21ca0a618d0f90
     (p:Person {
         pbotID: apoc.create.uuid(),
         given: "guest",
