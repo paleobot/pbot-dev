@@ -7,7 +7,7 @@
 
 //Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"})
+	(person:Person {given: "Ellen", surname: "Currano"})
 MERGE
     (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
@@ -16,7 +16,7 @@ MERGE
 
 //Create Description node complex.
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(schema:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(leafAttachment:Character {name: "Leaf Attachment"}),
 		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: "petiolate"}),
@@ -186,7 +186,7 @@ CREATE
 //Create Specimen node and connect to Description and Organ
 WITH description
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
@@ -201,7 +201,7 @@ CREATE
 
 //Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"})
+	(person:Person {given: "Ellen", surname: "Currano"})
 MERGE
     (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
@@ -210,7 +210,7 @@ MERGE
 
 //Create Description node complex.
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
     (public:Group {name: "public"}),
 	(schema:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(laminarSize:Character {name: "Laminar Size"}),
 		(laminarSize)<-[:STATE_OF]-(laminarSize_microphyll:State {name: "microphyll"}),
@@ -350,7 +350,7 @@ CREATE
 //Create Specimen node and connect to Description and Organ
 WITH description
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
@@ -365,7 +365,7 @@ CREATE
 
 //Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"})
+	(person:Person {given: "Ellen", surname: "Currano"})
 MERGE
     (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
@@ -374,7 +374,7 @@ MERGE
 
 //Create Description node complex.
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(schema:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(leafAttachment:Character {name: "Leaf Attachment"}),
 		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: "petiolate"}),
@@ -537,7 +537,7 @@ CREATE
 //Create Specimen node and connect to Description and Organ
 WITH description
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
@@ -555,7 +555,7 @@ CREATE
 
 //Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"})
+	(person:Person {given: "Ellen", surname: "Currano"})
 MERGE
     (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
@@ -564,7 +564,7 @@ MERGE
 
 //Create Description node complex.
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(schema:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(leafAttachment:Character {name: "Leaf Attachment"}),
 		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: "petiolate"}),
@@ -672,7 +672,7 @@ CREATE
 //Create Specimen node and connect to Description and Organ
 WITH description
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
@@ -736,7 +736,7 @@ MERGE
 
 //Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"})
+	(person:Person {given: "Ellen", surname: "Currano"})
 MERGE
     (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
@@ -745,7 +745,7 @@ MERGE
 
 //Create Description node complex.
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(schema:Schema {title: "Cornell, 2009"})<-[:CHARACTER_OF]-(leafAttachment:Character {name: "Leaf Attachment"}),
 		(leafAttachment)<-[:STATE_OF]-(leafAttachment_petiolate:State {name: "petiolate"}),
@@ -837,7 +837,7 @@ CREATE
 //Create Specimen node and connect to Description and Organ
 WITH description
 MATCH
-	(person:Person {given: "Ellen", surname: "Curranno"}),
+	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
