@@ -55,11 +55,7 @@ MATCH
 CREATE
     (description:Description {
 		pbotID: apoc.create.uuid(),
-		type: "OTU",
-		name: "Cornus hyperborea",
-		family: "Cornacaea",
-		genus: "Cornus",
-		species: "hyperborea"
+		name: "YPM PB 028288"
 	}),
     (description)-[:APPLICATION_OF]->(schema),
     (description)-[:ENTERED_BY {timestamp: datetime()}]->(person),
@@ -183,18 +179,35 @@ CREATE
 			(characterInstance15)-[:INSTANCE_OF]->(apexAngle),
 			(characterInstance15)-[:HAS_STATE]->(apexAngle_acute)
 
-//Create Specimen node and connect to Description and Organ
+//Create Specimen and OTU nodes. Connect Specimen to OTU and Description
 WITH description
 MATCH
 	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {pbotID: apoc.create.uuid(), name: "YPM PB 028288", locality: "USNM 14051", preservationMode: "Compression",  idigbiouuid: "982472a2-fd87-47fe-913a-3c707c82e3d4", pbdbcid: "10805", pbdboccid: "130975"}),
+    (specimen:Specimen {
+        pbotID: apoc.create.uuid(), 
+        name: "YPM PB 028288", 
+        locality: "USNM 14051", 
+        preservationMode: "Compression",  
+        idigbiouuid: "982472a2-fd87-47fe-913a-3c707c82e3d4", 
+        pbdbcid: "10805", 
+        pbdboccid: "130975"
+    }),
+    (otu:OTU {
+        pbotID: apoc.create.uuid(),
+        name: "Cornus hyperborea",
+		family: "Cornacaea",
+		genus: "Cornus",
+		species: "hyperborea"
+    }),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
-    (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(description);
+    (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description),
+    (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu),
+    (specimen)-[:HOLOTYPE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu);
 
 
 //----------------------------- Chaetoptelea microphylla -----------------------------------
@@ -243,11 +256,7 @@ MATCH
 CREATE
     (description:Description {
 		pbotID: apoc.create.uuid(),
-		type: "OTU",
-		name: "Chaetoptelea microphylla",
-		family: "Ulmaceae",
-		genus: "Chaetoptelea",
-		species: "microphylla"
+        name: "YPM PB 028277"
 	}),
     (description)-[:APPLICATION_OF]->(schema),
     (description)-[:ENTERED_BY {timestamp: datetime()}]->(person),
@@ -347,18 +356,34 @@ CREATE
 			(characterInstance11)-[:INSTANCE_OF]->(apexAngle),
 			(characterInstance11)-[:HAS_STATE]->(apexAngle_acute)
 
-//Create Specimen node and connect to Description and Organ
+//Create Specimen and OTU nodes. Connect Specimen to OTU and Description
 WITH description
 MATCH
 	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {pbotID: apoc.create.uuid(), name: "YPM PB 028277", locality: "USNM 14066a", preservationMode: "Compression", idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6", pbdbcid: "?", pbdboccid: "?"}),
+    (specimen:Specimen {
+        pbotID: apoc.create.uuid(), 
+        name: "YPM PB 028277", 
+        locality: "USNM 14066a", 
+        preservationMode: "Compression", 
+        idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6", 
+        pbdbcid: "?", 
+        pbdboccid: "?"}),
+    (otu:OTU {
+        pbotID: apoc.create.uuid(),
+		name: "Chaetoptelea microphylla",
+		family: "Ulmaceae",
+		genus: "Chaetoptelea",
+		species: "microphylla"
+    }),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
-    (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(description);
+    (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description),
+    (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu),
+    (specimen)-[:HOLOTYPE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu);
 
 
 //----------------------------- Archeampelos acerifolia -----------------------------------
@@ -412,11 +437,7 @@ MATCH
 CREATE
     (description:Description {
 		pbotID: apoc.create.uuid(),
-		type: "OTU",
-		name: "Archeampelos acerifolia",
-		family: "Vitaceae",
-		genus: "Archeampelos",
-		species: "acerifolia"
+        name: "YPM PB 028277???" 
 	}),
     (description)-[:APPLICATION_OF]->(schema),
     (description)-[:ENTERED_BY {timestamp: datetime()}]->(person),
@@ -534,18 +555,34 @@ CREATE
 			(characterInstance13b)-[:INSTANCE_OF]->(apexAngle),
 			(characterInstance13b)-[:HAS_STATE]->(apexAngle_obtuse)
 
-//Create Specimen node and connect to Description and Organ
+//Create Specimen and OTU nodes. Connect Specimen to OTU and Description
 WITH description
 MATCH
 	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
-    (specimen:Specimen {pbotID: apoc.create.uuid(), name: "YPM PB 028277???", locality: "USNM 14066a", preservationMode: "Compression", idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6???", pbdbcid: "?", pbdboccid: "?"}),
+    (specimen:Specimen {
+        pbotID: apoc.create.uuid(), 
+        name: "YPM PB 028277???", 
+        locality: "USNM 14066a", 
+        preservationMode: "Compression", 
+        idigbiouuid: "8917a8d6-4766-4172-bcf4-10daa6aaa3d6???", 
+        pbdbcid: "?", 
+        pbdboccid: "?"}),
+    (otu:OTU {
+        pbotID: apoc.create.uuid(),
+		name: "Archeampelos acerifolia",
+		family: "Vitaceae",
+		genus: "Archeampelos",
+		species: "acerifolia"
+    }),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-    (Specimen)-[:ELEMENT_OF]->(public),
+    (specimen)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
-    (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(description);
+    (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description),
+    (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu),
+    (specimen)-[:HOLOTYPE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu);
 
 
 //----------------------------------------------------------------------------------------
@@ -593,7 +630,7 @@ MATCH
 CREATE
     (description:Description {
 		pbotID: apoc.create.uuid(),
-		type: "specimen"
+        name: "68"
 	}),
     (description)-[:APPLICATION_OF]->(schema),
     (description)-[:ENTERED_BY {timestamp: datetime()}]->(person),
@@ -682,6 +719,7 @@ CREATE
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description);
 
+/*
 //Test the new specimen Description against existing Descriptions using a Jaccard comparison on the States.
 //Nothing is created here. The OTU and value are used in the next step.
 MATCH
@@ -707,6 +745,7 @@ RETURN specimen.name AS from,
        otuName AS to,
        gds.alpha.similarity.jaccard(fromDescriptionSet, toDescriptionSet) AS similarity
 ORDER BY similarity DESC
+*/
 
 //Add an EXAMPLE_OF relationship between the Specimen and the OTU Description. This can only be done after running the previous
 //comparison function to determine what OTU Description this Specimen best fits. I developed a statement that pipes
@@ -716,20 +755,11 @@ ORDER BY similarity DESC
 MATCH
 	(person:Person {given: "Douglas", surname: "Meredith"}),
 	(specimen:Specimen {name: "68", locality: "EDC1202"}),
-	(description:Description {name: "Cornus hyperborea"})
+	(otu:OTU {name: "Cornus hyperborea"})
 MERGE
-	(specimen)-[ex:EXAMPLE_OF {inferenceMethod: "Jaccard on states present", inferenceValue: 0.47368421052631576, entered_by: person.pbotID}]->(description)
+	(specimen)-[ex:EXAMPLE_OF {inferenceMethod: "Jaccard on states present", inferenceValue: 0.47368421052631576, entered_by: person.pbotID}]->(otu)
 	ON CREATE SET
 		ex.timestamp = datetime();
-
-//Create CANDIDATE_FOR relationships between OTU Descriptions and any CharacterInstance
-//nodes of specimen descriptions that are not represented by CharacterInstance nodes of the OTU Description
-MATCH
-    (otuDescription:Description {type: "OTU"})<-[:EXAMPLE_OF]-(:Specimen)-[:DESCRIBED_BY]->(:Description)-[:DEFINED_BY]->(spCharacterInstance:CharacterInstance)-[:HAS_STATE]->(spState:State)
-WHERE
-    NOT (spState)<-[:HAS_STATE]-(:CharacterInstance)<-[:DEFINED_BY]-(otuDescription)
-MERGE
-    (otuDescription)<-[cf:CANDIDATE_FOR]-(spCharacterInstance);
 
 
 //----------------------------- 77 -----------------------------------
@@ -770,7 +800,7 @@ MATCH
 CREATE
     (description:Description {
 		pbotID: apoc.create.uuid(),
-		type: "specimen"
+        name: "77"
 	}),
     (description)-[:APPLICATION_OF]->(schema),
     (description)-[:ENTERED_BY {timestamp: datetime()}]->(person),
@@ -847,6 +877,7 @@ CREATE
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.pbotID, timestamp: datetime()}]->(description);
 
+/*
 //Test the new specimen Description against existing Descriptions using a Jaccard comparison on the States.
 //Nothing is created here. The OTU and value are used in the next step.
 MATCH
@@ -873,6 +904,7 @@ RETURN specimen.name AS from,
        gds.alpha.similarity.jaccard(fromDescriptionSet, toDescriptionSet) AS similarity
 ORDER BY similarity DESC
 limit 1 as result
+*/
 
 //Add an EXAMPLE_OF relationship between the Specimen and the OTU Description. This can only be done after running the
 //previous comparison function to determine what OTU Description this Specimen best fits. I developed a statement that
@@ -882,17 +914,9 @@ limit 1 as result
 MATCH
 	(person:Person {given: "Douglas", surname: "Meredith"}),
 	(specimen:Specimen {name: "77", locality: "EDC0606"}),
-	(description:Description {name: "Cornus hyperborea"})
+	(otu:OTU {name: "Cornus hyperborea"})
 MERGE
-	(specimen)-[ex:EXAMPLE_OF {inferenceMethod: "Jaccard on states present", inferenceValue: 0.4444444444444444, entered_by: person.pbotID}]->(description)
+	(specimen)-[ex:EXAMPLE_OF {inferenceMethod: "Jaccard on states present", inferenceValue: 0.4444444444444444, entered_by: person.pbotID}]->(otu)
 	ON CREATE SET
 		ex.timestamp = datetime();
 
-//Create CANDIDATE_FOR relationships between OTU Descriptions and any CharacterInstance
-//nodes of specimen descriptions that are not represented by CharacterInstance nodes of the OTU Description
-MATCH
-    (otuDescription:Description {type: "OTU"})<-[:EXAMPLE_OF]-(:Specimen)-[:DESCRIBED_BY]->(:Description)-[:DEFINED_BY]->(spCharacterInstance:CharacterInstance)-[:HAS_STATE]->(spState:State)
-WHERE
-    NOT (spState)<-[:HAS_STATE]-(:CharacterInstance)<-[:DEFINED_BY]-(otuDescription)
-MERGE
-    (otuDescription)<-[cf:CANDIDATE_FOR]-(spCharacterInstance);
