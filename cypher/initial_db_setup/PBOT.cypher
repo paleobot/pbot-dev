@@ -13,10 +13,11 @@ CREATE
 
 //Public group
 CREATE
-    (:Group {
+    (g:Group {
         pbotID: apoc.create.uuid(),
         name: "public"
-    });
+    }),
+    (g)-[:ELEMENT_OF]->(g);
 
 // People/Person/Users are the highest level of independence in the db schema (at least at this moment) so they get created first
 // Should there be a metadata log for who enters the enterers?
