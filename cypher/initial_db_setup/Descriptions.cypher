@@ -7,12 +7,16 @@
 
 //Create Organ node. Use MERGE, as these are reused. This allows queries like "show me all the leaf specimens".
 MATCH
-	(person:Person {given: "Ellen", surname: "Currano"})
+	(person:Person {given: "Ellen", surname: "Currano"}),
+	(public:Group {name: "public"})
 MERGE
-    (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
+    (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person),
+    (organ)-[:ELEMENT_OF]->(public)
     ON CREATE SET
         organ.pbotID = apoc.create.uuid(),
-        entered_by.timestamp = datetime();
+        entered_by.timestamp = datetime()
+MERGE
+    (organ)-[:ELEMENT_OF]->(public);
 
 //Create Description node complex.
 MATCH
@@ -202,8 +206,13 @@ CREATE
 		genus: "Cornus",
 		species: "hyperborea"
     }),
+    (collection:Collection {
+        name: "YPM PB 028288"
+    }),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
+    (specimen)-[:COLLECTED_IN]->(collection),
+    (otu)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu),
@@ -219,7 +228,9 @@ MERGE
     (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
         organ.pbotID = apoc.create.uuid(),
-        entered_by.timestamp = datetime();
+        entered_by.timestamp = datetime()
+MERGE
+    (organ)-[:ELEMENT_OF]->(public);
 
 //Create Description node complex.
 MATCH
@@ -378,8 +389,13 @@ CREATE
 		genus: "Chaetoptelea",
 		species: "microphylla"
     }),
+    (collection:Collection {
+        name: "YPM PB 028277"
+    }),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
+    (specimen)-[:COLLECTED_IN]->(collection),
+    (otu)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu),
@@ -395,7 +411,9 @@ MERGE
     (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
         organ.pbotID = apoc.create.uuid(),
-        entered_by.timestamp = datetime();
+        entered_by.timestamp = datetime()
+MERGE
+    (organ)-[:ELEMENT_OF]->(public);
 
 //Create Description node complex.
 MATCH
@@ -577,8 +595,13 @@ CREATE
 		genus: "Archeampelos",
 		species: "acerifolia"
     }),
+    (collection:Collection {
+        name: "YPM PB 028277???"
+    }),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
+    (specimen)-[:COLLECTED_IN]->(collection),
+    (otu)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu),
@@ -597,7 +620,9 @@ MERGE
     (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
         organ.pbotID = apoc.create.uuid(),
-        entered_by.timestamp = datetime();
+        entered_by.timestamp = datetime()
+MERGE
+    (organ)-[:ELEMENT_OF]->(public);
 
 //Create Description node complex.
 MATCH
@@ -713,9 +738,13 @@ MATCH
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
+    (collection:Collection {
+        name: "68"
+    }),
     (specimen:Specimen {pbotID: apoc.create.uuid(), name: "68", locality: "EDC1202"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
+    (specimen)-[:COLLECTED_IN]->(collection),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description);
 
@@ -771,7 +800,9 @@ MERGE
     (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
         organ.pbotID = apoc.create.uuid(),
-        entered_by.timestamp = datetime();
+        entered_by.timestamp = datetime()
+MERGE
+    (organ)-[:ELEMENT_OF]->(public);
 
 //Create Description node complex.
 MATCH
@@ -871,9 +902,13 @@ MATCH
 	(public:Group {name: "public"}),
 	(organ:Organ {type: "Leaf"})
 CREATE
+    (collection:Collection {
+        name: "77"
+    }),
     (specimen:Specimen {pbotID: apoc.create.uuid(), name: "77", locality: "EDC0606"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
+    (specimen)-[:COLLECTED_IN]->(collection),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.pbotID, timestamp: datetime()}]->(description);
 
