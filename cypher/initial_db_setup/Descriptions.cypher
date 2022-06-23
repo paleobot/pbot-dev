@@ -10,8 +10,7 @@ MATCH
 	(person:Person {given: "Ellen", surname: "Currano"}),
 	(public:Group {name: "public"})
 MERGE
-    (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person),
-    (organ)-[:ELEMENT_OF]->(public)
+    (organ:Organ { type: "Leaf"})-[entered_by:ENTERED_BY]->(person)
     ON CREATE SET
         organ.pbotID = apoc.create.uuid(),
         entered_by.timestamp = datetime()
@@ -207,12 +206,14 @@ CREATE
 		species: "hyperborea"
     }),
     (collection:Collection {
+        pbotID: apoc.create.uuid(),
         name: "YPM PB 028288"
     }),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
     (specimen)-[:COLLECTED_IN]->(collection),
     (otu)-[:ELEMENT_OF]->(public),
+    (collection)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description),
     (specimen)-[:EXAMPLE_OF {entered_by: person.personID, timestamp: datetime()}]->(otu),
@@ -390,11 +391,13 @@ CREATE
 		species: "microphylla"
     }),
     (collection:Collection {
+        pbotID: apoc.create.uuid(),
         name: "YPM PB 028277"
     }),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
     (specimen)-[:COLLECTED_IN]->(collection),
+    (collection)-[:ELEMENT_OF]->(public),
     (otu)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description),
@@ -596,11 +599,13 @@ CREATE
 		species: "acerifolia"
     }),
     (collection:Collection {
+        pbotID: apoc.create.uuid(),
         name: "YPM PB 028277???"
     }),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
     (specimen)-[:COLLECTED_IN]->(collection),
+    (collection)-[:ELEMENT_OF]->(public),
     (otu)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description),
@@ -739,12 +744,14 @@ MATCH
 	(organ:Organ {type: "Leaf"})
 CREATE
     (collection:Collection {
+        pbotID: apoc.create.uuid(),
         name: "68"
     }),
     (specimen:Specimen {pbotID: apoc.create.uuid(), name: "68", locality: "EDC1202"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
     (specimen)-[:COLLECTED_IN]->(collection),
+    (collection)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.personID, timestamp: datetime()}]->(description);
 
@@ -903,12 +910,14 @@ MATCH
 	(organ:Organ {type: "Leaf"})
 CREATE
     (collection:Collection {
+        pbotID: apoc.create.uuid(),
         name: "77"
     }),
     (specimen:Specimen {pbotID: apoc.create.uuid(), name: "77", locality: "EDC0606"}),
     (specimen)-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (specimen)-[:ELEMENT_OF]->(public),
     (specimen)-[:COLLECTED_IN]->(collection),
+    (collection)-[:ELEMENT_OF]->(public),
     (specimen)-[:IS_TYPE]->(organ),
     (specimen)-[:DESCRIBED_BY {entered_by: person.pbotID, timestamp: datetime()}]->(description);
 
