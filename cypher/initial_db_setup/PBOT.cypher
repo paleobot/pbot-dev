@@ -199,7 +199,8 @@ WITH admin, user, public
         surname: "Uhen",
         email: "muhen@gmu.edu",
         orcid: "0000-0002-2689-0801"
-    });
+    })-[:MEMBER_OF]->(public),
+    (p)-[:HAS_ROLE]->(user);
     
     
 MATCH 
