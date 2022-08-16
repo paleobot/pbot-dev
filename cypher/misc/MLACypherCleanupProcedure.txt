@@ -1,4 +1,5 @@
-Ran the following on Claire's MLA code.
+Ran the following on Claire's MLA code. 
+(note: The Kate editor is unable to handle the non-greedy operator (?). Do not run these in Kate.)
 
 1) Cut ref and schema creation section out and paste in temp tab.
 
