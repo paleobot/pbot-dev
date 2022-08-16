@@ -1,0 +1,21 @@
+Ran the following on Claire's MLA code.
+
+1) Cut ref and schema creation section out and paste in temp tab.
+
+2)	Add semicolons after each statement
+    \(person\)$
+	\(person\);
+	
+3)	Add Group relationship to every node
+    ((\(.*?\))-\[\:ENTERED_BY.*?]->\(.*?\)(,|;)$)
+	\1\n\2-[:ELEMENT_OF]->\(public\)\3
+	
+4)	Convert non-terminal semicolon to comma
+    \(person\);
+	\(person\),
+
+5)	Add public Group to MATCH
+    (\(.*?\}\),)
+	\1 \(public\:Group \{name: "public"\}\),
+	
+6)  Fix ref and schema creation code (add authors, missing data, and Group membership) and paste back into file
