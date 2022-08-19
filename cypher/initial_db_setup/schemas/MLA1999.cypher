@@ -22,7 +22,7 @@ UNWIND [{lastname: "Ash", order: 1},
 		{lastname: "Johnson", order: 5},
 		{lastname: "Wilf", order: 6}] as author
 MATCH (person:Person {surname: author.lastname}), (reference:Reference {publisher: "Smithsonian Institution"})
-CREATE (reference)-[:AUTHORED_BY {order: author.order}]->(person),
+CREATE (reference)-[:AUTHORED_BY {order: author.order}]->(person);
     
 //create schema
 MATCH 
@@ -44,14 +44,14 @@ UNWIND [{lastname: "Ash", order: 1},
 		{lastname: "Johnson", order: 5},
 		{lastname: "Wilf", order: 6}] as author
 MATCH (person:Person {surname: author.lastname}), (schema:Schema {title: "Smithsonian, 1999"})
-CREATE (schema)-[:AUTHORED_BY {order: author.order}]->(person),
+CREATE (schema)-[:AUTHORED_BY {order: author.order}]->(person);
 
 //create relationship reference cited by schema
 MATCH 
     (schema:Schema {title: "Smithsonian MLA"}), 
     (reference:Reference {publisher: "Smithsonian Institution"})
 CREATE 
-    (reference)-[:CITED_BY]->(schema)
+    (reference)-[:CITED_BY]->(schema);
 
 
 //create character, states, substates with relationship(s) to schema

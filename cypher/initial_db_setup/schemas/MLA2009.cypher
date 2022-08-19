@@ -16,7 +16,7 @@ CREATE
     })-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (ref)-[:ELEMENT_OF]->(public);
 
-// Assign authors to the Smithsonian (1999) reference
+// Assign authors 
 UNWIND [{lastname: "Ellis", order: 1},
 		{lastname: "Wing", order: 2},
 		{lastname: "Hickey", order: 3},
@@ -25,18 +25,16 @@ UNWIND [{lastname: "Ellis", order: 1},
 		{lastname: "Mitchell", order: 6},
 		{lastname: "Daly", order: 7}] as author
 MATCH (person:Person {surname: author.lastname}), (reference:Reference {publisher: "Cornell University Press"})
-CREATE (reference)-[:AUTHORED_BY {order: author.order}]->(person),
+CREATE (reference)-[:AUTHORED_BY {order: author.order}]->(person);
 
 //create schema
-MATCH (person:Person {given: "Claire", surname: "Cleveland"})
-CREATE (:Schema {pbotID: apoc.create.uuid(), title: "Cornell MLA", year: "2009"})-[:ENTERED_BY {timestamp: datetime()}]->(person)
 MATCH 
     (person:Person {given: "Claire", surname: "Cleveland"}),
     (public:Group {name: "public"})
 CREATE 
     (schema:Schema {
         pbotID: apoc.create.uuid(), 
-        title: "Cornell, 2009",
+        title: "Cornell MLA",
         year: "2009"
     })-[:ENTERED_BY {timestamp: datetime()}]->(person),
     (schema)-[:ELEMENT_OF]->(public);
@@ -54,7 +52,7 @@ CREATE (schema)-[:AUTHORED_BY {order: author.order}]->(person);
     
 //create relationship reference cited by schema
 MATCH (schema:Schema {title: "Cornell MLA"}), (reference:Reference {publisher: "Cornell University Press"})
-CREATE (reference)-[:CITED_BY]->(schema)
+CREATE (reference)-[:CITED_BY]->(schema);
 
 
 //create character, states, substates with relationship(s) to schema
@@ -144,7 +142,7 @@ CREATE
 (state222)-[:ELEMENT_OF]->(public),
 (state223:State {pbotID: apoc.create.uuid(), name: "thrice, or tripinnately compound", definition: "leaflets are attached to secondary rachillae that in turn attached to rachillae, which are borne along the rachis"})-[:STATE_OF]->(state22),
 (state223)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-(state223)-[:ELEMENT_OF]->(public),
+(state223)-[:ELEMENT_OF]->(public);
 
 //Character 4
 MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (public:Group {name: "public"}), (schema:Schema {title: "Cornell MLA"})
@@ -418,9 +416,9 @@ CREATE
 (state22:State {pbotID: apoc.create.uuid(), name: "involute", definition: "margin is turned up or rolled in the adaxial direction"})-[:STATE_OF]->(state2),
 (state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 (state22)-[:ELEMENT_OF]->(public),
-(state22:State {pbotID: apoc.create.uuid(), name: "revolute", definition: "margin is turned down or rolled (in the manner of a scroll) in the abaxial direction"})-[:STATE_OF]->(state2),
-(state22)-[:ENTERED_BY {timestamp: datetime()}]->(person),
-(state22)-[:ELEMENT_OF]->(public);
+(state23:State {pbotID: apoc.create.uuid(), name: "revolute", definition: "margin is turned down or rolled (in the manner of a scroll) in the abaxial direction"})-[:STATE_OF]->(state2),
+(state23)-[:ENTERED_BY {timestamp: datetime()}]->(person),
+(state23)-[:ELEMENT_OF]->(public);
 
 //Character 16
 MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (public:Group {name: "public"}), (schema:Schema {title: "Cornell MLA"})
@@ -1174,7 +1172,7 @@ CREATE
 (character:Character {pbotID: apoc.create.uuid(), name: "Freely Ending Veinlets (FEVs)", definition: "highest-order veins that freely ramify"})-[:CHARACTER_OF]->(schema),
 (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 (character)-[:ELEMENT_OF]->(public),
-(state1:State {pbotID: apoc.create.uuid(), name: "FEV terminals"})-[STATE_OF]->(character),
+(state1:State {pbotID: apoc.create.uuid(), name: "FEV terminals"})-[:STATE_OF]->(character),
 (state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 (state1)-[:ELEMENT_OF]->(public),
 (state11:State {pbotID: apoc.create.uuid(), name: "highly branched sclerids", definition: "FEVs branch densely (10+) out of the plane of the veins; the finer branches often stain differently because they are sclerids, not tracheids"})-[:STATE_OF]->(state1),
@@ -1214,7 +1212,7 @@ CREATE
 (character:Character {pbotID: apoc.create.uuid(), name: "Marginal Ultimate Venation", definition: "configuration of the highest-order veins at the margin"})-[:CHARACTER_OF]->(schema),
 (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 (character)-[:ELEMENT_OF]->(public),
-(state1:State {pbotID: apoc.create.uuid(), name: "incomplete", definition: "marginal ultimate veins recurve to form incomplete loops"})-[STATE_OF]->(character),
+(state1:State {pbotID: apoc.create.uuid(), name: "incomplete", definition: "marginal ultimate veins recurve to form incomplete loops"})-[:STATE_OF]->(character),
 (state1)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 (state1)-[:ELEMENT_OF]->(public),
 (state2:State {pbotID: apoc.create.uuid(), name: "looped", definition: "marginal ultimate veins recurved to form loops"})-[:STATE_OF]->(character),
