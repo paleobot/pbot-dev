@@ -285,7 +285,7 @@ CREATE
 //Character 10
 MATCH (person:Person {given: "Claire", surname: "Cleveland"}), (public:Group {name: "public"}), (schema:Schema {title: "Cornell MLA"})
 CREATE
-(character:Character {pbotID: apoc.create.uuid(), name: "Laminar Shape (in compound leaves, this applies to the shape of the leaflets)", definition: "to determine the shape of the lamina, locate the midvein and determine the zone of greatest width measured perpendicular to the midvein"})-[:CHARACTER_OF]->(schema),
+(character:Character {pbotID: apoc.create.uuid(), name: "Laminar Shape", definition: "to determine the shape of the lamina, locate the midvein and determine the zone of greatest width measured perpendicular to the midvein (in compound leaves, this applies to the shape of the leaflets)"})-[:CHARACTER_OF]->(schema),
 (character)-[:ENTERED_BY {timestamp: datetime()}]->(person),
 (character)-[:ELEMENT_OF]->(public),
 (state1:State {pbotID: apoc.create.uuid(), name: "elliptic", definition: "the widest part of the leaf is in the middle one-fifth"})-[:STATE_OF]->(character),
