@@ -36,9 +36,9 @@ Show Character and states/substates for Characters with substates, separated by 
 
 Show OTU complex:
 	MATCH
-		(otu:OTU {name: 'Cornus hyperborea'})-[defined_by:DEFINED_BY]->(characterInstance:CharacterInstance)-[instanceOf:INSTANCE_OF]->(character:Character), (ci)-[hasState:HAS_STATE]->(state:State)
+		(otu:OTU {name: 'Cornus hyperborea'})<-[htype:HOLOTYPE_OF]-(specimen:Specimen)-[dby:DESCRIBED_BY]->(description:Description)-[defined_by:DEFINED_BY]->(characterInstance:CharacterInstance)-[instanceOf:INSTANCE_OF]->(character:Character), (ci)-[hasState:HAS_STATE]->(state:State)
 	RETURN
-		otu, defined_by, characterInstance, instanceOf, character, hasState, state
+		otu, htype, specimen, dby, description, defined_by, characterInstance, instanceOf, character, hasState, state
 
 	MATCH
 		(otu:OTU {name: 'Archeampelos acerifolia'})-[defined_by:DEFINED_BY]->(characterInstance:CharacterInstance)-[instanceOf:INSTANCE_OF]->(character:Character), (characterInstance)-[hasState:HAS_STATE]->(state:State)
