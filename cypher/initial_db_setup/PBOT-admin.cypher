@@ -176,7 +176,6 @@ WITH admin, user, public
         orcid: "0000-0001-5601-6632"
     })-[:MEMBER_OF]->(public),
     (p)-[:HAS_ROLE]->(user),
-    (p)-[:HAS_ROLE]->(admin)
 WITH admin, user, public
     CREATE
     (p:Person {
