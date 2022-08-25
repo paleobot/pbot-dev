@@ -175,7 +175,7 @@ WITH admin, user, public
         email: "rebecca.koll@perotmuseum.org",
         orcid: "0000-0001-5601-6632"
     })-[:MEMBER_OF]->(public),
-    (p)-[:HAS_ROLE]->(user),
+    (p)-[:HAS_ROLE]->(user)
 WITH admin, user, public
     CREATE
     (p:Person {
