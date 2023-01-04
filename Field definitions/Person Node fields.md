@@ -1,4 +1,4 @@
-# User-entry fields for Person Nodes
+# User-entry fields for Person Nodes + Registration Information
 
 ## Structure of the info in this doc:
 Because thinking through Person Nodes also required us to think through User Registration information, this document includes sections for each of these. Person Nodes include both users and authors, so the amount of information to create a person node will be minimal (remember, long deceased authors). More information will be required for user registration, though. When a user registers, a person node will automatically be created, or updated. 
@@ -21,7 +21,7 @@ Fields are divided into **Required Fields**, which users must enter when they cr
 * Entry type: free text
 * Considerations: We need to make sure that duplicate entries are not being created. Important for inclusivity to accommodate accent marks and basic non-English characters (examples: ä  æ  ç   ñ). We need to provide instructions on whether extra parts of a name (e.g. III, Jr.) also get included here.
  
-### Given Name:
+### Given name:
 * PBot: given: [given]
 * dwc:
 * Info: Given name of the person. If the given name is unknown, you may enter an initial only.
@@ -29,14 +29,14 @@ Fields are divided into **Required Fields**, which users must enter when they cr
 * Considerations: Encourage middle initials to be able to easily differentiate among people? Do we need to worry about this? Do we need middle initials to be able to properly enter references?
  
 ## Optional fields:
-### Middle Name / Middle Initial:
+### Middle name / Middle initial:
 * PBot: 
 * dwc:
 * Info: Middle name or initial of the person
 * Entry type: free text
 * Considerations: Not everyone has a middle name, so must be optional. But, obviously will be wanted for references.
 
-### Email Address:
+### Email address:
 * PBot: email: [email]
 * dwc:
 * Info: Email address of the person.
@@ -89,21 +89,21 @@ Considerations: I believe we landed on that some groups can be private. So, only
 * Entry type: free text
 * Considerations: We need to make sure that duplicate entries are not being created. Important for inclusivity to accommodate accent marks and basic non-English characters (examples: ä  æ  ç   ñ). We need to provide instructions on whether extra parts of a name (e.g. III, Jr.) also get included here.
  
-### Given Name:
+### Given name:
 * PBot: given: [given]
 * dwc:
 * Info: Your given name
 * Entry type: free text
 * Considerations:
 
-### Email Address:
+### Email address:
 * PBot: email: [email]
 * dwc:
 * Info: Your current email address
 * Entry type: free text
 * Considerations: are all email addresses publicly accessible?
 
-### Why do you want a PBot Account?:
+### Why do you want a PBot account?:
 * PBot: 
 * dwc:
 * Info: To make sure that we are not being hijacked by bots or trolls, we should have a very basic question about why people want access. This will then need to be approved by the PBot ExCom.
@@ -119,14 +119,14 @@ Considerations: I believe we landed on that some groups can be private. So, only
 * Entry type: free text
 * Considerations: probably beyond our means, but might it be possible to validate the ORCID? This needs to be kept optional (but strongly encouraged) since the amateur community is not like to have an ORCID.
 
-### Middle Name / Middle Initial:
+### Middle name / Middle initial:
 * PBot: 
 * dwc:
 * Info: Your middle name or initial
 * Entry type: free text
 * Considerations: Some people feel strongly about this, so we can have it but be optional
 
-### Short Bio
+### Short biography
 * PBot: 
 * dwc:
 * Info: Introduce yourself to the community with a short (less than three sentence) bio. Suggested content: Career stage, affiliation, paleobotanical interests & expertise
