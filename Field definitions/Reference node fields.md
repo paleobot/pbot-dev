@@ -25,19 +25,12 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 * Entry type: Four digit numeric entry
 * Considerations: 
 
-### Author1 given name: 
-* PBot: author1GivenName (suggested)
+### First author: 
+* PBot: 
 * dwc: 
-* Info: PBDB Tips: This is a required field except when entering institutions or anonymous authors. PBot will ask users to write out the name in full.
-* Entry type: string
-* Considerations: 
-
-### Author1 surname: 
-* PBot: author1Surname (suggested)
-* dwc: 
-* Info: PBDB Tips: This is a required field. The value anon. Or anonymous can be used for unknown author(s). Hyphenated names are OK, as are spaces separating parts of multi-word names like “van Rign.”
-* Entry type: string
-* Considerations: Will need to allow for special characters.
+* Info: 
+* Entry type: select person node- possible to start typing and then have auto-fill-in? Needs to be an easy way to accommodate adding a new person node if there is not already one created.
+* Considerations: Note that we would want to have an "Anonymous person node"
 
 ### First page number: 
 * PBot: TBD
@@ -63,33 +56,25 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 ### Publication type: 
 * PBot: TBD
 * dwc: 
-* Info: PBDB options: journal article, book, book chapter, book/book chapter, serial monograph, compendium, Ph.D. thesis, M.S. thesis, abstract, guidebook, news article, unpublished, instcoll
-* PBDB Tips: Choose the closest possible value. “Unpublished” includes field notes, manuscripts, undergraduate theses, etc.; “guidebook” includes individual articles in guidebooks. 
-* Entry type: dropdown menu
+* Info: PBDB Tips: Choose the closest possible value. “Unpublished” includes field notes, manuscripts, undergraduate theses, etc.; “guidebook” includes individual articles in guidebooks. 
+* Entry type: dropdown menu. Options: journal article, book, book chapter, book/book chapter, serial monograph, compendium, Ph.D. thesis, M.S. thesis, abstract, guidebook, news article, unpublished, instcoll
 * Considerations: Need to figure out what instcoll means. Also, we should talk through how this works with our private workbenches. Will it be easy to have one “Ellen’s unpublished work” that gets tagged for everything on my private workbench and then when it is time to make the collection/OTU/etc. public, I just make the new reference and replace? I think so…
 
 ## Optional fields:
 
-### Author2 given name: 
-* PBot: author2GivenName (suggested)
+### Second author: 
+* PBot: 
 * dwc: 
-* Info: PBot will ask users to write out the name in full, although PBDB only asks for initials. 
-* Entry type: string
+* Info:  
+* Entry type: select person node- possible to start typing and then have auto-fill-in? Needs to be an easy way to accommodate adding a new person node if there is not already one created.
 * Considerations: PBDB does not require for single-author papers, but does for papers with more than one author- hence this being under optional. See longer comment under Other Authors. Do we include second author as separate entity or just incorporate into “Otherauthors” comment field? 
-
-### Author2 surname: 
-* PBot: author2SurName (suggested)
-* dwc: 
-* Info: Second author's surname.
-* Entry type: string
-* Considerations: PBDB does not require for single-author papers, but does for papers with more than one author. See longer comment under Other Authors. Do we include second author as separate entity or just incorporate into “Otherauthors” comment field? Will need to allow for special characters.
 
 ### Other authors: 
 * PBot: otherAuthors (suggested)
 * dwc: 
 * Info: PBDB Tips: List the third, fourth, fifth, etc. authors in order, initials first. Comma separators are optional. The word “and” before the last author is optional and not recommended. PBot may want to consider whether or not asking for first name to be spelled out is beneficial. Also, if the format used here is suitable for parsing into other formats for reports etc. 
 * Entry type: string
-* Considerations: Do we want to enter all authors individually and have PBot string them together before sending them to PBDB? Mark thinks this is ideal, if we can swing it, but this would mean a LOT of entry fields. Alternatively, could we have just one field where all authors are typed in and then PBot can isolate the first and second author information and send to PBDB. PBDB has fields for first author initials and last name, second author initials and last name, and then Initials and names of additional authors (one field; separate the names with commas).
+* Considerations: This will be the fastest for data entry, and we are not looking to be able to provide complete bibliographies or to be a reference manager (e.g., find everything that Ellen Currano is an author on). First author, title, and year will be sufficient to create unique references. 
 
 ### Serial name: 
 * PBot: TBD
@@ -105,7 +90,7 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 * Entry type: string
 * Considerations: This is only relevant to journal articles, and should be strongly encouraged.
 
-### Editors: 
+### Editor(s): 
 * PBot: TBD
 * dwc: the 
 * Info: For edited books, only.
@@ -119,7 +104,7 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 * Entry type: string
 * Considerations: Not required by PBDB
 
-### City where published: 
+### City of publication: 
 * PBot: TBD
 * dwc: 
 * Info: Only enter for books: the city where the book was published. 
