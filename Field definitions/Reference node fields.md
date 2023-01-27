@@ -26,7 +26,7 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 * Considerations: 
 
 ### First author: 
-* PBot: 
+* PBot: create a relationship with one person node.
 * dwc: 
 * Info: 
 * Entry type: select person node- possible to start typing and then have auto-fill-in? Needs to be an easy way to accommodate adding a new person node if there is not already one created.
@@ -63,7 +63,7 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 ## Optional fields:
 
 ### Second author: 
-* PBot: 
+* PBot: create a relationship with one person node
 * dwc: 
 * Info:  
 * Entry type: select person node- possible to start typing and then have auto-fill-in? Needs to be an easy way to accommodate adding a new person node if there is not already one created.
