@@ -85,8 +85,8 @@ general faunal/floral means there is no detailed discussion of the age, environm
 * Entry type: Yes / No
 * Considerations: Andrew included this field: "Protected -- Boolean". PBDB does not require it to be entered. Mark says: "This has been hacked in by Shanan."
 
-##Recommended fields:
-###Paleobiology Database Link 
+## Recommended fields:
+### Paleobiology Database Link 
 * PBot:
 * dwc:
 * Info: Link to an equivalent PBDB collection
@@ -122,19 +122,55 @@ basin: from any area > 100 x 100 km
 * PBot:
 * dwc:
 * Info: Numeric age if associated with specific geochron measurement.
-* Entry: PBDB has a box for date, a Plus/minus error box, and then drop-down for Ma, Ka, or YBP. Big list of methods, including Ar/Ar, astronomical, 14C, 14C (calibrated), dendrochronology, ESR, fission track, K-Ar, Lu-Hf, paleomagnetic, Rb-Sr, Sr isotope, U/Pb, U/Th, age-depth, AEO, CONOP, graphic correlation, RASC, seriation, UA, other, unknown.
-* Considerations: Should we reduce the PBDB options, especially given that we have the "other" option. I think Sr isotopes are mostly used in marine records, for instance.
+* Entry: Free text, numeric; PBDB has a box for date and a second box for Plus/minus error, and then a drop-down menu with options: Ma, Ka, YBP
+* Considerations: We are not trying to be all-inclusive, and getting people to enter data is always a problem. So, we are simplifying and not asking for the method of dating.
 
 ### Numeric maximum age: 
 * PBot:
 * dwc:
-* Info: Age in Myrs if associated with specific geochron measurement. These should not be filled in if a collection can only be assigned to a Period, Epoch, Age, or Series.
-* Entry: PBDB has a box for date, a Plus/minus error box, and then drop-down for Ma, Ka, or YBP. Big list of methods, including Ar/Ar, astronomical, 14C, 14C (calibrated), dendrochronology, ESR, fission track, K-Ar, Lu-Hf, paleomagnetic, Rb-Sr, Sr isotope, U/Pb, U/Th, age-depth, AEO, CONOP, graphic correlation, RASC, seriation, UA, other, unknown.
-* Considerations: PBDB has Max date and method. Has a box for date, a Plus/minus error box, and then drop-down for Ma, Ka, or YBP. Big list of methods.
+* Info: Maximum numeric age if associated with specific geochron measurement. if associated with specific geochron measurement. These should not be filled in if a collection can only be assigned to a Period, Epoch, Age, or Series.
+* Entry: Free text, numeric; PBDB has a box for date and a second box for Plus/minus error, and then a drop-down menu with options: Ma, Ka, YBP
+* Considerations: We are not trying to be all-inclusive, and getting people to enter data is always a problem. So, we are simplifying and not asking for the method of dating.
 
 ### Numeric minimum age:
 * PBot:
 * dwc:
 * Info: Minimum numeric age if associated with specific geochron measurement. These should not be filled in if a collection can only be assigned to a Period, Epoch, Age, or Series.
-* Entry: PBDB has a box for date, a Plus/minus error box, and then drop-down for Ma, Ka, or YBP. Big list of methods, including Ar/Ar, astronomical, 14C, 14C (calibrated), dendrochronology, ESR, fission track, K-Ar, Lu-Hf, paleomagnetic, Rb-Sr, Sr isotope, U/Pb, U/Th, age-depth, AEO, CONOP, graphic correlation, RASC, seriation, UA, other, unknown.
-* Considerations: PBDB has Max date and method. Has a box for date, a Plus/minus error box, and then drop-down for Ma, Ka, or YBP. Big list of methods.
+* Entry: Free text, numeric; PBDB has a box for date and a second box for Plus/minus error, and then a drop-down menu with options: Ma, Ka, YBP
+* Considerations: We are not trying to be all-inclusive, and getting people to enter data is always a problem. So, we are simplifying and not asking for the method of dating.
+
+### Geologic Group
+* PBot:
+* dwc:group http://rs.tdwg.org/dwc/terms/group
+* Info: The full name of the lithostratigraphic group from which the cataloged item was collected. Important: Do not put the term “group.” in this field.
+* Entry type: free text
+* Considerations: I prefaced all of the stratigraphic information with “Geologic” since we have other “Groups” and “Members” in PBot.
+
+### Geologic Formation
+* PBot:
+* dwc:formation http://rs.tdwg.org/dwc/terms/formation
+* Info: The full name of the lithostratigraphic formation from which the cataloged item was collected. Important: Do not put the term “formation” or “fm.” in this field.
+* Entry type: free text
+* Considerations:
+
+### Geologic Member
+* PBot:
+* dwc:member http://rs.tdwg.org/dwc/terms/member
+* Info: The full name of the lithostratigraphic member from which the cataloged item was collected. Important: Do not put the term “member” or “mbr.” in this field.
+* Entry type: free text
+* Considerations:
+
+### Geologic Bed
+* PBot:
+* dwc:bed http://rs.tdwg.org/dwc/terms/bed
+* Info: The full name of the lithostratigraphic bed from which the cataloged item was collected.
+* Entry type: free text
+* Considerations:
+
+### Environment
+PBot:
+Dwc:
+Info: The paleoenvironment interpretation. From PBDB: Select the most exact environmental category you can figure out. Each section of the pulldown includes some generalized "indet." terms that you should use only if a more precise determination is not possible. Full details from the Paleobiology Database are at: https://paleobiodb.org/public/tips/environtips.html.
+Entry type: drop-down menu with PBDB selections: terrestrial indet., fluvial-lacustrine indet., fluvial indet., alluvial fan, channel lag, “channel”, “floodplain”, crevasse splay, levee, mire/swamp, delta plain, lacustrine indet, lacustrine - large, lacustrine - small, pond, crater lake, lacustrine prodelta, dune, interdune, loess, eolian indet, cave, sinkhole, tar, glacial, coastal indet., estuary/bay, lagoonal, paralic indet., interdistributary bay, delta front, prodelta, deltaic indet., marine indet., marginal marine indet., deep-water indet.
+Considerations:  This should map to the PBDB “Environment” field. Ellen reduced the number of choices, given where plant fossils are typically found.
+
