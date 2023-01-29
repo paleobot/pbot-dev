@@ -114,7 +114,7 @@ mold means a 3D fossil that is a negative image of the original.
 
 
 ## Recommended fields:
-### Paleobiology Database Link 
+### Paleobiology Database link 
 * PBot:
 * dwc:
 * Info: Link to an equivalent PBDB collection
