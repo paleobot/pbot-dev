@@ -26,13 +26,13 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 
 ### Data access group 
 * PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Creates a relationship with PBot groups.
-dwc: not relevant. This is PBot internal relating to who can access these records.
-Info: Defines who has access to view and edit the record.
-Entry type: multi-select from the users groups (i.e. projects) and the option Public
-Considerations: This is for internal PBot use only. Does not need to pipe to PBDB. 
+* dwc: not relevant. This is PBot internal relating to who can access these records.
+* Info: Defines who has access to view and edit the record.
+* Entry type: multi-select from the users groups (i.e. projects) and the option Public
+* Considerations: This is for internal PBot use only. Does not need to pipe to PBDB. 
 
 ### Country
-*PBot:
+* PBot:
 * dwc:
 * Info: 
 * Entry type: dropdown menu with all the countries in the world as options (PBDB has this- easy to find?)
