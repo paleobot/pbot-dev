@@ -113,7 +113,7 @@ mold means a 3D fossil that is a negative image of the original.
 * Considerations: Note that Ellen reduced PBDB choices to what PBot users are likely to choose. But really, I only got rid of the reef-type carbonate rocks. Is that ok with everyone? Also, we are getting rid of the other three pull-down menus PBDB had (lithification level, secondary lithology, tertiary lithology).
 
 
-## Not required fields:
+## Not required (but recommended) fields:
 ### Paleobiology Database link 
 * PBot:
 * dwc:
