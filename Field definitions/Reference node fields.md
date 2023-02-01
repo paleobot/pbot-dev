@@ -11,49 +11,49 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 
 ## Required fields:
 
-### Reference title: 
+### Reference title 
 * PBot: TBD
 * dwc: 
 * Info: The source (article/book chapter/ book if the entirety is being referenced as opposed to a chapter in a book) title. PBDB Tips: Type in the entire title and do not use abbreviations. Use of colons and semi-colons is OK. If the title is not in English, enter the original title first, and then enter an English-language translation in brackets. For a thesis, enter only the name of the institution (e.g., “University of Saskatchewan”)
 * Entry type: string
 * Considerations: 
 
-### Publication year: 
+### Publication year 
 * PBot: TBD
 * dwc: 
 * Info: PBDB Tips: This is a required field. Use that actual date of publication, if available, not the nominal year of publication for the volume.
 * Entry type: Four digit numeric entry
 * Considerations: 
 
-### First author: 
+### First author 
 * PBot: create a relationship with one person node.
 * dwc: 
 * Info: 
 * Entry type: select person node- possible to start typing and then have auto-fill-in? Needs to be an easy way to accommodate adding a new person node if there is not already one created.
 * Considerations: Note that we would want to have an "Anonymous person node"
 
-### First page number: 
+### First page number 
 * PBot: TBD
 * dwc: 
 * Info: PBDB Tips: This is a required field. Do NOT add a hyphen after the page number: this will be done automatically by the data entry processing program. If you are citing an entire book, put “1” here and the total number of pages in the last page field. If the pages are numbered with combinations of numbers and letters (e.g., “A-32) put everything in and do not strip the letters.
 * Entry type: string
 * Considerations: 
 
-### Last page number: 
+### Last page number 
 * PBot: TBD
 * dwc: 
 * Info: PBDB Tips: This is a required field. Do NOT add a hyphen before the page number: this will be done automatically by the data entry processing program. If you are citing an entire book, put “1” in the first page field and the total number of pages here. If the pages are numbered with combinations of numbers and letters (e.g., “A-32) put everything in and do not strip the letters.
 * Entry type: string
 * Considerations: 
 
-### DOI: 
+### DOI 
 * PBot: TBD
 * dwc: 
 * Info: 
 * Entry type: string
 * Considerations: Probably not possible, but it would be amazing if you could just type in the DOI and get other things to auto-populate. Not required by PBDB.
 
-### Publication type: 
+### Publication type 
 * PBot: TBD
 * dwc: 
 * Info: PBDB Tips: Choose the closest possible value. “Unpublished” includes field notes, manuscripts, undergraduate theses, etc.; “guidebook” includes individual articles in guidebooks. 
@@ -62,56 +62,56 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 
 ## Optional fields:
 
-### Second author: 
+### Second author 
 * PBot: create a relationship with one person node
 * dwc: 
 * Info:  
 * Entry type: select person node- possible to start typing and then have auto-fill-in? Needs to be an easy way to accommodate adding a new person node if there is not already one created.
 * Considerations: PBDB does not require for single-author papers, but does for papers with more than one author- hence this being under optional. See longer comment under Other Authors. Do we include second author as separate entity or just incorporate into “Otherauthors” comment field? 
 
-### Other authors: 
+### Other authors 
 * PBot: otherAuthors (suggested)
 * dwc: 
 * Info: PBDB Tips: List the third, fourth, fifth, etc. authors in order, initials first. Comma separators are optional. The word “and” before the last author is optional and not recommended. PBot may want to consider whether or not asking for first name to be spelled out is beneficial. Also, if the format used here is suitable for parsing into other formats for reports etc. 
 * Entry type: string
 * Considerations: This will be the fastest for data entry, and we are not looking to be able to provide complete bibliographies or to be a reference manager (e.g., find everything that Ellen Currano is an author on). First author, title, and year will be sufficient to create unique references. 
 
-### Serial name: 
+### Serial name 
 * PBot: TBD
 * dwc: 
 * Info: Full name of the serial (e.g., journal, edited book). PBDB Tips: none provided, but looking at download, all titles are written out in full, no abbreviations. 
 * Entry type: string
 * Considerations: This needs to be optional rather than required since books, guidebooks, etc. would not have anything to put here. However, it needs to be strongly recommended!
 
-### Publication volume: 
+### Publication volume 
 * PBot: TBD
 * dwc: 
 * Info: Journal volume number
 * Entry type: string
 * Considerations: This is only relevant to journal articles, and should be strongly encouraged.
 
-### Editor(s): 
+### Editor(s) 
 * PBot: TBD
 * dwc: the 
 * Info: For edited books, only.
 * Entry type: string
 * Considerations: Rarely recorded in PBDB.
 
-### Publisher:
+### Publisher
 * PBot: TBD
 * dwc: 
 * Info: Only for books: the publisher
 * Entry type: string
 * Considerations: Not required by PBDB
 
-### City of publication: 
+### City of publication 
 * PBot: TBD
 * dwc: 
 * Info: Only enter for books: the city where the book was published. 
 * Entry type: string
 * Considerations: Not required by PBDB
 
-### Notes:
+### Notes
 * PBot: TBD
 * dwc: 
 * Info: Place for the user to enter any additional notes they have about a reference.
@@ -120,7 +120,7 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 
 ## Fields auto-generated by PBot/PBDB:
 
-### PBDB_Reference_no
+### PBDB reference number
 * PBDB: Reference_no
 * dwc:  NA
 * Info: Internal unique identifier in the PBot database. 
