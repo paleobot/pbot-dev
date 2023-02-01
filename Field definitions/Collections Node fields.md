@@ -141,7 +141,7 @@ basin: from any area > 100 x 100 km
 ### Location details
 * PBot:
 * dwc:
-* Info: Provide any additional information that you think is important with respect to the geographic location of the collection. Do not put museum collection numbers or alternative locality names here; put them in the "Also known as" field. A large-scale map shows a small land area in great detail.
+* Info: Provide any additional information that you think is important with respect to the geographic location of the collection. A large-scale map shows a small land area in great detail.
 * Entry type: free text
 * Considerations: Info copied from PBDB
 
