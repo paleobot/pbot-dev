@@ -11,7 +11,7 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 
 ## Required fields:
 
-### Reference title 
+### Title 
 * PBot: TBD
 * dwc: 
 * Info: The source (article/book chapter/ book if the entirety is being referenced as opposed to a chapter in a book) title. PBDB Tips: Type in the entire title and do not use abbreviations. Use of colons and semi-colons is OK. If the title is not in English, enter the original title first, and then enter an English-language translation in brackets. For a thesis, enter only the name of the institution (e.g., “University of Saskatchewan”)
@@ -25,12 +25,12 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 * Entry type: Four digit numeric entry
 * Considerations: 
 
-### First author 
+### Authors
 * PBot: create a relationship with one person node.
 * dwc: 
 * Info: 
-* Entry type: select person node- possible to start typing and then have auto-fill-in? Needs to be an easy way to accommodate adding a new person node if there is not already one created.
-* Considerations: Note that we would want to have an "Anonymous person node"
+* Entry type: select person node- possible to start typing and then have auto-fill-in? Also choose the order for the authors. The way it is online as of 1/31/23, with easy add button to get additional authors.
+* Considerations: Note that we would want to have an "Anonymous person node". Needs to be an easy way to accommodate adding a new person node if there is not already one created. Note for PBDB interface that PBDB has fields: First author initials, First author last name, Second author initials, second author last name, Initials and names of additional authors (separate the names with commas).
 
 ### First page number 
 * PBot: TBD
@@ -61,20 +61,6 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 * Considerations: Need to figure out what instcoll means. Also, we should talk through how this works with our private workbenches. Will it be easy to have one “Ellen’s unpublished work” that gets tagged for everything on my private workbench and then when it is time to make the collection/OTU/etc. public, I just make the new reference and replace? I think so…
 
 ## Optional fields:
-
-### Second author 
-* PBot: create a relationship with one person node
-* dwc: 
-* Info:  
-* Entry type: select person node- possible to start typing and then have auto-fill-in? Needs to be an easy way to accommodate adding a new person node if there is not already one created.
-* Considerations: PBDB does not require for single-author papers, but does for papers with more than one author- hence this being under optional. See longer comment under Other Authors. Do we include second author as separate entity or just incorporate into “Otherauthors” comment field? 
-
-### Other authors 
-* PBot: otherAuthors (suggested)
-* dwc: 
-* Info: PBDB Tips: List the third, fourth, fifth, etc. authors in order, initials first. Comma separators are optional. The word “and” before the last author is optional and not recommended. PBot may want to consider whether or not asking for first name to be spelled out is beneficial. Also, if the format used here is suitable for parsing into other formats for reports etc. 
-* Entry type: string
-* Considerations: This will be the fastest for data entry, and we are not looking to be able to provide complete bibliographies or to be a reference manager (e.g., find everything that Ellen Currano is an author on). First author, title, and year will be sufficient to create unique references. 
 
 ### Serial name 
 * PBot: TBD
