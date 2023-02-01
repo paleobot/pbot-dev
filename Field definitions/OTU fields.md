@@ -12,7 +12,7 @@
 
 # Operational Taxonomic Unit Entry Form
 
-### OTU name:
+### Operational Taxonomic Unit name: [I can't decide to abbreviate to OTU here, or just to use "name"]
 * **PBot:** name: String
 * dwc:  taxonID
 * Info: The name of the Operational Taxonomic Unit. The name can be Linnean (genus + specific epithet) or any operational name for the taxon that is being used in lieu of Linnean name. The name should be unique. 
