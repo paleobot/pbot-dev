@@ -12,7 +12,9 @@ Structure of the info in this doc: Fields are divided into **Required Fields**, 
 * PBot: the PBot backend field name+code from the list Claire generated. Many will be missing.
 * dwc: the DarwinCore field term name and link to term info. https://dwc.tdwg.org/terms/ 
 * Info: the definition of the field. In addition to being for our internal use, these will serve as the draft for later definitions used in the guidelines/tutorials for users. 
- 
+
+# Entry Fields
+
 ### Project name*
 * Entry type: free text
 * Considerations: need to make sure this is a unique name
