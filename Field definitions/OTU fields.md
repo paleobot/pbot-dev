@@ -9,6 +9,13 @@
 
 # Operational Taxonomic Unit Entry Form
 
+### Data access groups*:
+* PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
+* dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
+* Info: Defines what project groups have access to view the record. Published OTUs should always be part of the ‘public’ access group. OTUs can belong to multiple groups. If an OTU is a part of a designated project group, that OTU will display in the taxon list for the project on the users workbench. Required.
+* Entry type: multi-select from the users project groups and the option Public
+* Considerations: can be public AND in another defined group
+
 ### Operational Taxonomic Unit (OTU) name*:
 * Entry type: free text.
 * Consideration: how to ensure we don’t have duplicate names? We need to provide guidance on when to make a new OTU vs add specimens (ie occurrences) to an existing OTU. [I can't decide to abbreviate to OTU here, or just to use "name"]
@@ -76,48 +83,48 @@ note, the star is our way of telling people that there will be required info in 
 * Info: Select the most highly resolved clade that the OTU belongs to from the selection of taxa in the Paleobiology Database (PBDB). This entry allows interoperability with PBDB. Please refer to PBDB if you would like to add taxa to the hierarchy.  
 
 ### Family:
-* Entry type: Free text. Not required. 
+* Entry type: Free text. 
 * Consideration: This may duplicate info in the Parent Taxon field - but allows a way to enter family if this info isn’t already in PBDB, so that we can capture this info and make changes in PBDB periodically. Alternatively, by having a free-response “clade” field, people could enter the family and everything else there in a comma-separated string. Having the dedicated field means that you would be able to search PBot by “family”. 
 * PBot: family: String
 * dwc:  
 * Info: The family to which the OTU belongs.
 
 ### Genus:
+* Entry type: Free text. 
+* Consideration: For named species, this duplicates the “OTU name” field, but enables a dedicated way to search by genus.
 * PBot: genus: String
 * dwc:  
-* Info: The genus to which the OTU belongs. 
-* Entry type: Free text. Not required. 
-* Consideration: For named species, this duplicates the “OTU name” field, but enables a dedicated way to search by genus. 
+* Info: The genus to which the OTU belongs.
 
 ### Specific epithet:
+* Entry type: Free text. 
+* Consideration: For named species, this duplicates the “OTU name” field, seems right to have it though. Question about authority: Do people need to type the authority after the name, or is authority a separate field, and if so do we need one for genus and family too? (I don’t really want extra fields, and hate looking up authorities, but I understand their utility and that some people may want that info - it overlaps with the references for a taxon, if people enter the full reference history for a taxonomic description, but not fully)
 * PBot: species: String
 * dwc:  
 * Info: If applicable, the specific epithet of the OTU.
-* Entry type: Free text. Not required. 
-* Consideration: For named species, this duplicates the “OTU name” field, seems right to have it though. Question about authority: Do people need to type the authority after the name, or is authority a separate field, and if so do we need one for genus and family too? (I don’t really want extra fields, and hate looking up authorities, but I understand their utility and that some people may want that info - it overlaps with the references for a taxon, if people enter the full reference history for a taxonomic description, but not fully)
 
 ### Additional clades:
+* Entry type: text entry, multiple entries allowed. Not required.
+* Consideration: This allows users to enter useful Linnean or non-linnean clade names that are useful, but not captured in the other fields. We are creating this field in lieu of having multiple specific fields for other hierarchy data (for example a sub-genus, or “section” of a family or genus, or broad informal/non-monophyletic group that is still a clade such as ‘conifer’).
 * PBot: not in PBot yet
 * dwc:  
 * Info: Additional clades to which the taxon belongs, other than already listed in other fields (e.g., tracheophytes, eudicots). Enter multiple clades separated by commas. 
-* Entry type: text entry, multiple entries allowed. Not required.
-* Consideration: This allows users to enter useful Linnean or non-linnean clade names that are useful, but not captured in the other fields. We are creating this field in lieu of having multiple specific fields for other hierarchy data (for example a sub-genus, or “section” of a family or genus, or broad informal/non-monophyletic group that is still a clade such as ‘conifer’). 
 
 ## End Taxonomy* Accordion
 
-### OTU quality index:
+### OTU quality index*:
+* Entry type: Select from the following list of options: high, medium, low.
+* Consideration: certainty level of a taxonomic assignment (e.g., what family/genus/etc) should be written into the notes with explanation. 
 * PBot: not in PBot yet
 * dwc:  
 * Info: Indicates the author’s confidence level that this OTU represents a valid distinct taxon. For example, how confident are you that this is a real OTU? Are there enough diagnostic characters? Uncertainty in the taxonomic assignment (e.g., what family/genus/etc) should be written into the notes with explanation. [we need to work on this definition to include examples]
-* Entry type: Select from the following list of options: high, medium, low. **Required.**
-* Consideration: certainty level of a taxonomic assignment (e.g., what family/genus/etc) should be written into the notes with explanation. 
 
-### Diagnosis:
+### Diagnosis*:
+* Entry type: Free text.
+* Consideration: The diagnosis can include features that are not captured/described by the schema character entries. For example: (1) a published taxon that was described based on leaves and flowers, but we only have a schema currently to accommodate leaf description. The floral parts are still part of the diagnosis of the taxon. Hopefully a flower schema will eventually be developed that could accommodate the remainder of the taxon description, but we can’t hold up the important inclusion of leaf data because of that (note the parts preserved field for this OTU would include leaves and flowers). (2) a leaf described by Brown pre-MLA that has some descriptive features in its diagnosis that are not accommodated by the MLA, but for which the user is not equipped to create a new character for (maybe it’s a weird unique thing and there is not comparative study yet to know what the other states of that character would/whould be). That unique diagnostic feature can be included in the text diagnosis, but would not be in the MLA description. 
 * PBot: not in PBot yet
 * dwc:  
-* Info: The diagnosis for the taxon. Should be a concise statement of the diagnostic features of the taxon that differentiates it from other similar taxa. 
-* Entry type: Free text. **Required.**
-* Consideration: The diagnosis can include features that are not captured/described by the schema character entries. For example: (1) a published taxon that was described based on leaves and flowers, but we only have a schema currently to accommodate leaf description. The floral parts are still part of the diagnosis of the taxon. Hopefully a flower schema will eventually be developed that could accommodate the remainder of the taxon description, but we can’t hold up the important inclusion of leaf data because of that (note the parts preserved field for this OTU would include leaves and flowers). (2) a leaf described by Brown pre-MLA that has some descriptive features in its diagnosis that are not accommodated by the MLA, but for which the user is not equipped to create a new character for (maybe it’s a weird unique thing and there is not comparative study yet to know what the other states of that character would/whould be). That unique diagnostic feature can be included in the text diagnosis, but would not be in the MLA description.  
+* Info: The diagnosis for the taxon. Should be a concise statement of the diagnostic features of the taxon that differentiates it from other similar taxa.  
 
 ### Notes: 
 * PBot: not in PBot yet
@@ -125,13 +132,6 @@ note, the star is our way of telling people that there will be required info in 
 * Info: Users can enter “Notes” on the specimen (formerly we called these “comments”). 
 * Entry type: free text.
 * Considerations: need to figure out comment entry. This is the forum that users can enter notes (ie comments) on the taxon. Can be entered by the creator of the OTU during the initial OTU form submission, and added onto later by any user to make notes about the taxon (preferably via a button on the OTU landing page, as in the mock-up).
-
-### Data access groups:
-* PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
-* dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
-* Info: Defines what project groups have access to view the record. Published OTUs should always be part of the ‘public’ access group. OTUs can belong to multiple groups. If an OTU is a part of a designated project group, that OTU will display in the taxon list for the project on the users workbench. Required.
-* Entry type: multi-select from the users project groups and the option Public
-* Considerations: can be public AND in another defined group
 
 ## Back end tracking / things we monitor
 
