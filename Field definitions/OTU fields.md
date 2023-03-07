@@ -10,11 +10,11 @@
 # Operational Taxonomic Unit Entry Form
 
 ### Data access groups*:
-* PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
-* dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
-* Info: Defines what project groups have access to view the record. Published OTUs should always be part of the ‘public’ access group. OTUs can belong to multiple groups. If an OTU is a part of a designated project group, that OTU will display in the taxon list for the project on the users workbench. Required.
 * Entry type: multi-select from the users project groups and the option Public
 * Considerations: can be public AND in another defined group
+* PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
+* dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
+* Info: Defines what project groups have access to view the record. Published OTUs should always be part of the ‘public’ access group. OTUs can belong to multiple groups. If an OTU is a part of a designated project group, that OTU will display in the taxon list for the project on the users workbench.
 
 ### Operational Taxonomic Unit (OTU) name*:
 * Entry type: free text.
