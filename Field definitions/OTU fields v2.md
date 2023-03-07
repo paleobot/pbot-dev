@@ -51,8 +51,7 @@
 * dwc:  
 * Info: Indicates the author’s confidence level that this OTU represents a valid distinct taxon. For example, how confident are you that this is a real OTU? Are there enough diagnostic characters? Uncertainty in the taxonomic assignment (e.g., what family/genus/etc) should be written into the notes with explanation. [we need to work on this definition to include examples] 
 
-## Accordion called "Specimens & Preservations*" with the following (up to End Accordion line)
-
+## Begin "Specimens & preservation*" Accordion
 ### Exemplar specimen*:
 * Entry type: Search Specimen Nodes. Only allowed to select one.
 * Consideration: Currently this just defines the "holotype/exemplar" specimen. On the specimen node, this relates to the “Exemplar specimen type” field, where a specimen can be a ‘holotype/exemplar’ or ‘other type specimen’. We need to coordinate these somehow, not sure the best way to do it.
@@ -80,11 +79,10 @@
 * PBot: Defines a relationship to another node..
 * dwc: 
 * Info: The OTU includes description of these preserved features.
+## End "Specimens & preservation*" Accordion
 
-## End "Specimens & Preservation*" Accordion
-
-## Accordion called "Taxonomy*" with the following (up until "End Accordion header")
-note, the star is our way of telling people that there will be required info in here and they need to expand the accordion.
+## Begin "Taxonomy*" Accordion
+*note, the star is our way of telling people that there will be required info in here and they need to expand the accordion.*
 
 ### Major taxon group*:
 * Entry type: Select from the pre-defined list of taxonomic groups (we are working on finalizing the list of options and will provide them soon)
@@ -127,8 +125,7 @@ note, the star is our way of telling people that there will be required info in 
 * PBot: not in PBot yet
 * dwc:  
 * Info: Additional clades to which the taxon belongs, other than already listed in other fields (e.g., tracheophytes, eudicots). Enter multiple clades separated by commas. 
-
-## End Taxonomy* Accordion
+## End "Taxonomy*" Accordion
 
 ### Notes: 
 * PBot: not in PBot yet
