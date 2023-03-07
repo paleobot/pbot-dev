@@ -9,19 +9,19 @@
 
 # Specimen Entry Fields
 
-### Collection*:
-* Entry type: search PBot Collection Nodes.   
-* Consideration:
-* PBot: collection: Collection! @relation(name: "COLLECTED_IN", direction: OUT). Defines a relationship to another node.
-* dwc:  
-* Info: PBot follows the definition for collection as set forth in the PBDB: “In the context of our database, a ‘fossil collection’ represents a set of fossil occurrences co-located geographically and temporally. In order to belong to a single collection the occurrences must have been collected deliberately as a group, though not necessarily all on the same occasion.”
-
 ### Data access groups*: 
 * Entry type: multi-select from the project groups and the option Public.  
 * Considerations: How do we handle restrictions on what can go public? For example if the specimen does not have a legit catalog number, or some other rule? Or will we have rules about this after all? 
 * PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
 * dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
 * Info: Defines who has access to view the record.
+
+### Collection*:
+* Entry type: search PBot Collection Nodes.   
+* Consideration:
+* PBot: collection: Collection! @relation(name: "COLLECTED_IN", direction: OUT). Defines a relationship to another node.
+* dwc:  
+* Info: PBot follows the definition for collection as set forth in the PBDB: “In the context of our database, a ‘fossil collection’ represents a set of fossil occurrences co-located geographically and temporally. In order to belong to a single collection the occurrences must have been collected deliberately as a group, though not necessarily all on the same occasion.”
 
 ### Specimen name*:
 * Entry type: free text. 
