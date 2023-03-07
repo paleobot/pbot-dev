@@ -7,6 +7,8 @@
 * dwc: the DarwinCore field term name and link to term info. https://dwc.tdwg.org/terms/ 
 * Info: the definition of the field. In addition to being for our internal use, these will serve as the draft for later definitions used in the guidelines/tutorials for users. 
 
+**We've moved to having lots of accordions to help make these more manageable to fill out. BUT, does this mean that it is more difficult to autopopulate PBDB information if a collection is already entered in PBDB?**
+
 ## Data entry fields
 
 ### Data access group* 
@@ -30,6 +32,13 @@
 * dwc:decimalLongitude http://rs.tdwg.org/dwc/terms/decimalLongitude
 * Info: The geographic longitude (in decimal degrees, using the WGS84 datum) of the geographic center of a collection. Positive values are east of the Greenwich Meridian, negative values are west of it. Legal values lie between -180 and 180, inclusive. See also Latitude field for PBDB issues.
 
+### GPS coordinate uncertainty*
+* Entry type: numeric
+* Considerations: this is not required for PBDB, and in fact doesn't even fit any of their fields. Mark would like to change to this, but PBDB doesn't have the ability to do that right now. He said: "This is NOT a required field for PBDB so maybe you guys do point/radius and we can work towards that in our system."
+* PBot:
+* dwc: http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters
+* Info: provide a radius of uncertainty (in meters) for the GPS coordinate entered
+
 ### Paleobiology Database ID
 * Entry: free text entry, with the search function next to it to search the PBDB and be able to populate what is below.
 * Considerations: Lots of integration aspects to consider. Search just based on latitude and longitude.
@@ -51,7 +60,49 @@
 * dwc: associatedReferences http://rs.tdwg.org/dwc/terms/associatedReferences
 * Info: Provide information for one or more references that described the collection (locality). This may also be a temporary holder for personal workbenches and unpublished collections.
 
-## Begin "Age Information" Accordion
+## Begin "Geographic information*" accordion
+*note, the * in the title of the accordion indicates to the user that there is required information in here.*
+
+### Protected site?*
+* Entry type: Yes / No
+* Considerations: Andrew included this field: "Protected -- Boolean". PBDB does not require it to be entered. Mark says: "This has been hacked in by Shanan."
+* PBot:
+* dwc:
+* Info: is this considered a legally protected site?
+
+### Country*
+* PBot:
+* dwc:
+* Info: 
+* Entry type: dropdown menu with all the countries in the world as options (PBDB has this- easy to find?)
+* Considerations: required for PBDB. If we have the capability to auto-fill once lat-long are entered, that would be great, but maybe hard. From Mark: Asking for both country and state along with lat/long is a good error checking routine. PBDB roughly checks to see if your coordinate are in the right country (maybe not state...), which helps with typos.
+
+### State/province
+* PBot:
+* dwc: 
+* Info: A required field if the country is the USA. Elsewhere, its use is also encouraged (e. g., England is a "state" of the United Kingdom, Ontario is a province of Canada). You must spell out the entire state name; do not use U.S. postal codes like "CA" or "WY."
+* Enty type: free text
+Considerations: This a required field for PBDB if the country is USA. If we have the capability to auto-fill once lat-long are entered, that would be great, but maybe hard. From Mark: Asking for both country and state along with lat/long is a good error checking routine. PBDB roughly checks to see if your coordinate are in the right country (maybe not state...), which helps with typos.
+
+### Scale of geographic resolution
+* Entry type: drop-down menu, select one, with choices: hand sample, small collection, outcrop, local area, and basin
+* PBot:
+* dwc:
+* Info: From the pop-up menu, select the resolution that best characterizes your collection. Err on the side of conservatism: if you know the collection is from a particular road cut but don't know if it does or doesn't come from a small excavation within the road cut, enter "outcrop" instead of "small collection." If no information is given, do not make a selection. Terms are defined as follows:
+small collection: from an area < 10 x 10 m, e.g., a single fossil, an individual bulk sample, or a small quarry
+outcrop: from an area < 1 x 1 km, e.g., a large quarry, road cut, or wash
+local area: from an area < 100 x 100 km, e.g., approximately a one-by-one degree lat/long rectangle or the size of most individual counties in the USA
+basin: from any area > 100 x 100 km
+
+### Comments on geographic information
+* Entry type: free text
+* Considerations: Info copied from PBDB
+* PBot:
+* dwc:
+* Info: Provide any additional information that you think is important with respect to the geographic location of the collection. A large-scale map shows a small land area in great detail.
+## End "Geographic information*" Accordion
+
+## Begin "Age information*" Accordion
 ### Maximum time interval*
 * Entry type: search Macrostrat for options
 * Considerations: I think there is a lot going on the back-end with PBDB to match higher resolution intervals with lower resolution Periods, etc. Do we want to do that as well, or have it more specified? Side by side with minimum time interval
@@ -86,117 +137,77 @@
 * PBot:
 * dwc:
 * Info: Minimum numeric age if associated with specific geochron measurement. These should not be filled in if a collection can only be assigned to a Period, Epoch, Age, or Series.
+
+### Comments on age information
+* Entry type: free text
+* Considerations: 
+* PBot:
+* dwc:
+* Info: Provide any additional information that you think is important with respect to the age of the collection.
 ## End "Age information*" Accordion
 
-## Accordion called "Geographic Information", with the following, until "End Accordion"
-### Protected site?*
-* PBot:
-* dwc:
-* Info: is this considered a legally protected site?
-* Entry type: Yes / No
-* Considerations: Andrew included this field: "Protected -- Boolean". PBDB does not require it to be entered. Mark says: "This has been hacked in by Shanan."
-
-### Country*
-* PBot:
-* dwc:
-* Info: 
-* Entry type: dropdown menu with all the countries in the world as options (PBDB has this- easy to find?)
-* Considerations: required for PBDB. If we have the capability to auto-fill once lat-long are entered, that would be great, but maybe hard. From Mark: Asking for both country and state along with lat/long is a good error checking routine. PBDB roughly checks to see if your coordinate are in the right country (maybe not state...), which helps with typos.
-
-### GPS coordinate uncertainty*
-* PBot:
-* dwc: http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters
-* Info: provide a radius of uncertainty (in meters) for the GPS coordinate entered
-* Entry type: numeric
-* Considerations: this is not required for PBDB, and in fact doesn't even fit any of their fields. Mark would like to change to this, but PBDB doesn't have the ability to do that right now. He said: "This is NOT a required field for PBDB so maybe you guys do point/radius and we can work towards that in our system."
-
-### State/province
-* PBot:
-* dwc: 
-* Info: A required field if the country is the USA. Elsewhere, its use is also encouraged (e. g., England is a "state" of the United Kingdom, Ontario is a province of Canada). You must spell out the entire state name; do not use U.S. postal codes like "CA" or "WY."
-* Enty type: free text
-Considerations: This a required field for PBDB if the country is USA. If we have the capability to auto-fill once lat-long are entered, that would be great, but maybe hard. From Mark: Asking for both country and state along with lat/long is a good error checking routine. PBDB roughly checks to see if your coordinate are in the right country (maybe not state...), which helps with typos.
-
-### Scale of geographic resolution
-* PBot:
-* dwc:
-* Info: From the pop-up menu, select the resolution that best characterizes your collection. Err on the side of conservatism: if you know the collection is from a particular road cut but don't know if it does or doesn't come from a small excavation within the road cut, enter "outcrop" instead of "small collection." If no information is given, do not make a selection. Terms are defined as follows:
-small collection: from an area < 10 x 10 m, e.g., a single fossil, an individual bulk sample, or a small quarry
-outcrop: from an area < 1 x 1 km, e.g., a large quarry, road cut, or wash
-local area: from an area < 100 x 100 km, e.g., approximately a one-by-one degree lat/long rectangle or the size of most individual counties in the USA
-basin: from any area > 100 x 100 km
-* Entry type: drop-down menu, select one, with choices: hand sample, small collection, outcrop, local area, and basin
-
-### Location details
-* PBot:
-* dwc:
-* Info: Provide any additional information that you think is important with respect to the geographic location of the collection. A large-scale map shows a small land area in great detail.
-* Entry type: free text
-* Considerations: Info copied from PBDB
-## End "Geographic Information Accordion"
-
-## Begin "Geologic Information*" Accordion
+## Begin "Geologic information*" Accordion
 ### Modes of preservation*
+* Entry type: check boxes with multiple choices allowed: body, trace, permineralized, cast, concretion, dissolution traces, mold/impression, soft parts, charcoalification, adpression/compression, recrystallized, coalified
+* Considerations: Specimens would have a mode of preservation field, but unfortunately collection needs to be entered first, so I think we still need to collect this information. If specimens with new modes of preservation are added, is it possible to have that auto-fill here?
 * PBot:
 * dwc: 
 * Info: Check as many of them as apply to any of the fossils in the collection. Impressions, casts, and molds are fossils with none of the original biomineralized or organic tissue preserved. These three categories are differentiated from each other as follows:
 impression may be a 2D fossil (e.g., leaf impression).
 cast means a 3D fossil that is a positive image of the original.
 mold means a 3D fossil that is a negative image of the original.
-* Entry type: check boxes with multiple choices allowed: body, trace, permineralized, cast, concretion, dissolution traces, mold/impression, soft parts, charcoalification, adpression/compression, recrystallized, coalified
-* Considerations: Specimens would have a mode of preservation field, but unfortunately collection needs to be entered first, so I think we still need to collect this information. If specimens with new modes of preservation are added, is it possible to have that auto-fill here?
 
 ### Lithology*
+* Entry: dropdown menu or checkbox, choices: not reported, “siliciclastic”, claystone, mudstone, “shale”, siltstone, sandstone, gravel, conglomerate, breccia, amber, coal, peat, lignite, subbituminous coal, bituminous coal, anthracite, coal ball, tar, “volcaniclastic”, ash, tuff, evaporite, gypsum, phosphorite, pyrite, ironstone, siderite, chert, diatomite, radiolarite, “mixed carbonate-siliciclastic”, marl, lime mudstone, chalk, travertine, “limestone”, dolomite, “carbonate”
+* Considerations: Note that Ellen reduced PBDB choices to what PBot users are likely to choose. But really, I only got rid of the reef-type carbonate rocks. Is that ok with everyone? Also, we are getting rid of the other three pull-down menus PBDB had (lithification level, secondary lithology, tertiary lithology).
 * PBot:
 * dwc:
 * Info: The lithology that makes up most of the exposure (for an outcrop) or part of the core that was studied (for a sample from a core). If it is not clear which lithology dominates, choose the first one listed in the publication. 
-* Entry: dropdown menu or checkbox, choices: not reported, “siliciclastic”, claystone, mudstone, “shale”, siltstone, sandstone, gravel, conglomerate, breccia, amber, coal, peat, lignite, subbituminous coal, bituminous coal, anthracite, coal ball, tar, “volcaniclastic”, ash, tuff, evaporite, gypsum, phosphorite, pyrite, ironstone, siderite, chert, diatomite, radiolarite, “mixed carbonate-siliciclastic”, marl, lime mudstone, chalk, travertine, “limestone”, dolomite, “carbonate”
-* Considerations: Note that Ellen reduced PBDB choices to what PBot users are likely to choose. But really, I only got rid of the reef-type carbonate rocks. Is that ok with everyone? Also, we are getting rid of the other three pull-down menus PBDB had (lithification level, secondary lithology, tertiary lithology).
 
 ### Geologic group
+* Entry type: free text
+* Considerations: I prefaced all of the stratigraphic information with “Geologic” since we have other “Groups” and “Members” in PBot. Note that in our Github issue, we had "Stratigraphic Unit" listed with the definition "The most highly resolved stratigraphic unit - e.g., if your section has a known Group, Formation, Member, Submember, and Bed, you would put the Bed name here." Do we still want this field, or are we just keeping the Group, Formation, Member, Bed, and asking people to fill in what they can?
 * PBot:
 * dwc:group http://rs.tdwg.org/dwc/terms/group
 * Info: The full name of the lithostratigraphic group from which the cataloged item was collected. Important: Do not put the term “group.” in this field.
-* Entry type: free text
-* Considerations: I prefaced all of the stratigraphic information with “Geologic” since we have other “Groups” and “Members” in PBot. Note that in our Github issue, we had "Stratigraphic Unit" listed with the definition "The most highly resolved stratigraphic unit - e.g., if your section has a known Group, Formation, Member, Submember, and Bed, you would put the Bed name here." Do we still want this field, or are we just keeping the Group, Formation, Member, Bed, and asking people to fill in what they can?
 
 ### Geologic formation
+* Entry type: free text
+* Considerations:
 * PBot:
 * dwc:formation http://rs.tdwg.org/dwc/terms/formation
 * Info: The full name of the lithostratigraphic formation from which the cataloged item was collected. Important: Do not put the term “formation” or “fm.” in this field.
-* Entry type: free text
-* Considerations:
 
 ### Geologic member
+* Entry type: free text
+* Considerations:
 * PBot:
 * dwc:member http://rs.tdwg.org/dwc/terms/member
 * Info: The full name of the lithostratigraphic member from which the cataloged item was collected. Important: Do not put the term “member” or “mbr.” in this field.
-* Entry type: free text
-* Considerations:
 
 ### Geologic bed
+* Entry type: free text
+* Considerations:
 * PBot:
 * dwc:bed http://rs.tdwg.org/dwc/terms/bed
 * Info: The full name of the lithostratigraphic bed from which the cataloged item was collected.
-* Entry type: free text
-* Considerations:
 
 ### Environment
+Entry type: drop-down menu with PBDB selections: terrestrial indet., fluvial-lacustrine indet., fluvial indet., alluvial fan, channel lag, “channel”, “floodplain”, crevasse splay, levee, mire/swamp, delta plain, lacustrine indet, lacustrine - large, lacustrine - small, pond, crater lake, lacustrine prodelta, dune, interdune, loess, eolian indet, cave, sinkhole, tar, glacial, coastal indet., estuary/bay, lagoonal, paralic indet., interdistributary bay, delta front, prodelta, deltaic indet., marine indet., marginal marine indet., deep-water indet.
+Considerations:  This should map to the PBDB “Environment” field. Ellen reduced the number of choices, given where plant fossils are typically found.
 PBot:
 Dwc:
 Info: The paleoenvironment interpretation. From PBDB: Select the most exact environmental category you can figure out. Each section of the pulldown includes some generalized "indet." terms that you should use only if a more precise determination is not possible. Full details from the Paleobiology Database are at: https://paleobiodb.org/public/tips/environtips.html.
-Entry type: drop-down menu with PBDB selections: terrestrial indet., fluvial-lacustrine indet., fluvial indet., alluvial fan, channel lag, “channel”, “floodplain”, crevasse splay, levee, mire/swamp, delta plain, lacustrine indet, lacustrine - large, lacustrine - small, pond, crater lake, lacustrine prodelta, dune, interdune, loess, eolian indet, cave, sinkhole, tar, glacial, coastal indet., estuary/bay, lagoonal, paralic indet., interdistributary bay, delta front, prodelta, deltaic indet., marine indet., marginal marine indet., deep-water indet.
-Considerations:  This should map to the PBDB “Environment” field. Ellen reduced the number of choices, given where plant fossils are typically found.
 
 ### Comments on geology, stratigraphy, or preservation
+* Entry type: free text
+* Considerations: This is lumping together a couple of PBDB fields, but I'm trying to minimize the number of entry fields we require. So, it won't map straight over, per say.
 * PBot:
 * dwc:
 * Info: Provide any additional information that you think is important with respect to the stratigraphic delineation of the collection, the lithological context, or the taphonomic situation. Feel free to quote extensively from the publication, if it includes information you can't record in our fields and you think are important.
-* Entry type: free text
-* Considerations: This is lumping together a couple of PBDB fields, but I'm trying to minimize the number of entry fields we require. So, it won't map straight over, per say.
-## End "Geologic Information*" Accordion
+## End "Geologic information*" Accordion
 
-## Begin "Collecting Information*" Accordion
+## Begin "Collecting information*" Accordion
 ### Author’s main reason for describing collection*
 * Entry type: drop-down menu or check-box. options are: biostratigraphic, paleoecologic, taphonomic, taxonomic, general fanual/floral.
 * Considerations: This is a required field for PBDB, so we must also make it required.
@@ -220,6 +231,8 @@ general faunal/floral means there is no detailed discussion of the age, environm
 < 1 mm: microfossil.
 
 ### Collection methods
+* Entry type: drop-down menu (or check-box) with multiple choices allowed: sieve, core, census, quarry, surface (float), surface (in situ), salvage, anthill
+* Considerations: Ellen made small edits to the PBDB list; not sure how pollen would fit with this. would we just give the direction that it either be core (if from a core), or sieve (if from a hand sample?)?
 * PBot:
 * dwc:
 * Info: PBDB options are: bulk: the fossils in a set volume of rock, or on an all surfaces of slabs of rock, were identified.
@@ -230,8 +243,6 @@ surface (float): loose fossils were picked up at the surface.
 surface (in situ): fossils were found embedded in the rock but no extensive quarrying or coring was done to collect them.
 salvage: some fossils, but not all, were collected during an excavation intended for some other purpose (e.g., construction).
 anthill: fossils were picked from the debris on the tops of anthills (a common method of collecting small vertebrates).
-* Entry type: drop-down menu (or check-box) with multiple choices allowed: sieve, core, census, quarry, surface (float), surface (in situ), salvage, anthill
-* Considerations: Ellen made small edits to the PBDB list; not sure how pollen would fit with this. would we just give the direction that it either be core (if from a core), or sieve (if from a hand sample?)?
 
 ### Collectors
 * Entry type: free text
@@ -241,11 +252,11 @@ anthill: fossils were picked from the debris on the tops of anthills (a common m
 * Info: List the names of the people who collected the fossils, including the authors if appropriate. Separate names by commas and do not write out "and." Example: J. Doe, J. Smith, J. Brown
 
 ### Comments about collecting methods
+* Entry type: free text
+* Considerations: Info copied from PBDB
 * PBot:
 * dwc:
 * Info: Provide as much additional information as possible. Examples: crinoids were not identified; the sediments were wet screened in the field; specimens were collected from a spoil pile; the quarry was discovered by Doe and excavated by Smith and Brown; the USNM museum collection was made in 1940 and the AMNH museum collection in 1941.
-* Entry type: free text
-* Considerations: Info copied from PBDB
 ## End "Collecting Information*" Accordion
 
 ## Fields auto-generated by PBot:
