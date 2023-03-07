@@ -7,6 +7,8 @@
 * dwc: the DarwinCore field term name and link to term info. https://dwc.tdwg.org/terms/ 
 * Info: the definition of the field. In addition to being for our internal use, these will serve as the draft for later definitions used in the guidelines/tutorials for users. 
 
+# Entry Fields
+
 ### Authors*
 * Entry type: search person nodes.
 * Considerations: Note that we would want to have an "Anonymous person node". Needs to be an easy way to accommodate adding a new person node if there is not already one created. Note for PBDB interface that PBDB has fields: First author initials, First author last name, Second author initials, second author last name, Initials and names of additional authors (separate the names with commas).
