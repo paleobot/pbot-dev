@@ -95,8 +95,8 @@
 * Info: Says who did the identification.
 
 ### Exemplar specimen type: 
-* Entry type: Select one option from defined exemplar types: holotype/exemplar, other type specimen. [note we may need to break down “other type specimen into several categories, but this will work for now] 
-* Consideration: need to define the type options. Is this treated same for true type specimens of Linnean species? Can this be required IF the specimen was designated as an exampleOf? Or set default to non-type specimen exemplar (whatever we call that), unless the holo- or para-type etc are selected?
+* Entry type: Select one option from defined exemplar types: holotype/exemplar, other type specimen.
+* Consideration: need to define the type options, with consideration from others in the field. For the taxonomists, is it important to know what sort of type a specimen is? Is this treated same for true type specimens of Linnean species? Can this be required IF the specimen was designated as an exampleOf? Or set default to non-type specimen exemplar (whatever we call that), unless the holo- or para-type etc are selected?
 * PBot: holotypeOf: [HolotypeOf]. Defines a relationship to another node.
 * dwc:  similar to typeStatus http://rs.tdwg.org/dwc/terms/typeStatus
 * Info: Designates the specimen as one of several exemplar types. Can only choose one. Only one specimen may be the “holo-exemplar/primary exemplar”
