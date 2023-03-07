@@ -13,14 +13,21 @@
 # Specimen Entry Fields
 
 ### Collection*:
-* Entry type: search PBot Collection Nodes. **Required.**   
+* Entry type: search PBot Collection Nodes.   
 * Consideration:
 * PBot: collection: Collection! @relation(name: "COLLECTED_IN", direction: OUT). Defines a relationship to another node.
 * dwc:  
 * Info: PBot follows the definition for collection as set forth in the PBDB: “In the context of our database, a ‘fossil collection’ represents a set of fossil occurrences co-located geographically and temporally. In order to belong to a single collection the occurrences must have been collected deliberately as a group, though not necessarily all on the same occasion.”
 
+### Data access groups*: 
+* Entry type: multi-select from the project groups and the option Public.  
+* Considerations: How do we handle restrictions on what can go public? For example if the specimen does not have a legit catalog number, or some other rule? Or will we have rules about this after all? 
+* PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
+* dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
+* Info: Defines who has access to view the record.
+
 ### Specimen name*:
-* Entry type: free text. **Required.** 
+* Entry type: free text. 
 * Consideration: Add check box by field to note if official catalog number or field number? May relate to how we allow data to go public vs not (does it need to be a catalogged specimen to be public?), and connection to dwc field. Also, are we calling this the catalog ID or name?
 * PBot: name: String.  
 * dwc: catalogNumber http://rs.tdwg.org/dwc/terms/catalogNumber; note that dwc:recordNumber is more of a field ID or internal/personal identifier http://rs.tdwg.org/dwc/terms/recordNumber, and there is also fieldNumber http://rs.tdwg.org/dwc/terms/fieldNumber. Also see organismName http://rs.tdwg.org/dwc/terms/organismName (for name, not so much a catalog number)
@@ -29,80 +36,73 @@
 ### Parts preserved*:
 * PBot:  organ: Organ @relation(name: "IS_TYPE", direction: OUT). Defines a relationship to another node.
 * dwc: 
-* Info: Selection of the organs preserved by the specimen.  **Required.**  
+* Info: Selection of the organs preserved by the specimen.  
 * Entry type: multi-select from predefined organ node options. This was formerly called “organ” 
 
 ### Notable features preserved:
+* Entry type: multi-select from predefined “notable features preserved” node options: 
+* Consideration: Note: this field is NOT required - the presence of these features can be definitive (if you say they are there then you definitely have observed them), but it is hard to be certain of the absence of the features (i.e., maybe there is cuticle but you are not sure because it would require extra prep work on the specimens, regardless you have not yet observed it so can’t say yes, but can’t say absent either).
 * PBot: Not in PBot yet. Defines a relationship to another node..
 * dwc: 
 * Info: The specimen includes description of these preserved features.
-* Entry type: multi-select from predefined “notable features preserved” node options: 
-* Consideration: Note: this field is NOT required - the presence of these features can be definitive (if you say they are there then you definitely have observed them), but it is hard to be certain of the absence of the features (i.e., maybe there is cuticle but you are not sure because it would require extra prep work on the specimens, regardless you have not yet observed it so can’t say yes, but can’t say absent either).
 
 ### Preservation mode*:
+* Entry type: multiple-select from the following options: body, trace, permineralized, cast, concretion, dissolution traces, mold/impression, soft parts, charcoalification, adpression/compression, recrystallized, coalified.  Required. 
+* Consideration:
 * PBot: preservationMode: String
 * dwc:  
 * Info: The type(s) of preservation exhibited by the specimen
-* Entry type: multiple-select from the following options: body, trace, permineralized, cast, concretion, dissolution traces, mold/impression, soft parts, charcoalification, adpression/compression, recrystallized, coalified.  Required. 
-* Consideration: 
 
-### Data access groups: 
-* PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
-* dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
-* Info: Defines who has access to view the record.
-* Entry type: multi-select from the project groups and the option Public. **Required.**  
-* Considerations: How do we handle restrictions on what can go public? For example if the specimen does not have a legit catalog number, or some other rule? Or will we have rules about this after all? 
-
-### Repository: 
+### Repository*: 
+* Entry type: Free text. Could autofill/select from prior entries.
+* Consideration: There is a similar dwc field for Collection Code (dwc:collectionID)- these can be researcher or project collections that are registered (ie not necessarily accessioned into a museum repository). See GRSciColl link above. 
 * PBot: Not in PBot yet
 * dwc:  institutionID
 * Info: Indicates at what institution the specimen is housed. The institutional code is preferred- if your institution has one, please use it (examples: Smithsonian National Museum of Natural History is USNM, Perot Museum of Nature and Science is PMNS). Institutional codes registered with the Global Registry of Scientific Collections (GRSciColl) can be found at https://www.gbif.org/grscicoll/institution/search. If your institution does not have a unique code, type out the full name of the repository. [Train people on permanent repository vs. temporary home, and then also about having to update fields when repositories change. People should put where the specimen is currently.]
-* Entry type: Free text. Could autofill/select from prior entries. **Required.** 
-* Consideration: There is a similar dwc field for Collection Code (dwc:collectionID)- these can be researcher or project collections that are registered (ie not necessarily accessioned into a museum repository). See GRSciColl link above. 
+
 
 ## Accordion with the following, called "Linked external specimen information"
 
 ### iDigBio specimen ID
+* Entry type: free text - how to make it a link? copy/paste url?
+* Consideration: call this Specimen ID or Specimen Record? (same for others below)
 * PBot: idigbiouuid: String
 * dwc:  associatedReferences http://rs.tdwg.org/dwc/terms/associatedReferences, or otherCatalogNumbers http://rs.tdwg.org/dwc/terms/otherCatalogNumbers
 * Info: ID/Link for specimen record at the Integrated Digitized Biodiversity Collections (PBDB). 
-* Entry type: free text - how to make it a link? copy/paste url?
-* Consideration: call this Specimen ID or Specimen Record? (same for others below)
 
 ### GBIF specimen ID
+* Entry type: free text - how to make it a link? copy/paste url?
 * PBot: Not in PBot yet
 * dwc:   associatedReferences http://rs.tdwg.org/dwc/terms/associatedReferences, or otherCatalogNumbers http://rs.tdwg.org/dwc/terms/otherCatalogNumbers
 * Info: ID/Link for specimen record at the Global Biodiversity Information Facility (GBIF). 
-* Entry type: free text - how to make it a link? copy/paste url?
 
 ### Other repository link
+* Entry type: free text - how to make it a link? copy/paste url?
 * PBot: Not in PBot yet
 * dwc:   associatedReferences http://rs.tdwg.org/dwc/terms/associatedReferences, or otherCatalogNumbers http://rs.tdwg.org/dwc/terms/otherCatalogNumbers
 * Info: ID/Link for online specimen record at an institutional repository. Can use if not in iDigBio or GBIF, but available online via other open-access database.
-* Entry type: free text - how to make it a link? copy/paste url?
-
 ## End Accordion
 
 ### Example of taxon/OTU:
+* Entry type: autocomplete text, from existing OTUs. 
+* Considerations: do we need an “identified by” field if assigning to an OTU? See dwc: identifiedBy
 * PBot: exampleOf: [ExampleOf]. Defines a relationship to another node.
 * dwc:  taxonConceptID http://rs.tdwg.org/dwc/terms/taxonConceptID
 * Info: Designates that this specimen is a representative of the indicated OTU.
-* Entry type: autocomplete text, from existing OTUs. 
-* Considerations: do we need an “identified by” field if assigning to an OTU? See dwc: identifiedBy
 
 ### Exemplar specimen type: 
+* Entry type: Select one option from defined exemplar types: holotype/exemplar, other type specimen. [note we may need to break down “other type specimen into several categories, but this will work for now] 
+* Consideration: need to define the type options. Is this treated same for true type specimens of Linnean species? Can this be required IF the specimen was designated as an exampleOf? Or set default to non-type specimen exemplar (whatever we call that), unless the holo- or para-type etc are selected?
 * PBot: holotypeOf: [HolotypeOf]. Defines a relationship to another node.
 * dwc:  similar to typeStatus http://rs.tdwg.org/dwc/terms/typeStatus
 * Info: Designates the specimen as one of several exemplar types. Can only choose one. Only one specimen may be the “holo-exemplar/primary exemplar”
-* Entry type: Select one option from defined exemplar types: holotype/exemplar, other type specimen. [note we may need to break down “other type specimen into several categories, but this will work for now] 
-* Consideration: need to define the type options. Is this treated same for true type specimens of Linnean species? Can this be required IF the specimen was designated as an exampleOf? Or set default to non-type specimen exemplar (whatever we call that), unless the holo- or para-type etc are selected?
 
 ### Notes: 
+* Entry type: free text.
+* Considerations: need to figure out comment entry.
 * PBot: Not in PBot yet
 * dwc:  similar to occurrenceRemarks http://rs.tdwg.org/dwc/terms/occurrenceRemarks or organismRemarks http://rs.tdwg.org/dwc/terms/organismRemarks 
 * Info: Comments on the specimen
-* Entry type: free text.
-* Considerations: need to figure out comment entry. 
 
 ### References:
 * Entry type: search PBot Reference Nodes. 
