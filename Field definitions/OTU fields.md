@@ -21,7 +21,7 @@
 * Consideration: Should it be the short-form or long-form authority names - does it matter? Same for latinized things like and vs et
 * PBot: not in PBot yet
 * dwc: nameAccordingTo
-* Info: The authority for the taxon, following ICN rules if a named taxon, or if an informal taxon the authority is the person, or groups of persons, describing the taxon. 
+* Info: The authority for the taxon, following ICN rules if a named taxon, or if an informal taxon the authority is the person, or groups of persons, describing the taxon. https://www.iapt-taxon.org/nomen/main.php#:~:text=The%20International%20Code%20of%20Nomenclature,chytrids%2C%20oomycetes%2C%20slime%20moulds%2C
 
 ### References*:
 * Entry type: select from existing references, prompt to create a new reference if one does not already exist. 
