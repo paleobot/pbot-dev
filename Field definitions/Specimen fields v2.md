@@ -82,7 +82,7 @@
 
 ### Example of taxon/OTU:
 * Entry type: search OTU Nodes. 
-* Considerations: 
+* Considerations: This creates the same relationship as in the OTU page selecting a specimen as an "Additional specimen".
 * PBot: exampleOf: [ExampleOf]. Defines a relationship to another node.
 * dwc:  taxonConceptID http://rs.tdwg.org/dwc/terms/taxonConceptID
 * Info: Designates that this specimen is a representative of the indicated OTU.
@@ -93,13 +93,6 @@
 * PBot: 
 * dwc: identifiedBy
 * Info: Says who did the identification.
-
-### Exemplar specimen type: 
-* Entry type: Select one option from defined exemplar types: holotype/exemplar, other type specimen.
-* Consideration: need to define the type options, with consideration from others in the field. For the taxonomists, is it important to know what sort of type a specimen is? Is this treated same for true type specimens of Linnean species? Can this be required IF the specimen was designated as an exampleOf? Or set default to non-type specimen exemplar (whatever we call that), unless the holo- or para-type etc are selected?
-* PBot: holotypeOf: [HolotypeOf]. Defines a relationship to another node.
-* dwc:  similar to typeStatus http://rs.tdwg.org/dwc/terms/typeStatus
-* Info: Designates the specimen as one of several exemplar types. Can only choose one. Only one specimen may be the “holo-exemplar/primary exemplar”
 
 ### Notes: 
 * Entry type: free text.
@@ -145,3 +138,9 @@
 * Considerations: This is a further action, not a part of initial submit of the specimen form.
 * Once you create a specimen, then you can describe it! But I guess it needs a field right?
 
+### Exemplar specimen type: 
+* Entry type: Select one option from defined exemplar types: holotype/exemplar.
+* Consideration: THis is better dealt with from the OTU page. need to define the type options, with consideration from others in the field. For the taxonomists, is it important to know what sort of type a specimen is? Is this treated same for true type specimens of Linnean species? Can this be required IF the specimen was designated as an exampleOf? Or set default to non-type specimen exemplar (whatever we call that), unless the holo- or para-type etc are selected?
+* PBot: holotypeOf: [HolotypeOf]. Defines a relationship to another node.
+* dwc:  similar to typeStatus http://rs.tdwg.org/dwc/terms/typeStatus
+* Info: Designates the specimen as one of several exemplar types. Can only choose one. Only one specimen may be the “holo-exemplar/primary exemplar”
