@@ -24,7 +24,7 @@
 * Info: PBDB Tips: This is a required field. Use that actual date of publication, if available, not the nominal year of publication for the volume.
 
 ### PBDB ID
-* The way this is already is great. You do the search and have options to populate.
+* The way this is already is great. Users do the search and have options to populate.
 
 ### Title* 
 * Entry type: string
@@ -48,18 +48,18 @@
 * Info: Full name of the serial (e.g., journal, edited book). PBDB Tips: none provided, but looking at download, all titles are written out in full, no abbreviations. 
 
 ### First page number* 
+* Entry type: string
+* Considerations: Side-by-side with Last page number
 * PBot: TBD
 * dwc: 
 * Info: PBDB Tips: This is a required field. Do NOT add a hyphen after the page number: this will be done automatically by the data entry processing program. If you are citing an entire book, put “1” here and the total number of pages in the last page field. If the pages are numbered with combinations of numbers and letters (e.g., “A-32) put everything in and do not strip the letters.
-* Entry type: string
-* Considerations: 
 
 ### Last page number* 
+* Entry type: string
+* Considerations: Side-by-side with First page number
 * PBot: TBD
 * dwc: 
 * Info: PBDB Tips: This is a required field. Do NOT add a hyphen before the page number: this will be done automatically by the data entry processing program. If you are citing an entire book, put “1” in the first page field and the total number of pages here. If the pages are numbered with combinations of numbers and letters (e.g., “A-32) put everything in and do not strip the letters.
-* Entry type: string
-* Considerations: 
 
 ### DOI 
 * PBot: TBD
@@ -67,8 +67,6 @@
 * Info: 
 * Entry type: string
 * Considerations: Probably not possible, but it would be amazing if you could just type in the DOI and get other things to auto-populate. Not required by PBDB.
-
-## Accordion: Additional reference information:
 
 ### Publication volume 
 * Entry type: string
