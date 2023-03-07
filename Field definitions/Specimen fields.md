@@ -110,7 +110,7 @@
 
 ### References:
 * Entry type: search PBot Reference Nodes. 
-* Considerations: Is this necessary since collections and OTU also require references? What are we providing the reference for? It is not clear that a reference field makes sense for a specimen, conceptually. The collection it belongs to has references, and the enterer for a specimen is recorded, and it will also be attached to a 'group' if it is part of a project. My vote is to remove reference here, unless there is some smart reason that I am missing! Ellen suggests that the only reason we might want a reference is to indicate that this particular specimen is figured or discussed by name in a paper. The claim that a specimen is a taxon requires a reference. Is that handled here?
+* Considerations: We need to be clear about what people are referencing here. Reference is to indicate that this particular specimen is figured or discussed by name in a paper. The claim that a specimen is a taxon requires a reference. Is that handled here?
 * PBot: references: [SpecimenCitedBy]. Defines a relationship to another node.
 * dwc:  
 * Info: The published or internal reference for the specimen. 
