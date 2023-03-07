@@ -19,18 +19,18 @@
 * dwc:  
 * Info: PBot follows the definition for collection as set forth in the PBDB: “In the context of our database, a ‘fossil collection’ represents a set of fossil occurrences co-located geographically and temporally. In order to belong to a single collection the occurrences must have been collected deliberately as a group, though not necessarily all on the same occasion.”
 
-### Specimen name:
+### Specimen name*:
+* Entry type: free text. **Required.** 
+* Consideration: Add check box by field to note if official catalog number or field number? May relate to how we allow data to go public vs not (does it need to be a catalogged specimen to be public?), and connection to dwc field. Also, are we calling this the catalog ID or name?
 * PBot: name: String.  
 * dwc: catalogNumber http://rs.tdwg.org/dwc/terms/catalogNumber; note that dwc:recordNumber is more of a field ID or internal/personal identifier http://rs.tdwg.org/dwc/terms/recordNumber, and there is also fieldNumber http://rs.tdwg.org/dwc/terms/fieldNumber. Also see organismName http://rs.tdwg.org/dwc/terms/organismName (for name, not so much a catalog number)
 * Info: The name of the specimen in the collection (e.g., official catalog number at the institutional repository, or field ID number or other internal-use identifier).
-* Entry type: free text. **Required.** 
-* Consideration: Add check box by field to note if official catalog number or field number? May relate to how we allow data to go public vs not (does it need to be a catalogged specimen to be public?), and connection to dwc field. Also, are we calling this the catalog ID or name?
 
-### Parts preserved:
+### Parts preserved*:
 * PBot:  organ: Organ @relation(name: "IS_TYPE", direction: OUT). Defines a relationship to another node.
 * dwc: 
 * Info: Selection of the organs preserved by the specimen.  **Required.**  
-* Entry type: multi-select from predefined organ node options. This was formerly called “organ”  
+* Entry type: multi-select from predefined organ node options. This was formerly called “organ” 
 
 ### Notable features preserved:
 * PBot: Not in PBot yet. Defines a relationship to another node..
@@ -39,7 +39,7 @@
 * Entry type: multi-select from predefined “notable features preserved” node options: 
 * Consideration: Note: this field is NOT required - the presence of these features can be definitive (if you say they are there then you definitely have observed them), but it is hard to be certain of the absence of the features (i.e., maybe there is cuticle but you are not sure because it would require extra prep work on the specimens, regardless you have not yet observed it so can’t say yes, but can’t say absent either).
 
-### Preservation mode:
+### Preservation mode*:
 * PBot: preservationMode: String
 * dwc:  
 * Info: The type(s) of preservation exhibited by the specimen
@@ -81,6 +81,8 @@
 * Entry type: free text.
 * Considerations: need to figure out comment entry. 
 
+## Accordion with the following, called "Linked external specimen information"
+
 ### iDigBio specimen ID
 * PBot: idigbiouuid: String
 * dwc:  associatedReferences http://rs.tdwg.org/dwc/terms/associatedReferences, or otherCatalogNumbers http://rs.tdwg.org/dwc/terms/otherCatalogNumbers
@@ -100,9 +102,11 @@
 * Info: ID/Link for online specimen record at an institutional repository. Can use if not in iDigBio or GBIF, but available online via other open-access database.
 * Entry type: free text - how to make it a link? copy/paste url?
 
+## End Accordion
+
 ### References:
 * Entry type: search PBot Reference Nodes. 
-* Considerations: Is this necessary since collections and OTU also require references? What are we providing the reference for? It is not clear that a reference field makes sense for a specimen, conceptually. The collection it belongs to has references, and the enterer for a specimen is recorded, and it will also be attached to a 'group' if it is part of a project. My vote is to remove reference here, unless there is some smart reason that I am missing! Ellen suggests that the only reason we might want a reference is to indicate that this particular specimen is figured or discussed by name in a paper.
+* Considerations: Is this necessary since collections and OTU also require references? What are we providing the reference for? It is not clear that a reference field makes sense for a specimen, conceptually. The collection it belongs to has references, and the enterer for a specimen is recorded, and it will also be attached to a 'group' if it is part of a project. My vote is to remove reference here, unless there is some smart reason that I am missing! Ellen suggests that the only reason we might want a reference is to indicate that this particular specimen is figured or discussed by name in a paper. The claim that a specimen is a taxon requires a reference. Is that handled here?
 * PBot: references: [SpecimenCitedBy]. Defines a relationship to another node.
 * dwc:  
 * Info: The published or internal reference for the specimen. 
