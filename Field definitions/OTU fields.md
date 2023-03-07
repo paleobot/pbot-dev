@@ -37,6 +37,13 @@
 * dwc:  
 * Info: The reference for the establishment of the OTU. For a taxon that has been described in existing literature, the reference would be the primary citation as well as any citations to published revisions. For un-published taxa, the reference should be to the person or group that has generated the OTU (e.g., an internal reference).
 
+### Diagnosis*:
+* Entry type: Free text.
+* Consideration: The diagnosis can include features that are not captured/described by the schema character entries. For example: (1) a published taxon that was described based on leaves and flowers, but we only have a schema currently to accommodate leaf description. The floral parts are still part of the diagnosis of the taxon. Hopefully a flower schema will eventually be developed that could accommodate the remainder of the taxon description, but we can’t hold up the important inclusion of leaf data because of that (note the parts preserved field for this OTU would include leaves and flowers). (2) a leaf described by Brown pre-MLA that has some descriptive features in its diagnosis that are not accommodated by the MLA, but for which the user is not equipped to create a new character for (maybe it’s a weird unique thing and there is not comparative study yet to know what the other states of that character would/whould be). That unique diagnostic feature can be included in the text diagnosis, but would not be in the MLA description. 
+* PBot: not in PBot yet
+* dwc:  
+* Info: The diagnosis for the taxon. Should be a concise statement of the diagnostic features of the taxon that differentiates it from other similar taxa.  
+
 ## Accordion called "Specimens & Preservations" with the following (up to End Accordion line)
 
 ### Exemplar specimen*:
@@ -122,13 +129,6 @@ note, the star is our way of telling people that there will be required info in 
 * PBot: not in PBot yet
 * dwc:  
 * Info: Indicates the author’s confidence level that this OTU represents a valid distinct taxon. For example, how confident are you that this is a real OTU? Are there enough diagnostic characters? Uncertainty in the taxonomic assignment (e.g., what family/genus/etc) should be written into the notes with explanation. [we need to work on this definition to include examples]
-
-### Diagnosis*:
-* Entry type: Free text.
-* Consideration: The diagnosis can include features that are not captured/described by the schema character entries. For example: (1) a published taxon that was described based on leaves and flowers, but we only have a schema currently to accommodate leaf description. The floral parts are still part of the diagnosis of the taxon. Hopefully a flower schema will eventually be developed that could accommodate the remainder of the taxon description, but we can’t hold up the important inclusion of leaf data because of that (note the parts preserved field for this OTU would include leaves and flowers). (2) a leaf described by Brown pre-MLA that has some descriptive features in its diagnosis that are not accommodated by the MLA, but for which the user is not equipped to create a new character for (maybe it’s a weird unique thing and there is not comparative study yet to know what the other states of that character would/whould be). That unique diagnostic feature can be included in the text diagnosis, but would not be in the MLA description. 
-* PBot: not in PBot yet
-* dwc:  
-* Info: The diagnosis for the taxon. Should be a concise statement of the diagnostic features of the taxon that differentiates it from other similar taxa.  
 
 ### Notes: 
 * PBot: not in PBot yet
