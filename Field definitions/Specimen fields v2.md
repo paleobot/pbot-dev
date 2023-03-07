@@ -58,8 +58,7 @@
 * Info: Indicates at what institution the specimen is housed. The institutional code is preferred- if your institution has one, please use it (examples: Smithsonian National Museum of Natural History is USNM, Perot Museum of Nature and Science is PMNS). Institutional codes registered with the Global Registry of Scientific Collections (GRSciColl) can be found at https://www.gbif.org/grscicoll/institution/search. If your institution does not have a unique code, type out the full name of the repository. [Train people on permanent repository vs. temporary home, and then also about having to update fields when repositories change. People should put where the specimen is currently.]
 
 
-## Accordion with the following, called "Linked external specimen information"
-
+## Begin "Linked external specimen information" Accordion
 ### iDigBio specimen ID
 * Entry type: free text - how to make it a link? copy/paste url?
 * Consideration: call this Specimen ID or Specimen Record? (same for others below)
@@ -78,7 +77,7 @@
 * PBot: Not in PBot yet
 * dwc:   associatedReferences http://rs.tdwg.org/dwc/terms/associatedReferences, or otherCatalogNumbers http://rs.tdwg.org/dwc/terms/otherCatalogNumbers
 * Info: ID/Link for online specimen record at an institutional repository. Can use if not in iDigBio or GBIF, but available online via other open-access database.
-## End Accordion
+## End "Linked external specimen information" Accordion
 
 ### Example of taxon/OTU:
 * Entry type: search OTU Nodes. 
