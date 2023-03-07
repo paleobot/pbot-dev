@@ -60,27 +60,6 @@
 * Entry type: Free text. Could autofill/select from prior entries. **Required.** 
 * Consideration: There is a similar dwc field for Collection Code (dwc:collectionID)- these can be researcher or project collections that are registered (ie not necessarily accessioned into a museum repository). See GRSciColl link above. 
 
-### Example of taxon/OTU:
-* PBot: exampleOf: [ExampleOf]. Defines a relationship to another node.
-* dwc:  taxonConceptID http://rs.tdwg.org/dwc/terms/taxonConceptID
-* Info: Designates that this specimen is a representative of the indicated OTU.
-* Entry type: autocomplete text, from existing OTUs. 
-* Considerations: do we need an “identified by” field if assigning to an OTU? See dwc: identifiedBy
-
-### Exemplar specimen type: 
-* PBot: holotypeOf: [HolotypeOf]. Defines a relationship to another node.
-* dwc:  similar to typeStatus http://rs.tdwg.org/dwc/terms/typeStatus
-* Info: Designates the specimen as one of several exemplar types. Can only choose one. Only one specimen may be the “holo-exemplar/primary exemplar”
-* Entry type: Select one option from defined exemplar types: holotype/exemplar, other type specimen. [note we may need to break down “other type specimen into several categories, but this will work for now] 
-* Consideration: need to define the type options. Is this treated same for true type specimens of Linnean species? Can this be required IF the specimen was designated as an exampleOf? Or set default to non-type specimen exemplar (whatever we call that), unless the holo- or para-type etc are selected?
-
-### Notes: 
-* PBot: Not in PBot yet
-* dwc:  similar to occurrenceRemarks http://rs.tdwg.org/dwc/terms/occurrenceRemarks or organismRemarks http://rs.tdwg.org/dwc/terms/organismRemarks 
-* Info: Comments on the specimen
-* Entry type: free text.
-* Considerations: need to figure out comment entry. 
-
 ## Accordion with the following, called "Linked external specimen information"
 
 ### iDigBio specimen ID
@@ -103,6 +82,27 @@
 * Entry type: free text - how to make it a link? copy/paste url?
 
 ## End Accordion
+
+### Example of taxon/OTU:
+* PBot: exampleOf: [ExampleOf]. Defines a relationship to another node.
+* dwc:  taxonConceptID http://rs.tdwg.org/dwc/terms/taxonConceptID
+* Info: Designates that this specimen is a representative of the indicated OTU.
+* Entry type: autocomplete text, from existing OTUs. 
+* Considerations: do we need an “identified by” field if assigning to an OTU? See dwc: identifiedBy
+
+### Exemplar specimen type: 
+* PBot: holotypeOf: [HolotypeOf]. Defines a relationship to another node.
+* dwc:  similar to typeStatus http://rs.tdwg.org/dwc/terms/typeStatus
+* Info: Designates the specimen as one of several exemplar types. Can only choose one. Only one specimen may be the “holo-exemplar/primary exemplar”
+* Entry type: Select one option from defined exemplar types: holotype/exemplar, other type specimen. [note we may need to break down “other type specimen into several categories, but this will work for now] 
+* Consideration: need to define the type options. Is this treated same for true type specimens of Linnean species? Can this be required IF the specimen was designated as an exampleOf? Or set default to non-type specimen exemplar (whatever we call that), unless the holo- or para-type etc are selected?
+
+### Notes: 
+* PBot: Not in PBot yet
+* dwc:  similar to occurrenceRemarks http://rs.tdwg.org/dwc/terms/occurrenceRemarks or organismRemarks http://rs.tdwg.org/dwc/terms/organismRemarks 
+* Info: Comments on the specimen
+* Entry type: free text.
+* Considerations: need to figure out comment entry. 
 
 ### References:
 * Entry type: search PBot Reference Nodes. 
