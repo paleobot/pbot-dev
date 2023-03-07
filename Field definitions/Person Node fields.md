@@ -12,6 +12,8 @@ Fields are divided into **Required Fields**, which users must enter when they cr
 * Entry type: describe how users will enter data into the field
 * Considerations: this is an optional section, if there is info to convey to the PBot team (Botany, Dev, or both) about the field. Notes, wishes, questions, etc. 
 
+## Since we have so few fields, there will be no accordions. We've decided that required fields should be noted to the users by * next to the field name.
+
 # Person Nodes 
 ### Given name*
 * Entry type: free text, required field
