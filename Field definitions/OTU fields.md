@@ -16,7 +16,7 @@
 * dwc:  taxonID
 * Info: The name of the Operational Taxonomic Unit. The name can be Linnean (genus + specific epithet) or any operational name for the taxon that is being used in lieu of Linnean name. The name should be unique.
 
-### OTU authority*:
+### OTU authority:
 * Entry type: free text.
 * Consideration: Should it be the short-form or long-form authority names - does it matter? Same for latinized things like and vs et
 * PBot: not in PBot yet
@@ -31,21 +31,21 @@
 * Info: The reference for the establishment of the OTU. For a taxon that has been described in existing literature, the reference would be the primary citation as well as any citations to published revisions. For un-published taxa, the reference should be to the person or group that has generated the OTU (e.g., an internal reference).
 
 ### Exemplar specimen*:
-* Entry type: Select a specimen, or prompt to enter a new specimen.
+* Entry type: Search Specimen Nodes. Only allowed to select one.
 * Consideration: Currently this just defines the "holotype/exemplar" specimen. On the specimen node, this relates to the “Exemplar specimen type” field, where a specimen can be a ‘holotype/exemplar’ or ‘other type specimen’. We need to coordinate these somehow, not sure the best way to do it.
 * PBot: holotype: HolotypeOf!. Defines a relationship to another node..
 * dwc:  
 * Info: A single specimen serving as the representative of the taxon. For a species described in peer-reviewed literature following ICN standards, this is a holotype specimen. For taxa that are not yet formally described (such as morphotypes), then this is an exemplar specimen similar to a holotype.
 
 ### Additional specimens:
-* Entry type: select from existing specimens, or prompt to enter new specimens. 
+* Entry type: Search Specimen Nodes. Allow to add multiple specimens: similar function to the Add Another Author function.
 * Consideration: Just as a note - the relationship between specimen and OTU can be created from either the specimen or OTU entry forms. If you are entering a new OTU, that is when you create the exampleOf relationship with specimen(s) that have already been created (note the order of operations here -  these specimen(s) would have been created without an exampleOf relationship since the OTU doesn't exist yet!). Conversely, IF the appropriate OTU already exists in the system, you can create the exampleOf relationship from the specimen entry side.
 * PBot: exampleSpecimens: [ExampleOf!]!. Defines a relationship to another node.
 * dwc:  
 * Info: All other specimens identified as belonging to the OTU. 
 
-### Parts preserved:
-* Entry type: multi-select from predefined options. Required.
+### Parts preserved*:
+* Entry type: multi-select from predefined options.
 * Consideration:  formerly called Organ
 * PBot:  organ: Organ @relation(name: "IS_TYPE", direction: OUT). Defines a relationship to another node.
 * dwc: 
@@ -57,6 +57,9 @@
 * PBot: Defines a relationship to another node..
 * dwc: 
 * Info: The OTU includes description of these preserved features.
+
+## Accordion called "Taxonomy*" with the following (up until "End Accordion header")
+note, the star is our way of telling people that there will be required info in here and they need to expand the accordion.
 
 ### Major taxon group*:
 * Entry type: Select from the pre-defined list of taxonomic groups (we are working on finalizing the list of options and will provide them soon)
@@ -99,6 +102,8 @@
 * Info: Additional clades to which the taxon belongs, other than already listed in other fields (e.g., tracheophytes, eudicots). Enter multiple clades separated by commas. 
 * Entry type: text entry, multiple entries allowed. Not required.
 * Consideration: This allows users to enter useful Linnean or non-linnean clade names that are useful, but not captured in the other fields. We are creating this field in lieu of having multiple specific fields for other hierarchy data (for example a sub-genus, or “section” of a family or genus, or broad informal/non-monophyletic group that is still a clade such as ‘conifer’). 
+
+## End Taxonomy* Accordion
 
 ### OTU quality index:
 * PBot: not in PBot yet
