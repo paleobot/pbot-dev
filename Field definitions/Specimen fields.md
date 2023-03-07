@@ -19,6 +19,14 @@
 * dwc:  
 * Info: PBot follows the definition for collection as set forth in the PBDB: “In the context of our database, a ‘fossil collection’ represents a set of fossil occurrences co-located geographically and temporally. In order to belong to a single collection the occurrences must have been collected deliberately as a group, though not necessarily all on the same occasion.”
 
+### References*:
+* Entry type: search Reference Nodes. 
+* Considerations: Is this necessary since collections and OTU also require references? What are we providing the reference for? It is not clear that a reference field makes sense for a specimen, conceptually. The collection it belongs to has references, and the enterer for a specimen is recorded, and it will also be attached to a 'group' if it is part of a project. My vote is to remove reference here, unless there is some smart reason that I am missing! Ellen suggests that the only reason we might want a reference is to indicate that this particular specimen is figured or discussed by name in a paper.
+* PBot: references: [SpecimenCitedBy]. Defines a relationship to another node.
+* dwc:  
+* Info: The published or internal reference for the specimen. **Required.** 
+
+
 ### Specimen name:
 * PBot: name: String.  
 * dwc: catalogNumber http://rs.tdwg.org/dwc/terms/catalogNumber; note that dwc:recordNumber is more of a field ID or internal/personal identifier http://rs.tdwg.org/dwc/terms/recordNumber, and there is also fieldNumber http://rs.tdwg.org/dwc/terms/fieldNumber. Also see organismName http://rs.tdwg.org/dwc/terms/organismName (for name, not so much a catalog number)
@@ -52,13 +60,6 @@
 * Info: Defines who has access to view the record.
 * Entry type: multi-select from the project groups and the option Public. **Required.**  
 * Considerations: How do we handle restrictions on what can go public? For example if the specimen does not have a legit catalog number, or some other rule? Or will we have rules about this after all? 
-
-### References:
-* PBot: references: [SpecimenCitedBy]. Defines a relationship to another node.
-* dwc:  
-* Info: The published or internal reference for the specimen. **Required.** 
-* Entry type: text with autofill. Option for “creating new” reference that pulls up reference entry form. 
-* Considerations: Is this necessary since collections and OTU also require references? What are we providing the reference for? It is not clear that a reference field makes sense for a specimen, conceptually. The collection it belongs to has references, and the enterer for a specimen is recorded, and it will also be attached to a 'group' if it is part of a project. My vote is to remove reference here, unless there is some smart reason that I am missing! Ellen suggests that the only reason we might want a reference is to indicate that this particular specimen is figured or discussed by name in a paper.
 
 ### Repository: 
 * PBot: Not in PBot yet
