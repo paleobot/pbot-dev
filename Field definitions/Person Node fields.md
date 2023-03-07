@@ -12,8 +12,14 @@ Fields are divided into **Required Fields**, which users must enter when they cr
 * Entry type: describe how users will enter data into the field
 * Considerations: this is an optional section, if there is info to convey to the PBot team (Botany, Dev, or both) about the field. Notes, wishes, questions, etc. 
 
-# Person Nodes
-## Required fields:
+# Person Nodes 
+### Given name*
+* Entry type: free text, required field
+* Considerations: Encourage middle initials to be able to easily differentiate among people? Do we need to worry about this? Do we need middle initials to be able to properly enter references?
+* PBot: given: [given]
+* dwc:
+* Info: Given name of the person. If the given name is unknown, you may enter an initial only.
+ 
 ### Surname
 * PBot: surname: [surname]
 * dwc:
@@ -21,12 +27,6 @@ Fields are divided into **Required Fields**, which users must enter when they cr
 * Entry type: free text
 * Considerations: We need to make sure that duplicate entries are not being created. Important for inclusivity to accommodate accent marks and basic non-English characters (examples: ä  æ  ç   ñ). We need to provide instructions on whether extra parts of a name (e.g. III, Jr.) also get included here.
  
-### Given name
-* PBot: given: [given]
-* dwc:
-* Info: Given name of the person. If the given name is unknown, you may enter an initial only.
-* Entry type: free text
-* Considerations: Encourage middle initials to be able to easily differentiate among people? Do we need to worry about this? Do we need middle initials to be able to properly enter references?
  
 ## Optional fields:
 ### Middle name / Middle initial
