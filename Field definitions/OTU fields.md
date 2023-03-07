@@ -74,7 +74,7 @@
 * dwc: 
 * Info: The OTU includes description of these preserved features.
 
-## End "Specimens & Taxonomy" Accordion
+## End "Specimens & Preservation" Accordion
 
 ## Accordion called "Taxonomy*" with the following (up until "End Accordion header")
 note, the star is our way of telling people that there will be required info in here and they need to expand the accordion.
