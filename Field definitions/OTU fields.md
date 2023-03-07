@@ -37,6 +37,8 @@
 * dwc:  
 * Info: The reference for the establishment of the OTU. For a taxon that has been described in existing literature, the reference would be the primary citation as well as any citations to published revisions. For un-published taxa, the reference should be to the person or group that has generated the OTU (e.g., an internal reference).
 
+## Accordion called "Specimens & Preservations" with the following (up to End Accordion line)
+
 ### Exemplar specimen*:
 * Entry type: Search Specimen Nodes. Only allowed to select one.
 * Consideration: Currently this just defines the "holotype/exemplar" specimen. On the specimen node, this relates to the “Exemplar specimen type” field, where a specimen can be a ‘holotype/exemplar’ or ‘other type specimen’. We need to coordinate these somehow, not sure the best way to do it.
@@ -64,6 +66,8 @@
 * PBot: Defines a relationship to another node..
 * dwc: 
 * Info: The OTU includes description of these preserved features.
+
+## End "Specimens & Taxonomy" Accordion
 
 ## Accordion called "Taxonomy*" with the following (up until "End Accordion header")
 note, the star is our way of telling people that there will be required info in here and they need to expand the accordion.
