@@ -25,7 +25,7 @@
 
 ### References*:
 * Entry type: select from existing references, prompt to create a new reference if one does not already exist. 
-* Consideration: We have ‘reference’ field on ‘description’ node too - this will be duplicate info to some level. But having “reference” on the description nodes allows for references to people specifically adding to the OTU description, for example, by adding a cuticle description. 
+* Consideration: We have ‘reference’ field on ‘description’ node too - this will be duplicate info to some level. But having “reference” on the description nodes allows for references to people specifically adding to the OTU description, for example, by adding a cuticle description. If people enter a reference for a description, could that also automatically create a relationship between that reference and the OTU node.
 * PBot: references: [OTUCitedBy]. Defines a relationship to another node.
 * dwc:  
 * Info: The reference for the establishment of the OTU. For a taxon that has been described in existing literature, the reference would be the primary citation as well as any citations to published revisions. For un-published taxa, the reference should be to the person or group that has generated the OTU (e.g., an internal reference).
