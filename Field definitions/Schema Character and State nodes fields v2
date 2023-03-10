@@ -10,8 +10,7 @@ Info: the definition of the field. In addition to being for our internal use, th
 Entry type: describe how users will enter data into the field
 Considerations: this is an optional section, if there is info to convey to the PBot team (Botany, Dev, or both) about the field. Notes, wishes, questions, etc. 
 
-*I grouped fields by required, optional, and links to outside sources, as I found that helpful for considering the fields.  
-
+*Required fields are starred.
 _________________________________________________________________________
 
 Schema Node with Considerations of Workbench and Search Functions
