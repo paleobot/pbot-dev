@@ -21,6 +21,13 @@ Schema Nodes
 Entry Fields:
 * means required
 
+Data access groups*: 
+Entry type: selection to create relationship
+PBot: Group:elementOf: [Group!]! @relation(name: “ELEMENT_OF”, direction: OUT)
+dwc: NA
+Info: User able to assign multiple groups including “Public”
+Considerations: 
+
 Title*: 
 Entry type: string. Required
 PBot: Schema:title
@@ -47,14 +54,6 @@ Entry type: string. Required
 PBot: Schema:purpose
 dwc: NA
 Info: Limit to just two or three sentences that provide user knowledge of when to use this schema 
-Considerations: 
-
-
-Group*: 
-Entry type: selection to create relationship
-PBot: Group:elementOf: [Group!]! @relation(name: “ELEMENT_OF”, direction: OUT)
-dwc: NA
-Info: User able to assign multiple groups including “Public”
 Considerations: 
 
 
