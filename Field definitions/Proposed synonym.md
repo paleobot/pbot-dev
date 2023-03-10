@@ -12,6 +12,13 @@
 
 # Proposed Synonym node:
 
+### Data access groups:
+* PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
+* dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
+* Info: Defines what project groups have access to view the record. Published synonymies should always be part of the ‘public’ access group. Required.
+* Entry type: multi-select from the users project groups and the option Public
+* Considerations: can be public AND in another defined group. How does privacy work for this? If an OTU is private, then by default is this also private? Also, we would have the case where you are going to propose that two public OTUs are synonyms, and you might want to keep this to yourself until you publish it. So, it makes sense to allow data access group to be chosen. Another question, we need to work out what is the outcome of proposing a synonymy: are the OTUs actually merged, or is this just a node hanging off each OTU?
+* 
 ### OTUs:
 * PBot: otus: [OTU!]! @relation(name: "SAME_AS", direction: IN). Defines a relationship to another node.
 * dwc: 
@@ -33,13 +40,6 @@
 * Info: The reference stating that two OTUs represent a single entity and should be synonymized. Required.
 * Entry type: select from existing references, prompt to create a new reference if one does not already exist. 
 * Consideration: We will need to think about how to handle synonymizations from your working project (i.e. your early in the morphotyping and have decided to lump two morphotypes) vs. synonymizations for formally named taxa. Actually, there is a lot for the paleobotany team to think about here and make rules on, but there should be no changes needed to how the programming is done. 
-
-### Data access groups:
-* PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
-* dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
-* Info: Defines what project groups have access to view the record. Published synonymies should always be part of the ‘public’ access group. Required.
-* Entry type: multi-select from the users project groups and the option Public
-* Considerations: can be public AND in another defined group. 
 
 ### Notes: (this was formerly called “comments”)
 * PBot: comments: [Comment!] @relation(name: "REFERS_TO", direction: IN)
