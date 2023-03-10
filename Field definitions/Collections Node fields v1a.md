@@ -154,6 +154,13 @@ basin: from any area > 100 x 100 km
 * dwc:
 * Info: The lithology that makes up most of the exposure (for an outcrop) or part of the core that was studied (for a sample from a core). If it is not clear which lithology dominates, choose the first one listed in the publication. 
 
+### Original, complete description of lithology
+* Entry type: free text
+* Considerations: Straight from PBSB
+* PBot:
+* dwc:
+* Info: Provide any additional information that you think is important with respect to the lithology of the collection, the lithological context, or the taphonomic situation. Feel free to quote extensively from the publication, if it includes information you can't record in our fields and you think are important.
+
 ### Geologic group
 * Entry type: free text
 * Considerations: I prefaced all of the stratigraphic information with “Geologic” since we have other “Groups” and “Members” in PBot. Note that in our Github issue, we had "Stratigraphic Unit" listed with the definition "The most highly resolved stratigraphic unit - e.g., if your section has a known Group, Formation, Member, Submember, and Bed, you would put the Bed name here." Do we still want this field, or are we just keeping the Group, Formation, Member, Bed, and asking people to fill in what they can? Also, do we want to ping Macrostrat for consistent names, or just have free-text entry? This might be a PBot v2.0 thing.
@@ -182,6 +189,13 @@ basin: from any area > 100 x 100 km
 * dwc:bed http://rs.tdwg.org/dwc/terms/bed
 * Info: The full name of the lithostratigraphic bed from which the cataloged item was collected.
 
+### Comments on stratigraphy
+* Entry type: free text
+* Considerations: Maps to PBDB.
+* PBot:
+* dwc:
+* Info: Provide any additional information that you think is important with respect to the stratigraphic delineation of the collection.
+
 ### Environment
 Entry type: drop-down menu with PBDB selections: terrestrial indet., fluvial-lacustrine indet., fluvial indet., alluvial fan, channel lag, “channel”, “floodplain”, crevasse splay, levee, mire/swamp, delta plain, lacustrine indet, lacustrine - large, lacustrine - small, pond, crater lake, lacustrine prodelta, dune, interdune, loess, eolian indet, cave, sinkhole, tar, glacial, coastal indet., estuary/bay, lagoonal, paralic indet., interdistributary bay, delta front, prodelta, deltaic indet., marine indet., marginal marine indet., deep-water indet.
 Considerations:  This should map to the PBDB “Environment” field. Ellen reduced the number of choices, given where plant fossils are typically found.
@@ -189,12 +203,12 @@ PBot:
 Dwc:
 Info: The paleoenvironment interpretation. From PBDB: Select the most exact environmental category you can figure out. Each section of the pulldown includes some generalized "indet." terms that you should use only if a more precise determination is not possible. Full details from the Paleobiology Database are at: https://paleobiodb.org/public/tips/environtips.html.
 
-### Comments on geology
+### Comments on environment
 * Entry type: free text
-* Considerations: This is lumping together a couple of PBDB fields, but I'm trying to minimize the number of entry fields we require. So, it won't map straight over, per say.
+* Considerations: Maps straight to PBDB.
 * PBot:
 * dwc:
-* Info: Provide any additional information that you think is important with respect to the stratigraphic delineation of the collection, the lithological context, or the taphonomic situation. Feel free to quote extensively from the publication, if it includes information you can't record in our fields and you think are important.
+* Info: From PBDB: Provide any additional information, including extensive quotes from the paper, that you used to figure out these values. Don't leave this field blank unless the paper very specifically assigned the collection to environmental/tectonic/phase categories that exactly correspond to the ones we use.
 ## End "Geologic information*" Accordion
 
 ## Begin "Collecting information*" Accordion
