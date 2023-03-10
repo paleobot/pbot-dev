@@ -147,16 +147,6 @@ basin: from any area > 100 x 100 km
 ## End "Age information*" Accordion
 
 ## Begin "Geologic information*" Accordion
-### Modes of preservation*
-* Entry type: check boxes with multiple choices allowed: body, trace, permineralized, cast, concretion, dissolution traces, mold/impression, soft parts, charcoalification, adpression/compression, recrystallized, coalified
-* Considerations: Specimens would have a mode of preservation field, but unfortunately collection needs to be entered first, so I think we still need to collect this information. If specimens with new modes of preservation are added, is it possible to have that auto-fill here?
-* PBot:
-* dwc: 
-* Info: Check as many of them as apply to any of the fossils in the collection. Impressions, casts, and molds are fossils with none of the original biomineralized or organic tissue preserved. These three categories are differentiated from each other as follows:
-impression may be a 2D fossil (e.g., leaf impression).
-cast means a 3D fossil that is a positive image of the original.
-mold means a 3D fossil that is a negative image of the original.
-
 ### Lithology*
 * Entry: dropdown menu or checkbox, choices: not reported, “siliciclastic”, claystone, mudstone, “shale”, siltstone, sandstone, gravel, conglomerate, breccia, amber, coal, peat, lignite, subbituminous coal, bituminous coal, anthracite, coal ball, tar, “volcaniclastic”, ash, tuff, evaporite, gypsum, phosphorite, pyrite, ironstone, siderite, chert, diatomite, radiolarite, “mixed carbonate-siliciclastic”, marl, lime mudstone, chalk, travertine, “limestone”, dolomite, “carbonate”
 * Considerations: Note that Ellen reduced PBDB choices to what PBot users are likely to choose. But really, I only got rid of the reef-type carbonate rocks. Is that ok with everyone? Also, we are getting rid of the other three pull-down menus PBDB had (lithification level, secondary lithology, tertiary lithology).
@@ -219,6 +209,16 @@ paleoecologic means described for the purpose of paleoecological analysis, inclu
 taphonomic means described for the purpose of a taphonomic analysis.
 taxonomic means a systematic paleontology treatment, including simple descriptions of fossils. Use this if the all the taxa are included in a systematic paleontology section, or if the taxonomic list is given only in support of an otherwise taxonomic account of one or a few taxa.
 general faunal/floral means there is no detailed discussion of the age, environment, ecology, preservation, or morphology of the fossils, but a taxonomic list is given. Use this category only if the other ones are too specific.
+
+### Modes of preservation*
+* Entry type: check boxes with multiple choices allowed: body, trace, permineralized, cast, concretion, dissolution traces, mold/impression, soft parts, charcoalification, adpression/compression, recrystallized, coalified
+* Considerations: Specimens would have a mode of preservation field, but unfortunately collection needs to be entered first, so I think we still need to collect this information. If specimens with new modes of preservation are added, is it possible to have that auto-fill here?
+* PBot:
+* dwc: 
+* Info: Check as many of them as apply to any of the fossils in the collection. Impressions, casts, and molds are fossils with none of the original biomineralized or organic tissue preserved. These three categories are differentiated from each other as follows:
+impression may be a 2D fossil (e.g., leaf impression).
+cast means a 3D fossil that is a positive image of the original.
+mold means a 3D fossil that is a negative image of the original.
 
 ### Size classes*
 * Entry type: drop-down menu / check boxes with multiple choices allowed: > 10 mm, 1 - 10 mm, < 1 mm
