@@ -13,56 +13,56 @@
 
 # Description node:
 
-
-
-### Description name: 
-* PBot: name: String 
-* dwc: 
-* Info: 
-* Entry type: 
-* Consideration: This field currently exists on the description node, but I am not sure why it needs a name? It has an auto-generated internal ID, and the description node is required to be attached to a specimen or OTU. Is this optional, like if someone wants to give a “name” to a description, like “field description” and then if they do a more thorough or revised on later say “revised description”? Or name a published description “Bown’s 1921 description” and “Manchester 2012 description” for the revision? (of course, references are entered for a description, so I don’t think doing it that way would be very useful)
-
-### References:
-* PBot: references:[DescriptionCitedBy]. Defines a relationship to another node.
-* dwc:  
-* Info: The reference for the description of an OTU or specimen. For a taxon or specimen that has been described in existing literature, the reference would be for the publication from which the description is being used. For un-published taxa or specimens, the reference should be to the person or group that has generated the description (e.g., an internal reference). **Required.**
-* Entry type: select from existing references, prompt to create a new reference if one does not already exist. 
-* Consideration: We have reference field on Specimen and OTU nodes too - this will be duplicate info for those. But this would be the info that shows as "described by" on the OTU or specimen pages, and should be schema-specific. 
-
-### Data access groups:
+### Data access groups*:
+* Entry type: multi-select from the users project groups and the option Public
+* Considerations: can be public AND in another defined group. There are definitely cases where a user may want to enter a private description, even though the OTU or specimen is public. An example would be if you are working on a revision of taxon that you plan to publish later. 
 * PBot: elementOf: [Group!]! @relation(name: "ELEMENT_OF", direction: OUT). Defines a relationship to another node.
 * dwc:  “groups” are sorta similar to datasetID http://rs.tdwg.org/dwc/terms/datasetID, or datasetName http://rs.tdwg.org/dwc/terms/datasetName
 * Info: Defines what project groups have access to view the description record. Published descriptions should always be part of the ‘public’ access group. Descriptions can belong to multiple groups. **Required.**
-* Entry type: multi-select from the users project groups and the option Public
-* Considerations: can be public AND in another defined group. There are definitely cases where a user may want to enter a private description, even though the OTU or specimen is public. An example would be if you are working on a revision of taxon that you plan to publish later. 
+
+### Description name*: 
+* Entry type: 
+* Consideration: “name” examples: like “field description”, “revised description”, a published description “Bown’s 1921 description” and “Manchester 2012 description” for the revision? 
+* PBot: name: String 
+* dwc: 
+* Info: 
+
+### References*:
+* Entry type: search existing references, prompt to create a new reference if one does not already exist. 
+* Consideration: We have reference field on Specimen and OTU nodes too - this will be duplicate info for those. But this would be the info that shows as "described by" on the OTU or specimen pages, and should be schema-specific.
+* PBot: references:[DescriptionCitedBy]. Defines a relationship to another node.
+* dwc:  
+* Info: The reference for the description of an OTU or specimen. For a taxon or specimen that has been described in existing literature, the reference would be for the publication from which the description is being used. For un-published taxa or specimens, the reference should be to the person or group that has generated the description (e.g., an internal reference). **Required.**
 
 ### Specimens:
+* Entry type: Search from pre-existing specimens. Multiselect possible?
+* Considerations: We need to require that a description be attached to either a specimen or an OTU -is that possible? We definitely don’t want free-floating descriptions hanging around! 
 * PBot: specimens: [DescribedBy]. Defines a relationship to another node.
 * dwc: 
 * Info: If describing a specimen, select the specimen that is being described.
-* Entry type: Select from pre-existing specimens. Multiselect possible?
-* Considerations: We need to require that a description be attached to either a specimen or an OTU -is that possible? We definitely don’t want free-floating descriptions hanging around! 
 
 ### OTU:
+* Entry type: Search from pre-existing OTUs.
+* Considerations: We need to require that a description be attached to either a specimen or an OTU -is that possible? We definitely don’t want free-floating descriptions hanging around! 
 * PBot: not defined yet. Defines a relationship to another node.
 * dwc: 
 * Info: If describing an OTU, select the OTU that is being described. 
-* Entry type: Select from pre-existing OTUs.
-* Considerations: We need to require that a description be attached to either a specimen or an OTU -is that possible? We definitely don’t want free-floating descriptions hanging around! 
 
 ### Schema:
+* Entry type: Select the schema from the list. 
+* Considerations: If you will be using more than one schema, then you have to create a new description node for each schema. 
 * PBot: schema: Schema @relation(name: "APPLICATION_OF", direction: OUT). Defines a relationship to another node.
 * dwc: 
 * Info: The schema that will be used to describe the specimen or OTU. 
-* Entry type: Select the schema from the list. 
-* Considerations: If you will be using more than one schema, then you have to create a new description node for each schema. 
 
 ### Character instances:
+* Entry type: After selecting the schema, the user is prompted to enter the character instances through some sort of workflow. Selection from drop-down menus (like the example from the MLA entry in Adobe Bridge), or some sort of workflow swiping/expanding down or to the side, like Andrew suggested at our senior meeting. 
+* Considerations:  
 * PBot: characterInstances: [CharacterInstance!]! @relation(name: "DEFINED_BY", direction: OUT). Defines a relationship to another node.
 * dwc: 
 * Info: 
-* Entry type: After selecting the schema, the user is prompted to enter the character instances through some sort of workflow. Selection from drop-down menus (like the example from the MLA entry in Adobe Bridge), or some sort of workflow swiping/expanding down or to the side, like Andrew suggested at our senior meeting. 
-* Considerations:  
+
+## PBot autogenerated
 
 ### pbotID:
 * PBot: pbotID:ID!
