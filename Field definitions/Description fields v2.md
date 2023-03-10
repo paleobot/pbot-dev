@@ -9,7 +9,7 @@
 * **Entry type:** describe how data will be entered into the field
 * **Considerations:** this section is for info to convey to the PBot team (Botany, Dev, or both) about the field. Notes, wishes, questions, etc. 
 
-
+Notes, as the workflow for a description gets completely fleshed out, this may change a bit.
 
 # Description node:
 
