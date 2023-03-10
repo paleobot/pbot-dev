@@ -189,7 +189,7 @@ PBot:
 Dwc:
 Info: The paleoenvironment interpretation. From PBDB: Select the most exact environmental category you can figure out. Each section of the pulldown includes some generalized "indet." terms that you should use only if a more precise determination is not possible. Full details from the Paleobiology Database are at: https://paleobiodb.org/public/tips/environtips.html.
 
-### Comments on geology, stratigraphy, or preservation
+### Comments on geology
 * Entry type: free text
 * Considerations: This is lumping together a couple of PBDB fields, but I'm trying to minimize the number of entry fields we require. So, it won't map straight over, per say.
 * PBot:
