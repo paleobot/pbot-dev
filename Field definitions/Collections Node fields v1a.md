@@ -156,14 +156,14 @@ basin: from any area > 100 x 100 km
 
 ### Geologic group
 * Entry type: free text
-* Considerations: I prefaced all of the stratigraphic information with “Geologic” since we have other “Groups” and “Members” in PBot. Note that in our Github issue, we had "Stratigraphic Unit" listed with the definition "The most highly resolved stratigraphic unit - e.g., if your section has a known Group, Formation, Member, Submember, and Bed, you would put the Bed name here." Do we still want this field, or are we just keeping the Group, Formation, Member, Bed, and asking people to fill in what they can?
+* Considerations: I prefaced all of the stratigraphic information with “Geologic” since we have other “Groups” and “Members” in PBot. Note that in our Github issue, we had "Stratigraphic Unit" listed with the definition "The most highly resolved stratigraphic unit - e.g., if your section has a known Group, Formation, Member, Submember, and Bed, you would put the Bed name here." Do we still want this field, or are we just keeping the Group, Formation, Member, Bed, and asking people to fill in what they can? Also, do we want to ping Macrostrat for consistent names, or just have free-text entry? This might be a PBot v2.0 thing.
 * PBot:
 * dwc:group http://rs.tdwg.org/dwc/terms/group
 * Info: The full name of the lithostratigraphic group from which the cataloged item was collected. Important: Do not put the term “group.” in this field.
 
 ### Geologic formation
 * Entry type: free text
-* Considerations:
+* Considerations: 
 * PBot:
 * dwc:formation http://rs.tdwg.org/dwc/terms/formation
 * Info: The full name of the lithostratigraphic formation from which the cataloged item was collected. Important: Do not put the term “formation” or “fm.” in this field.
