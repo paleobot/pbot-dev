@@ -71,18 +71,18 @@
 * Info: is this considered a legally protected site?
 
 ### Country*
+* Entry type: dropdown menu with all the countries in the world as options (PBDB has this- easy to find?)
+* Considerations: required for PBDB. If we have the capability to auto-fill once lat-long are entered, that would be great, but maybe hard. From Mark: Asking for both country and state along with lat/long is a good error checking routine. PBDB roughly checks to see if your coordinate are in the right country (maybe not state...), which helps with typos.
 * PBot:
 * dwc:
 * Info: 
-* Entry type: dropdown menu with all the countries in the world as options (PBDB has this- easy to find?)
-* Considerations: required for PBDB. If we have the capability to auto-fill once lat-long are entered, that would be great, but maybe hard. From Mark: Asking for both country and state along with lat/long is a good error checking routine. PBDB roughly checks to see if your coordinate are in the right country (maybe not state...), which helps with typos.
 
 ### State/province
+* Enty type: free text
+* Considerations: This a required field for PBDB if the country is USA. If we have the capability to auto-fill once lat-long are entered, that would be great, but maybe hard. From Mark: Asking for both country and state along with lat/long is a good error checking routine. PBDB roughly checks to see if your coordinate are in the right country (maybe not state...), which helps with typos.
 * PBot:
 * dwc: 
 * Info: A required field if the country is the USA. Elsewhere, its use is also encouraged (e. g., England is a "state" of the United Kingdom, Ontario is a province of Canada). You must spell out the entire state name; do not use U.S. postal codes like "CA" or "WY."
-* Enty type: free text
-Considerations: This a required field for PBDB if the country is USA. If we have the capability to auto-fill once lat-long are entered, that would be great, but maybe hard. From Mark: Asking for both country and state along with lat/long is a good error checking routine. PBDB roughly checks to see if your coordinate are in the right country (maybe not state...), which helps with typos.
 
 ### Scale of geographic resolution
 * Entry type: drop-down menu, select one, with choices: hand sample, small collection, outcrop, local area, and basin
