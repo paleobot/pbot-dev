@@ -85,7 +85,7 @@
 * Info: A required field if the country is the USA. Elsewhere, its use is also encouraged (e. g., England is a "state" of the United Kingdom, Ontario is a province of Canada). You must spell out the entire state name; do not use U.S. postal codes like "CA" or "WY."
 
 ### Scale of geographic resolution
-* Entry type: drop-down menu, select one, with choices: hand sample, small collection, outcrop, local area, and basin
+* Entry type: drop-down menu, select one, with choices: hand sample, small collection (<10x10m), outcrop (<1x1km), local area (<100x100km), and basin
 * PBot:
 * dwc:
 * Info: From the pop-up menu, select the resolution that best characterizes your collection. Err on the side of conservatism: if you know the collection is from a particular road cut but don't know if it does or doesn't come from a small excavation within the road cut, enter "outcrop" instead of "small collection." If no information is given, do not make a selection. Terms are defined as follows:
