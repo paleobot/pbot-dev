@@ -132,6 +132,51 @@ MERGE
 MERGE
     (organ)-[:ELEMENT_OF]->(public);
 
+    
+//Features
+MATCH
+	(person:Person {given: "Ellen", surname: "Currano"}),
+	(public:Group {name: "public"})
+MERGE
+    (feature:Feature { name: "cuticle/epidermal features"})-[entered_by:ENTERED_BY]->(person)
+    ON CREATE SET
+        feature.pbotID = apoc.create.uuid(),
+        entered_by.timestamp = datetime()
+MERGE
+    (feature)-[:ELEMENT_OF]->(public);
+
+MATCH
+	(person:Person {given: "Ellen", surname: "Currano"}),
+	(public:Group {name: "public"})
+MERGE
+    (feature:Feature { name: "wood anatomy (secondary growth)"})-[entered_by:ENTERED_BY]->(person)
+    ON CREATE SET
+        feature.pbotID = apoc.create.uuid(),
+        entered_by.timestamp = datetime()
+MERGE
+    (feature)-[:ELEMENT_OF]->(public);
+
+MATCH
+	(person:Person {given: "Ellen", surname: "Currano"}),
+	(public:Group {name: "public"})
+MERGE
+    (feature:Feature { name: "internal anatomy"})-[entered_by:ENTERED_BY]->(person)
+    ON CREATE SET
+        feature.pbotID = apoc.create.uuid(),
+        entered_by.timestamp = datetime()
+MERGE
+    (feature)-[:ELEMENT_OF]->(public);
+
+MATCH
+	(person:Person {given: "Ellen", surname: "Currano"}),
+	(public:Group {name: "public"})
+MERGE
+    (feature:Feature { name: "trace fossils (e.g., insect damage)"})-[entered_by:ENTERED_BY]->(person)
+    ON CREATE SET
+        feature.pbotID = apoc.create.uuid(),
+        entered_by.timestamp = datetime()
+MERGE
+    (feature)-[:ELEMENT_OF]->(public);
 
 //Preservation Modes
 
