@@ -1,3 +1,4 @@
+![alt text](https://github.com/paleobot/pbot-dev/blob/main/specificationdocs/About%20Page/Overview%20Page%20Graphics%201%20static.png)
 # What is PBot?
 The Integrative Paleobotany Portal (PBot) is a free online software for fossil plant data management, analysis, and exploration. Core to the PBot mission is providing broad access to paleobotanical research tools and data and to provide an efficient pipeline for data entry that ensures that research products and data are freely available to the general public for the long term. 
 
