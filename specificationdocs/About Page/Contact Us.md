@@ -3,4 +3,4 @@ PBot is a community supported database, built of the community, by the community
 Interested in receiving updates about PBot, register as a [User](https://pbot.paleobiodb.org/register) here.
 
 ___
-Note for Doug: The PBot gmail address somehow automatically creates a link that errors in my online outlook. I do not know how I did this.
+**Note for Doug and not part of the page!!** The PBot gmail address somehow automatically creates a link that errors in my online outlook. I do not know how I did this.
