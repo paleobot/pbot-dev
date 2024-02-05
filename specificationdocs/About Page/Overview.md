@@ -8,6 +8,8 @@ For registered users, the **_PBot Workbench_** allows users to (1) create novel,
 
 PBot works with and complements existing databases (iDigBio, the Paleobiology Database, Plant Fossil Names) to enhance utility and accessibility of paleobotanical data, allowing paleobotanists to more easily fulfill NSF (or other funding agency) data management plans.
 
+![alt text](https://github.com/paleobot/pbot-dev/blob/main/specificationdocs/About%20Page/Overview%20Page%20Graphics%202%20static.png)
+
 # Why PBot?
 Fossil plants provide the best record of how Earth’s environments have changed through time. However, plant fossils present unique challenges that previously made this record inaccessible for large scale studies of Earth History. Plant organs (e.g., leaves, wood, fruits, seeds) are rarely preserved attached to each other, and it can be difficult to associate different organs as part of the same plant and assign formal taxonomic names to the isolated organs. No other major paleontological databases can accommodate the informal names that are commonly used for isolated plant organs, and we lacked the necessary tools to coordinate such fossil plant data across institutions, researchers, time periods, and geography. Enter PBot!
 
