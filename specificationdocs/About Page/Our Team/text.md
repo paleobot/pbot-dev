@@ -1,9 +1,9 @@
 ### Core Team ###
 [Ellen Currano](https://www.uwyo.edu/geolgeophys/people/faculty/ellen-currano.html), University of Wyoming, Paleobotany, PI <br>
 [Dori Contreras](https://www.perotmuseum.org/researchers/), Perot Museum of Nature and Science, Paleobotany, co-PI <br>
-Andrew Zaffos, Arizona Geological Survey, Geoinformatics and Paleontology Databases, co-PI <br>
+[Andrew Zaffos](https://azgs.arizona.edu/about/staff), Arizona Geological Survey, Geoinformatics and Paleontology Databases, co-PI <br>
 Claire Cleveland, Paleontology & Workflow Management <br>
-Douglas Meredith, Arizona Geological Survey, Software Development <br>
+[Douglas Meredith](https://azgs.arizona.edu/about/staff), Arizona Geological Survey, Software Development <br>
 Shanan Peters, University of Wisconsin, Paleobiology Database Integration, co-PI <br>
 [Mark D. Uhen](http://uhenlab.weebly.com/), George Mason University, Paleobiology Database Integration, co-PI
 
